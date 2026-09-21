@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Traktir Kopi · Dukung Proyek Open Source RanggaWbp</title>
+<meta name="description" content="Dukung proyek open source RanggaWbp lewat QRIS, PayPal, transfer bank, atau e-wallet. Semua proyek gratis dan terbuka.">
+<meta name="author" content="RanggaWbp">
+<meta name="theme-color" content="#4B3FE0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#8F86FF" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Traktir saya kopi, biar kodenya terus jalan">
+<meta property="og:description" content="Dukung proyek open source RanggaWbp lewat QRIS, PayPal, transfer bank, atau e-wallet.">
+<meta property="og:image" content="assets/og.png">
+<meta property="og:url" content="https://ranggawbp.github.io/donasi/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Traktir saya kopi, biar kodenya terus jalan">
+<meta name="twitter:description" content="Dukung proyek open source RanggaWbp lewat QRIS, PayPal, transfer bank, atau e-wallet.">
+<meta name="twitter:image" content="assets/og.png">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Opsional: Google AdSense. Tempel skrip dari akun AdSense Anda di sini setelah disetujui.
+     Catatan: halaman ini memuat data keuangan pribadi (rekening, QRIS). Pertimbangkan
+     risiko privasi sebelum memasang pelacak iklan di halaman donasi. Lihat README.md. -->
+
+<style>
+:root{
+  --bg:#F5F4FB; --paper:#FFFFFF; --ink:#17153B; --muted:#5E5B80; --line:#D9D6EE;
+  --brand:#4B3FE0; --brand-ink:#FFFFFF; --mango:#FFC93C; --qris:#E11D2E; --ok:#0E8F5B;
+  --shadow:#17153B;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12102B; --paper:#1D1A42; --ink:#F1EFFF; --muted:#A9A5D6; --line:#3A3670;
+    --brand:#8F86FF; --brand-ink:#12102B; --shadow:#000000;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12102B; --paper:#1D1A42; --ink:#F1EFFF; --muted:#A9A5D6; --line:#3A3670;
+  --brand:#8F86FF; --brand-ink:#12102B; --shadow:#000000;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mango);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:600 1rem var(--body);padding:.85rem 1.3rem;border-radius:12px;border:2px solid var(--ink);background:var(--brand);color:var(--brand-ink);text-decoration:none;cursor:pointer;box-shadow:3px 3px 0 var(--shadow);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--shadow)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.mango{background:var(--mango);color:#17153B}
+.btn.small{padding:.5rem .8rem;font-size:.9rem;box-shadow:2px 2px 0 var(--shadow)}
+
+/* header */
+header{padding:14px 0;position:sticky;top:0;z-index:15;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:2px solid transparent}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.who{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:600}
+.who img,.avatar-fallback{width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:var(--mango);object-fit:cover}
+nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+nav a.link{padding:.4rem .7rem;text-decoration:none;border-radius:8px;color:var(--muted);font-weight:500}
+nav a.link:hover{color:var(--ink);background:var(--paper)}
+.icon-btn{width:40px;height:40px;border-radius:10px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;font-size:1.1rem}
+
+/* hero */
+.hero{padding:40px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.hero h1{margin-bottom:20px}
+.hero .lead{font-size:1.15rem;color:var(--muted);max-width:34em;margin-bottom:28px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.proof{display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
+.proof b{display:block;font:800 1.6rem var(--display);color:var(--ink)}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.badge{font:600 .85rem var(--body);padding:.35rem .8rem;border-radius:999px;border:2px solid var(--line);color:var(--muted);background:var(--paper)}
+.badge b{font-weight:800;color:var(--ink)}
+
+/* support card */
+.support{background:var(--paper);border:2px solid var(--ink);border-radius:22px;box-shadow:8px 8px 0 var(--shadow);padding:24px}
+.cup-row{display:flex;align-items:center;gap:20px;margin-bottom:18px}
+.cup{width:96px;flex:none}
+.cup .liquid{transition:transform .5s cubic-bezier(.3,1.3,.5,1)}
+.cup-txt{min-width:0}
+.cup-txt .amount{font:800 2rem var(--display);letter-spacing:-.02em}
+.cup-txt .sub{color:var(--muted);font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chip{font:600 .95rem var(--body);padding:.5rem .9rem;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--mango);color:#17153B}
+.custom{display:flex;align-items:center;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin-bottom:20px;background:var(--bg)}
+.custom span{padding:0 12px;font-weight:600;color:var(--muted)}
+.custom input{flex:1;min-width:0;border:0;background:transparent;font:600 1rem var(--body);color:var(--ink);padding:.7rem .5rem .7rem 0}
+.custom input:focus-visible{outline:none}
+.custom:focus-within{outline:3px solid var(--mango);outline-offset:2px}
+
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:16px}
+.tab{font:600 .9rem var(--body);padding:.6rem .3rem;border-radius:10px;border:2px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab[aria-selected="true"]{border-color:var(--ink);color:var(--ink);background:var(--bg)}
+.panel[hidden]{display:none}
+.qris-box{display:grid;place-items:center;text-align:center;gap:12px}
+.qris-frame{width:100%;max-width:280px;aspect-ratio:1;border:2px solid var(--ink);border-radius:16px;background:#fff;display:grid;place-items:center;overflow:hidden;position:relative}
+.qris-frame::before{content:"QRIS";position:absolute;top:0;left:0;right:0;background:var(--qris);color:#fff;font:800 .8rem var(--display);padding:4px;letter-spacing:.06em;z-index:2}
+#ppQrFrame::before{content:"PayPal";background:#003087}
+.qris-frame img{width:100%;height:100%;object-fit:contain;padding:28px 10px 10px}
+.qris-frame canvas{width:100%;height:100%;object-fit:contain;padding:28px 10px 10px}
+.empty{padding:28px 18px;text-align:center;color:#5E5B80;font-size:.9rem}
+.empty code{background:#eee;padding:1px 5px;border-radius:4px}
+.rows{display:grid;gap:10px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--paper)}
+.row b{display:block}
+.row small{color:var(--muted)}
+.pp-note{font-size:.9rem;color:var(--muted);margin-top:12px}
+
+/* sections */
+section.block{padding:72px 0;border-top:2px solid var(--line)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.head p{max-width:32em;color:var(--muted)}
+
+.repo-list{display:grid;gap:0;border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:var(--paper)}
+.repo{display:grid;grid-template-columns:1fr auto;gap:8px 20px;padding:18px 22px;text-decoration:none;border-bottom:2px solid var(--line)}
+.repo:last-child{border-bottom:0}
+.repo:hover{background:var(--bg)}
+.repo h3{font-size:1.1rem}
+.repo p{grid-column:1;color:var(--muted);font-size:.95rem}
+.repo .meta{grid-row:1/3;grid-column:2;align-self:center;text-align:right;color:var(--muted);font-size:.9rem}
+
+.uses{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink);border-radius:18px;overflow:hidden}
+.uses>div{padding:24px;background:var(--paper)}
+.uses>div+div{border-left:2px solid var(--line)}
+.uses h3{margin-bottom:8px}
+.uses p{color:var(--muted);font-size:.97rem}
+
+/* sponsor wall */
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.avatar-cell{display:grid;place-items:center;gap:8px;padding:18px 10px;border:2px solid var(--line);border-radius:14px;background:var(--paper);text-align:center}
+.avatar-cell img{width:56px;height:56px;border-radius:50%;border:2px solid var(--ink)}
+.avatar-cell span{font-size:.9rem;font-weight:600}
+.avatar-cell small{font-size:.8rem;color:var(--muted)}
+.wall-empty{border:2px dashed var(--line);border-radius:14px;padding:22px;text-align:center;color:var(--muted);grid-column:1/-1}
+
+/* FAQ */
+.faq{display:grid;gap:12px}
+details.qa{border:2px solid var(--line);border-radius:14px;background:var(--paper);padding:0 18px}
+details.qa summary{cursor:pointer;padding:16px 0;font-weight:600;list-style:none}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:"+";float:right;font-size:1.3rem;line-height:1.2;color:var(--muted)}
+details.qa[open] summary::after{content:"–"}
+details.qa p{padding:0 0 16px;color:var(--muted);font-size:.97rem}
+
+footer{padding:40px 0 56px;border-top:2px solid var(--line);color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* admin + toast */
+.admin{display:none;position:fixed;right:16px;bottom:16px;z-index:20;width:min(340px,calc(100vw - 32px));max-height:80vh;overflow:auto;background:var(--paper);border:2px solid var(--ink);border-radius:16px;box-shadow:6px 6px 0 var(--shadow);padding:18px}
+.admin.on{display:block}
+.admin h3{margin-bottom:6px}
+.admin label{display:block;font-weight:600;font-size:.9rem;margin:14px 0 6px}
+.admin input[type=file]{width:100%;font-size:.85rem}
+.admin p{font-size:.85rem;color:var(--muted)}
+.admin .btn{margin-top:8px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:.7rem 1.1rem;border-radius:12px;font-weight:600;transition:transform .25s;z-index:30}
+#toast.show{transform:translate(-50%,0)}
+
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .uses{grid-template-columns:1fr}
+  .uses>div+div{border-left:0;border-top:2px solid var(--line)}
+  nav a.link{display:none}
+}
+@media (max-width:420px){.tabs{grid-template-columns:repeat(2,1fr)}.cup{width:76px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="who" href="#" id="who">
+      <span class="avatar-fallback" id="avatarFallback"></span>
+      <span id="whoName">RanggaWbp</span>
+    </a>
+    <nav>
+      <a class="link" href="#support">Donasi</a>
+      <a class="link" href="#proyek">Proyek</a>
+      <a class="link" href="#sponsors">Sponsor</a>
+      <a class="link" href="#faq">FAQ</a>
+      <button class="icon-btn" id="themeBtn" aria-label="Ganti tema terang/gelap">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="badge-row" id="badgeRow"></div>
+      <h1 id="headline">Traktir saya kopi, biar kodenya terus jalan.</h1>
+      <p class="lead" id="lead">Semua proyek saya gratis dan terbuka. Kalau salah satunya menghemat waktu Anda, dukungan sekecil apa pun membantu saya merawatnya.</p>
+      <div class="cta">
+        <a class="btn" href="#support" id="ctaMain">Kirim dukungan</a>
+        <a class="btn ghost" id="ctaSponsors" href="#" target="_blank" rel="noopener">GitHub Sponsors</a>
+      </div>
+      <div class="proof" id="proof"></div>
+    </div>
+
+    <!-- Kartu dukungan -->
+    <div class="support" id="support">
+      <div class="cup-row">
+        <svg class="cup" viewBox="0 0 120 120" role="img" aria-label="Cangkir kopi yang terisi sesuai nominal">
+          <defs><clipPath id="cupClip"><path d="M18 30h72v46a26 26 0 0 1-26 26H44a26 26 0 0 1-26-26z"/></clipPath></defs>
+          <g clip-path="url(#cupClip)">
+            <rect x="0" y="0" width="120" height="120" fill="#F1EFFF"/>
+            <g class="liquid" id="liquid" style="transform:translateY(60px)">
+              <rect x="0" y="30" width="140" height="100" fill="#6F4A2E"/>
+              <rect x="0" y="30" width="140" height="7" fill="#8B603D"/>
+            </g>
+          </g>
+          <path d="M18 30h72v46a26 26 0 0 1-26 26H44a26 26 0 0 1-26-26z" fill="none" stroke="#17153B" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M90 42h6a12 12 0 0 1 0 24h-8" fill="none" stroke="#17153B" stroke-width="5" stroke-linecap="round"/>
+          <path d="M42 8c-6 6 6 8 0 14M62 8c-6 6 6 8 0 14" fill="none" stroke="#FFC93C" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="cup-txt">
+          <div class="amount" id="amountTxt">Rp25.000</div>
+          <div class="sub" id="cupsTxt">sekitar 2 gelas kopi</div>
+        </div>
+      </div>
+
+      <div class="chips" id="chips" role="group" aria-label="Pilih nominal"></div>
+      <label class="custom" for="customAmt"><span>Rp</span><input id="customAmt" inputmode="numeric" placeholder="Nominal lain" autocomplete="off"></label>
+
+      <div class="tabs" role="tablist" aria-label="Metode pembayaran">
+        <button class="tab" role="tab" id="t-qris" aria-controls="p-qris" aria-selected="true">QRIS</button>
+        <button class="tab" role="tab" id="t-paypal" aria-controls="p-paypal" aria-selected="false">PayPal</button>
+        <button class="tab" role="tab" id="t-bank" aria-controls="p-bank" aria-selected="false">Bank</button>
+        <button class="tab" role="tab" id="t-more" aria-controls="p-more" aria-selected="false">E-wallet</button>
+      </div>
+
+      <div class="panel" id="p-qris" role="tabpanel" aria-labelledby="t-qris">
+        <div class="qris-box">
+          <div class="qris-frame" id="qrisFrame"></div>
+          <p class="muted" style="font-size:.9rem">Buka aplikasi bank atau e-wallet apa pun, pilih Scan, lalu masukkan nominal.</p>
+          <a class="btn small ghost" id="qrisDl" download="qris.png" href="#" hidden>Unduh QRIS</a>
+        </div>
+      </div>
+      <div class="panel" id="p-paypal" role="tabpanel" aria-labelledby="t-paypal" hidden>
+        <a class="btn mango" id="paypalBtn" href="#" target="_blank" rel="noopener" style="width:100%">Bayar dengan PayPal</a>
+        <p class="pp-note" id="ppNote"></p>
+        <div class="qris-box" id="ppQrWrap" style="margin-top:14px" hidden>
+          <div class="qris-frame" id="ppQrFrame" style="--x:0"></div>
+        </div>
+      </div>
+      <div class="panel" id="p-bank" role="tabpanel" aria-labelledby="t-bank" hidden><div class="rows" id="bankRows"></div></div>
+      <div class="panel" id="p-more" role="tabpanel" aria-labelledby="t-more" hidden>
+        <div class="rows" id="walletRows"></div>
+        <div class="rows" id="linkRows" style="margin-top:10px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="proyek">
+  <div class="wrap">
+    <div class="head">
+      <h2>Proyek yang Anda dukung</h2>
+      <p>Diambil langsung dari GitHub. Bintang dan fork membantu, tapi kopi lebih membantu.</p>
+    </div>
+    <div class="repo-list" id="repos"><div class="repo"><p>Memuat proyek…</p></div></div>
+  </div>
+</section>
+
+<section class="block" id="sponsors">
+  <div class="wrap">
+    <div class="head">
+      <h2>Yang sudah mendukung</h2>
+      <p id="sponsorHint">Setiap nama di sini merupakan dukungan nyata untuk proyek ini. Terima kasih!</p>
+    </div>
+    <div class="wall" id="wall"></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head"><h2>Ke mana dukungan Anda pergi</h2></div>
+    <div class="uses" id="uses"></div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="head"><h2>Pertanyaan yang sering ditanyakan</h2></div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span id="foot">© <span id="yr"></span></span>
+    <span>Dibuat dengan HTML biasa. Tanpa pelacak.</span>
+  </div>
+</footer>
+
+<aside class="admin" id="admin" aria-label="Panel pemilik">
+  <h3>Panel pemilik</h3>
+  <p>Unggah gambar QR di sini untuk melihat hasilnya. Gambar hanya tersimpan di browser ini.</p>
+  <label for="upQris">Gambar QRIS</label>
+  <input type="file" id="upQris" accept="image/*">
+  <label for="upPp">QR PayPal (opsional)</label>
+  <input type="file" id="upPp" accept="image/*">
+  <p style="margin-top:12px">Agar semua pengunjung melihatnya, simpan file ke folder <b>assets</b> di repo dengan nama <b>qris.png</b> dan <b>paypal-qr.png</b>, lalu commit.</p>
+  <a class="btn small" id="adminDl" download="qris.png" href="#" hidden>Unduh QRIS hasil ubah ukuran</a>
+  <button class="btn small ghost" id="adminReset" type="button">Hapus unggahan</button>
+</aside>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================
+   UBAH BAGIAN INI SAJA. Sisanya bisa dibiarkan.
+   ===================================================== */
+const CONFIG = {
+  githubUser: "RanggaWbp",
+  name: "RanggaWbp",
+  headline: "Traktir saya kopi, biar kodenya terus jalan.",
+  lead: "Setiap proyek saya gratis dan terbuka. Kalau salah satunya menghemat waktu Anda, dukungan sekecil apa pun membantu saya merawatnya.",
+
+  coffeePrice: 15000,               // harga 1 kopi (Rp), dipakai untuk teks "sekitar N gelas"
+  presets: [10000, 25000, 50000, 100000, 250000],
+  defaultAmount: 25000,
+  idrPerUsd: 16000,                 // kurs kasar untuk tombol PayPal
+
+  /* --- QRIS --- */
+  qrisMode: "dynamic",              // "dynamic" (generate QR di browser) atau "image" (gambar statis)
+  qrisImage: "assets/qris.png",     // dipakai saat qrisMode:"image"; timpa file ini dengan QRIS Anda
+  qrisPayload: "https://github.com/RanggaWbp/donasi",   // isi QRIS dinamis (ganti ke link QRIS statis Anda bila perlu)
+
+  paypalUser: "username-paypal",    // dari paypal.me/username-paypal
+  paypalQrImage: "assets/paypal-qr.png", // opsional
+
+  bank: [
+    { name: "BCA",     number: "1234567890", holder: "Nama Kamu" },
+    { name: "Mandiri", number: "1234567890123", holder: "Nama Kamu" }
+  ],
+  wallets: [
+    { name: "DANA",  number: "081234567890" },
+    { name: "GoPay", number: "081234567890" },
+    { name: "OVO",   number: "081234567890" }
+  ],
+  links: [                           // platform donasi lain
+    { label: "Saweria",  url: "https://saweria.co/username" },
+    { label: "Trakteer", url: "https://trakteer.id/username" },
+    { label: "Ko-fi",    url: "https://ko-fi.com/username" }
+  ],
+  githubSponsors: false,              // tombol GitHub Sponsors di hero
+
+  proof: [                           // angka kecil di bawah tombol; kosongkan [] untuk menyembunyikan
+    { n: "15",  l: "repositori publik" },
+    { n: "5 th", l: "membuka kodemu" }
+  ],
+
+  uses: [
+    { t: "Server dan domain", d: "Biaya hosting demo, dokumentasi, dan CI yang jalan tiap ada perubahan." },
+    { t: "Waktu perawatan", d: "Membalas issue, meninjau pull request, dan memperbaiki bug lebih cepat." },
+    { t: "Fitur baru", d: "fitur yang paling sering diminta dikerjakan lebih dulu, dengan catatan rilis yang jelas." }
+  ]
+};
+/* ===================== akhir konfigurasi ===================== */
+
+const $ = (s, r = document) => r.querySelector(s);
+const idr = n => "Rp" + new Intl.NumberFormat("id-ID").format(n);
+const el = (tag, props = {}, kids = []) => {
+  const n = document.createElement(tag);
+  Object.entries(props).forEach(([k, v]) => k === "text" ? n.textContent = v : n.setAttribute(k, v));
+  kids.forEach(k => n.append(k));
+  return n;
+};
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch { return null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch {} },
+  del(k){ try { localStorage.removeItem(k); } catch {} }
+};
+let toastTimer;
+function toast(msg){
+  const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 1800);
+}
+async function copy(text){
+  try { await navigator.clipboard.writeText(text); }
+  catch {
+    const ta = el("textarea", { style: "position:fixed;opacity:0" }); ta.value = text;
+    document.body.append(ta); ta.select(); document.execCommand("copy"); ta.remove();
+  }
+  toast("Tersalin: " + text);
+}
+
+/* ---------- teks dasar ---------- */
+document.title = "Dukung " + CONFIG.name + " · Open Source";
+$("#whoName").textContent = CONFIG.name;
+$("#who").href = "https://github.com/" + CONFIG.githubUser;
+$("#headline").textContent = CONFIG.headline;
+$("#lead").textContent = CONFIG.lead;
+$("#yr").textContent = new Date().getFullYear() + " " + CONFIG.name;
+const sp = $("#ctaSponsors");
+if (CONFIG.githubSponsors) sp.href = "https://github.com/sponsors/" + CONFIG.githubUser; else sp.remove();
+CONFIG.proof.forEach(p => $("#proof").append(el("div", {}, [el("b", { text: p.n }), document.createTextNode(p.l)])));
+
+/* ---------- badge ---------- */
+$("#badgeRow").append(
+  el("span", { class: "badge" }, [el("b", { text: "Open source" }), document.createTextNode(" · kode publik di GitHub")]),
+  el("span", { class: "badge" }, [el("b", { text: "Tanpa iklan" }), document.createTextNode(" · tanpa pelacak")])
+);
+
+/* ---------- tema ---------- */
+$("#themeBtn").addEventListener("click", () => {
+  const root = document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme:dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+});
+
+/* ---------- nominal ---------- */
+let amount = CONFIG.defaultAmount;
+function setAmount(n, fromInput){
+  amount = Math.max(1000, Math.round(n) || 1000);
+  $("#amountTxt").textContent = idr(amount);
+  const cups = Math.max(1, Math.round(amount / CONFIG.coffeePrice));
+  $("#cupsTxt").textContent = "sekitar " + cups + " gelas kopi";
+  const fill = Math.min(amount / 100000, 1);
+  $("#liquid").style.transform = "translateY(" + (72 - fill * 60) + "px)";
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(+c.dataset.v === amount)));
+  if (!fromInput) $("#customAmt").value = "";
+  const usd = (amount / CONFIG.idrPerUsd).toFixed(2);
+  $("#paypalBtn").href = "https://www.paypal.me/" + encodeURIComponent(CONFIG.paypalUser) + "/" + usd + "USD";
+  $("#ppNote").textContent = "Setara sekitar $" + usd + ". Anda bisa mengubah jumlahnya di halaman PayPal.";
+  renderQrisDynamic();
+}
+CONFIG.presets.forEach(v => {
+  const c = el("button", { class: "chip", type: "button", "data-v": v, "aria-pressed": "false", text: idr(v) });
+  c.addEventListener("click", () => setAmount(v));
+  $("#chips").append(c);
+});
+$("#customAmt").addEventListener("input", e => {
+  const raw = e.target.value.replace(/\D/g, "");
+  e.target.value = raw ? new Intl.NumberFormat("id-ID").format(+raw) : "";
+  if (raw) setAmount(+raw, true);
+});
+
+/* ---------- tab ---------- */
+const tabs = [...document.querySelectorAll(".tab")];
+function selectTab(t){
+  tabs.forEach(x => {
+    const on = x === t;
+    x.setAttribute("aria-selected", on);
+    x.tabIndex = on ? 0 : -1;
+    $("#" + x.getAttribute("aria-controls")).hidden = !on;
+  });
+}
+tabs.forEach((t, i) => {
+  t.addEventListener("click", () => selectTab(t));
+  t.addEventListener("keydown", e => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    const next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+    next.focus(); selectTab(next);
+  });
+});
+selectTab(tabs[0]);
+
+/* ---------- QR (QRIS + PayPal) ---------- */
+function showQR(frame, src, alt, emptyHint){
+  frame.querySelectorAll("img,.empty").forEach(n => n.remove());
+  const img = el("img", { alt, src });
+  img.addEventListener("error", () => {
+    img.remove();
+    frame.append(el("div", { class: "empty" }, [document.createTextNode(emptyHint)]));
+  });
+  frame.append(img);
+}
+/* QRIS dinamis: QR di-generate di browser (library QRCode.js lokal di assets/).
+   Tidak ada request ke server ketiga, tidak ada pelacak. */
+let qrisGenerated = false;
+function renderQrisDynamic(force){
+  if (CONFIG.qrisMode !== "dynamic") return;
+  if (qrisGenerated && !force) return;
+  qrisGenerated = true;
+  const frame = $("#qrisFrame");
+  frame.querySelectorAll("canvas,img,.empty").forEach(n => n.remove());
+  if (typeof window.QRCode === "function") {
+    const q = new QRCode(frame, {
+      text: CONFIG.qrisPayload + "#" + amount,
+      width: 600, height: 600,
+      colorDark: "#17153B", colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+    const cv = frame.querySelector("canvas");
+    const dl = $("#qrisDl");
+    if (cv && dl) {
+      try { dl.href = cv.toDataURL("image/png"); dl.hidden = false; }
+      catch { dl.hidden = true; }    // canvas taint tidak bisa diunduh
+    }
+  } else {
+    frame.append(el("div", { class: "empty" }, [document.createTextNode(
+      "Library QR belum termuat. Set qrisMode:\"image\" dan unggah assets/qris.png."
+    )]));
+  }
+}
+function loadQR(){
+  const q = store.get("qris_override") || (CONFIG.qrisMode === "image" ? CONFIG.qrisImage : null);
+  if (q) {
+    showQR($("#qrisFrame"), q, "Kode QRIS untuk donasi",
+      "Gambar QRIS belum ada. Simpan sebagai assets/qris.png di repo atau set qrisMode:'dynamic'.");
+    const dl = $("#qrisDl"); dl.href = q; dl.hidden = false;
+  } else {
+    renderQrisDynamic(true);
+  }
+
+  const pp = store.get("pp_override") || CONFIG.paypalQrImage;
+  const probe = new Image();
+  probe.onload = () => { $("#ppQrWrap").hidden = false; showQR($("#ppQrFrame"), pp, "Kode QR PayPal", ""); $("#ppQrFrame").style.setProperty("--x", 1); };
+  probe.onerror = () => { $("#ppQrWrap").hidden = true; };
+  probe.src = pp;
+}
+loadQR();
+
+/* QRCode.js dimuat setelah skrip ini. Saat ia siap, render ulang QRIS dinamis. */
+if (typeof window.QRCode === "undefined") window.__qrReady = () => renderQrisDynamic(true);
+
+/* ---------- bank, e-wallet, tautan ---------- */
+function copyRow(title, number, sub){
+  const b = el("button", { class: "btn small ghost", type: "button", text: "Salin" });
+  b.addEventListener("click", () => copy(number));
+  return el("div", { class: "row" }, [
+    el("div", {}, [el("b", { text: title + " · " + number }), ...(sub ? [el("small", { text: sub })] : [])]), b
+  ]);
+}
+CONFIG.bank.forEach(b => $("#bankRows").append(copyRow(b.name, b.number, "a.n. " + b.holder)));
+CONFIG.wallets.forEach(w => $("#walletRows").append(copyRow(w.name, w.number)));
+CONFIG.links.forEach(l => {
+  const a = el("a", { class: "btn small ghost", href: l.url, target: "_blank", rel: "noopener", text: "Buka" });
+  $("#linkRows").append(el("div", { class: "row" }, [el("b", { text: l.label }), a]));
+});
+
+/* ---------- bagian bawah ---------- */
+CONFIG.uses.forEach(u => $("#uses").append(el("div", {}, [el("h3", { text: u.t }), el("p", { text: u.d })])));
+
+/* ---------- data GitHub ---------- */
+(async () => {
+  try {
+    const [uRes, rRes] = await Promise.all([
+      fetch("https://api.github.com/users/" + CONFIG.githubUser),
+      fetch("https://api.github.com/users/" + CONFIG.githubUser + "/repos?per_page=100&sort=updated")
+    ]);
+    if (!uRes.ok || !rRes.ok) throw new Error("gagal");
+    const u = await uRes.json(), repos = await rRes.json();
+    const fb = $("#avatarFallback");
+    fb.replaceWith(el("img", { src: u.avatar_url + "&s=80", alt: "Foto profil " + (u.name || u.login) }));
+    if (u.name) $("#whoName").textContent = u.name;
+    const top = repos.filter(r => !r.fork).sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 6);
+    const box = $("#repos"); box.textContent = "";
+    if (!top.length) throw new Error("kosong");
+    top.forEach(r => box.append(el("a", { class: "repo", href: r.html_url, target: "_blank", rel: "noopener" }, [
+      el("h3", { text: r.name }),
+      el("p", { text: r.description || "Belum ada deskripsi." }),
+      el("div", { class: "meta", text: "★ " + r.stargazers_count + (r.language ? " · " + r.language : "") })
+    ])));
+  } catch {
+    $("#repos").textContent = "";
+    $("#repos").append(el("div", { class: "repo" }, [el("p", { text: "Daftar proyek belum bisa dimuat. Pastikan githubUser di CONFIG sudah benar, lalu muat ulang halaman." })]));
+  }
+})();
+
+/* ---------- sponsor ---------- */
+const SPONSORS = [
+  /* { login: "nama", amount: 50000, since: "2026-09" }, */
+];
+(function wall(){
+  const box = $("#wall");
+  if (!SPONSORS.length) {
+    box.append(el("div", { class: "wall-empty", text: "Jadilah yang pertama mendukung — scan QRIS di atas atau pilih metode lainnya." }));
+    $("#sponsorHint").textContent = "Belum ada sponsor. Hubungi saya melalui GitHub jika ingin nama Anda ditampilkan.";
+  } else {
+    SPONSORS.forEach(s => box.append(el("div", { class: "avatar-cell" }, [
+      el("img", { src: "https://avatars.githubusercontent.com/" + s.login + "?s=80", alt: s.login }),
+      el("span", { text: s.login }),
+      el("small", { text: idr(s.amount) })
+    ])));
+  }
+})();
+
+/* ---------- FAQ ---------- */
+const FAQ = [
+  { q: "Apakah saya harus berdonasi?", a: "Tidak. Semua proyek saya gratis dan open source selamanya. Donasi hanya jika Anda ingin membantu." },
+  { q: "Metode pembayaran apa saja yang didukung?", a: "QRIS (semua bank dan e-wallet Indonesia), PayPal, transfer bank, dan e-wallet. Pilih salah satu tab di kartu dukungan." },
+  { q: "Apakah donasi saya dipotong biaya admin?", a: "Sesuai kebijakan masing-masing platform. QRIS antarbank biasanya tanpa biaya, PayPal mengenakan biaya layanan." },
+  { q: "Bisakah saya meminta pengembalian dana?", a: "Donasi bersifat sukarela. Jika ada masalah dengan transaksi, hubungi penyedia pembayaran Anda." },
+  { q: "Bagaimana jika ingin mendukung tetapi tidak punya uang?", a: "Beri bintang repo, bagikan proyek ini, atau laporkan bug. Itu sudah sangat membantu!" }
+];
+FAQ.forEach(f => $("#faqList").append(el("details", { class: "qa" }, [
+  el("summary", { text: f.q }),
+  el("p", { text: f.a })
+])));
+
+/* ---------- panel pemilik (buka dengan #admin) ---------- */
+function resizeToDataURL(file, max = 800){
+  return new Promise((res, rej) => {
+    const fr = new FileReader();
+    fr.onerror = rej;
+    fr.onload = () => {
+      const im = new Image();
+      im.onerror = rej;
+      im.onload = () => {
+        const k = Math.min(1, max / Math.max(im.width, im.height));
+        const c = el("canvas"); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
+        const ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
+        ctx.drawImage(im, 0, 0, c.width, c.height);
+        res(c.toDataURL("image/png"));
+      };
+      im.src = fr.result;
+    };
+    fr.readAsDataURL(file);
+  });
+}
+function initAdmin(){
+  $("#admin").classList.toggle("on", location.hash === "#admin");
+}
+initAdmin(); addEventListener("hashchange", initAdmin);
+$("#upQris").addEventListener("change", async e => {
+  if (!e.target.files[0]) return;
+  try {
+    const d = await resizeToDataURL(e.target.files[0]);
+    store.set("qris_override", d); loadQR();
+    const dl = $("#adminDl"); dl.href = d; dl.hidden = false;
+    toast("QRIS diperbarui di browser ini");
+  } catch { toast("Gambar tidak bisa dibaca. Coba PNG atau JPG."); }
+});
+$("#upPp").addEventListener("change", async e => {
+  if (!e.target.files[0]) return;
+  try { store.set("pp_override", await resizeToDataURL(e.target.files[0])); loadQR(); toast("QR PayPal diperbarui di browser ini"); }
+  catch { toast("Gambar tidak bisa dibaca. Coba PNG atau JPG."); }
+});
+$("#adminReset").addEventListener("click", () => { store.del("qris_override"); store.del("pp_override"); loadQR(); toast("Unggahan dihapus"); });
+
+setAmount(amount);
+</script>
+<script src="assets/qrcode.min.js"></script>
+<script>if (typeof window.__qrReady === "function") window.__qrReady();</script>
+</body>
+</html>
