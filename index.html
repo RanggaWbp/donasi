@@ -109,6 +109,7 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 .row b{display:block}
 .row small{color:var(--muted)}
 .pp-note{font-size:.9rem;color:var(--muted);margin-top:12px}
+#xdaNote{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
 
 /* sections */
 section.block{padding:72px 0;border-top:2px solid var(--line)}
@@ -194,6 +195,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <a class="btn" href="#support" id="ctaMain" data-i18n="ctaDonate">Kirim dukungan</a>
         <a class="btn ghost" id="ctaTelegram" href="#" target="_blank" rel="noopener" data-i18n="ctaTelegram">Telegram</a>
         <a class="btn ghost" id="ctaFacebook" href="#" target="_blank" rel="noopener" data-i18n="ctaFacebook">Facebook</a>
+        <a class="btn ghost" id="ctaXda" href="#" target="_blank" rel="noopener">XDA</a>
         <a class="btn ghost" id="ctaSponsors" href="#" target="_blank" rel="noopener">GitHub Sponsors</a>
       </div>
       <div class="proof" id="proof"></div>
@@ -590,7 +592,7 @@ function renderRepos(){
     note.textContent = "";
     if (CONFIG.xda) note.append(
       document.createTextNode(t("xdaNote") + " "),
-      el("a", { href: CONFIG.xda, target: "_blank", rel: "noopener", text: "xdaforums.com/m/rangga-wbp" })
+      el("a", { class: "btn small ghost", href: CONFIG.xda, target: "_blank", rel: "noopener", text: "XDA · Rangga Wbp" })
     );
   }
 }
@@ -655,6 +657,7 @@ $("#footTg").href = CONFIG.telegram;
 $("#ctaFacebook").href = CONFIG.facebook;
 $("#footFb").href = CONFIG.facebook;
 $("#footXda").href = CONFIG.xda;
+$("#ctaXda").href = CONFIG.xda;
 
 renderAll();
 </script>
