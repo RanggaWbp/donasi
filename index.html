@@ -286,7 +286,7 @@ const CONFIG = {
   /* --- Pembayaran (semua statis) --- */
   qrisImage: "assets/qris.png",       // tempel gambar QRIS statis di sini
   paypalLink: "https://paypal.me/WbpRangga115283",
-  paypalQrImage: "assets/paypal-qr.png", // opsional
+  paypalQrImage: "",                  // opsional: isi "assets/paypal-qr.png" kalau sudah punya QR PayPal
 
   bank: [
     { name: "Bank Jago", number: "1095 5286 1747", holder: "RanggaWbp" }
@@ -517,10 +517,12 @@ function loadQR(){
   const dl = $("#qrisDl"); dl.href = CONFIG.qrisImage; dl.hidden = false;
 
   $("#paypalBtn").href = CONFIG.paypalLink;
+  const wrap = $("#ppQrWrap"), pp = CONFIG.paypalQrImage;
+  if (!pp) { wrap.hidden = true; return; }
   const probe = new Image();
-  probe.onload = () => { $("#ppQrWrap").hidden = false; showQR($("#ppQrFrame"), CONFIG.paypalQrImage, t("paypalAlt"), ""); };
-  probe.onerror = () => { $("#ppQrWrap").hidden = true; };
-  probe.src = CONFIG.paypalQrImage;
+  probe.onload = () => { wrap.hidden = false; showQR($("#ppQrFrame"), pp, t("paypalAlt"), ""); };
+  probe.onerror = () => { wrap.hidden = true; };
+  probe.src = pp;
 }
 
 /* ---------- bank, e-wallet ---------- */
