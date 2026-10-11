@@ -119,6 +119,8 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 .row-actions{display:flex;gap:6px;flex-wrap:wrap;flex:none}
 .pp-note{font-size:.9rem;color:var(--muted);margin-top:12px}
 #xdaNote{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.social-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.social-row .lbl{color:var(--muted);font-size:.9rem}
 
 /* sections */
 section.block{padding:72px 0;border-top:2px solid var(--line)}
@@ -288,6 +290,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <div class="repo-list" id="repos"><div class="repo"><p>Memuat proyek…</p></div></div>
     <button class="btn small ghost" id="reposMore" type="button" hidden></button>
+    <div class="social-row" id="socialRow"></div>
     <p class="pp-note" id="xdaNote"></p>
   </div>
 </section>
@@ -320,7 +323,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span id="foot">© <span id="yr"></span></span>
-    <span><a id="footTg" href="#" target="_blank" rel="noopener">t.me/wbprangga</a> · <a id="footFb" href="#" target="_blank" rel="noopener">Facebook</a> · <a id="footXda" href="#" target="_blank" rel="noopener">XDA</a> · <span data-i18n="footNote">Dibuat dengan HTML biasa.</span></span>
+    <span><a id="footTg" href="#" target="_blank" rel="noopener">t.me/wbprangga</a> · <a id="footCh" href="#" target="_blank" rel="noopener">@tanpanamahh</a> · <a id="footFb" href="#" target="_blank" rel="noopener">Facebook</a> · <a id="footXda" href="#" target="_blank" rel="noopener">XDA</a> · <span data-i18n="footNote">Dibuat dengan HTML biasa.</span></span>
   </div>
 </footer>
 
@@ -356,7 +359,8 @@ const CONFIG = {
     { n: 4042827, l: "proofCommits", compact: true }
   ],
 
-  telegram: "https://t.me/wbprangga",  // tombol kontak di hero + footer
+  telegram: "https://t.me/wbprangga",  // chat personal, tombol di hero + footer
+  telegramChannel: "https://t.me/tanpanamahh", // channel "Eksperimen", update proyek
   facebook: "https://web.facebook.com/rangga.wbp.5",
   xda: "https://xdaforums.com/m/rangga-wbp.10154013/",
 
@@ -696,7 +700,23 @@ function renderRepos(){
       el("a", { class: "btn small ghost", href: CONFIG.xda, target: "_blank", rel: "noopener", text: "XDA · Rangga Wbp" })
     );
   }
+  renderSocialRow();
   countUp(box);
+}
+
+/* ---------- channel Telegram: update proyek ---------- */
+function renderSocialRow(){
+  const row = $("#socialRow");
+  if (!row) return;
+  row.textContent = "";
+  if (!CONFIG.telegramChannel) return;
+  row.append(
+    el("span", { class: "lbl", text: t("channelNote") }),
+    el("a", {
+      class: "btn small", href: CONFIG.telegramChannel, target: "_blank", rel: "noopener",
+      text: t("channelBtn") + " · @tanpanamahh"
+    })
+  );
 }
 
 /* ---------- sponsor ---------- */
@@ -756,6 +776,7 @@ const sp = $("#ctaSponsors");
 if (CONFIG.githubSponsors) sp.href = "https://github.com/sponsors/" + CONFIG.githubUser; else sp.remove();
 $("#ctaTelegram").href = CONFIG.telegram;
 $("#footTg").href = CONFIG.telegram;
+$("#footCh").href = CONFIG.telegramChannel;
 $("#ctaFacebook").href = CONFIG.facebook;
 $("#footFb").href = CONFIG.facebook;
 $("#footXda").href = CONFIG.xda;
