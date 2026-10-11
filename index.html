@@ -75,6 +75,7 @@ nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 nav a.link{padding:.4rem .7rem;text-decoration:none;border-radius:8px;color:var(--muted);font-weight:500}
 nav a.link:hover{color:var(--ink);background:var(--paper)}
 .icon-btn{width:40px;height:40px;border-radius:10px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;font-size:1.1rem}
+.lang{width:auto;height:40px;padding:0 .45rem;border-radius:10px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);font:600 .8rem var(--body);cursor:pointer}
 
 /* hero */
 .hero{padding:40px 0 72px}
@@ -90,20 +91,6 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 
 /* support card */
 .support{background:var(--paper);border:2px solid var(--ink);border-radius:22px;box-shadow:8px 8px 0 var(--shadow);padding:24px}
-.cup-row{display:flex;align-items:center;gap:20px;margin-bottom:18px}
-.cup{width:96px;flex:none}
-.cup .liquid{transition:transform .5s cubic-bezier(.3,1.3,.5,1)}
-.cup-txt{min-width:0}
-.cup-txt .amount{font:800 2rem var(--display);letter-spacing:-.02em}
-.cup-txt .sub{color:var(--muted);font-size:.95rem}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.chip{font:600 .95rem var(--body);padding:.5rem .9rem;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--mango);color:#17153B}
-.custom{display:flex;align-items:center;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin-bottom:20px;background:var(--bg)}
-.custom span{padding:0 12px;font-weight:600;color:var(--muted)}
-.custom input{flex:1;min-width:0;border:0;background:transparent;font:600 1rem var(--body);color:var(--ink);padding:.7rem .5rem .7rem 0}
-.custom input:focus-visible{outline:none}
-.custom:focus-within{outline:3px solid var(--mango);outline-offset:2px}
 
 .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:16px}
 .tab{font:600 .9rem var(--body);padding:.6rem .3rem;border-radius:10px;border:2px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
@@ -162,14 +149,7 @@ details.qa p{padding:0 0 16px;color:var(--muted);font-size:.97rem}
 footer{padding:40px 0 56px;border-top:2px solid var(--line);color:var(--muted);font-size:.95rem}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-/* admin + toast */
-.admin{display:none;position:fixed;right:16px;bottom:16px;z-index:20;width:min(340px,calc(100vw - 32px));max-height:80vh;overflow:auto;background:var(--paper);border:2px solid var(--ink);border-radius:16px;box-shadow:6px 6px 0 var(--shadow);padding:18px}
-.admin.on{display:block}
-.admin h3{margin-bottom:6px}
-.admin label{display:block;font-weight:600;font-size:.9rem;margin:14px 0 6px}
-.admin input[type=file]{width:100%;font-size:.85rem}
-.admin p{font-size:.85rem;color:var(--muted)}
-.admin .btn{margin-top:8px}
+/* toast */
 #toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:.7rem 1.1rem;border-radius:12px;font-weight:600;transition:transform .25s;z-index:30}
 #toast.show{transform:translate(-50%,0)}
 
@@ -192,10 +172,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <span id="whoName">RanggaWbp</span>
     </a>
     <nav>
-      <a class="link" href="#support">Donasi</a>
-      <a class="link" href="#proyek">Proyek</a>
-      <a class="link" href="#sponsors">Sponsor</a>
-      <a class="link" href="#faq">FAQ</a>
+      <a class="link" href="#support" data-i18n="navDonate">Donasi</a>
+      <a class="link" href="#proyek" data-i18n="navProjects">Proyek</a>
+      <a class="link" href="#sponsors" data-i18n="navSponsors">Sponsor</a>
+      <a class="link" href="#faq" data-i18n="navFaq">FAQ</a>
+      <select class="lang" id="langSel" aria-label="Bahasa"></select>
       <button class="icon-btn" id="themeBtn" aria-label="Ganti tema terang/gelap">◐</button>
     </nav>
   </div>
@@ -206,10 +187,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div>
       <div class="badge-row" id="badgeRow"></div>
-      <h1 id="headline">Traktir saya kopi, biar kodenya terus jalan.</h1>
-      <p class="lead" id="lead">Semua proyek saya gratis dan terbuka. Kalau salah satunya menghemat waktu Anda, dukungan sekecil apa pun membantu saya merawatnya.</p>
+      <h1 id="headline" data-i18n="headline">Traktir saya kopi, biar kodenya terus jalan.</h1>
+      <p class="lead" id="lead" data-i18n="lead">Semua proyek saya gratis dan terbuka. Kalau salah satunya menghemat waktu Anda, dukungan sekecil apa pun membantu saya merawatnya.</p>
       <div class="cta">
-        <a class="btn" href="#support" id="ctaMain">Kirim dukungan</a>
+        <a class="btn" href="#support" id="ctaMain" data-i18n="ctaDonate">Kirim dukungan</a>
         <a class="btn ghost" id="ctaSponsors" href="#" target="_blank" rel="noopener">GitHub Sponsors</a>
       </div>
       <div class="proof" id="proof"></div>
@@ -217,54 +198,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
     <!-- Kartu dukungan -->
     <div class="support" id="support">
-      <div class="cup-row">
-        <svg class="cup" viewBox="0 0 120 120" role="img" aria-label="Cangkir kopi yang terisi sesuai nominal">
-          <defs><clipPath id="cupClip"><path d="M18 30h72v46a26 26 0 0 1-26 26H44a26 26 0 0 1-26-26z"/></clipPath></defs>
-          <g clip-path="url(#cupClip)">
-            <rect x="0" y="0" width="120" height="120" fill="#F1EFFF"/>
-            <g class="liquid" id="liquid" style="transform:translateY(60px)">
-              <rect x="0" y="30" width="140" height="100" fill="#6F4A2E"/>
-              <rect x="0" y="30" width="140" height="7" fill="#8B603D"/>
-            </g>
-          </g>
-          <path d="M18 30h72v46a26 26 0 0 1-26 26H44a26 26 0 0 1-26-26z" fill="none" stroke="#17153B" stroke-width="5" stroke-linejoin="round"/>
-          <path d="M90 42h6a12 12 0 0 1 0 24h-8" fill="none" stroke="#17153B" stroke-width="5" stroke-linecap="round"/>
-          <path d="M42 8c-6 6 6 8 0 14M62 8c-6 6 6 8 0 14" fill="none" stroke="#FFC93C" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-        <div class="cup-txt">
-          <div class="amount" id="amountTxt">Rp25.000</div>
-          <div class="sub" id="cupsTxt">sekitar 2 gelas kopi</div>
-        </div>
-      </div>
-
-      <div class="chips" id="chips" role="group" aria-label="Pilih nominal"></div>
-      <label class="custom" for="customAmt"><span>Rp</span><input id="customAmt" inputmode="numeric" placeholder="Nominal lain" autocomplete="off"></label>
-
       <div class="tabs" role="tablist" aria-label="Metode pembayaran">
-        <button class="tab" role="tab" id="t-qris" aria-controls="p-qris" aria-selected="true">QRIS</button>
-        <button class="tab" role="tab" id="t-paypal" aria-controls="p-paypal" aria-selected="false">PayPal</button>
-        <button class="tab" role="tab" id="t-bank" aria-controls="p-bank" aria-selected="false">Bank</button>
-        <button class="tab" role="tab" id="t-more" aria-controls="p-more" aria-selected="false">E-wallet</button>
+        <button class="tab" role="tab" id="t-qris" aria-controls="p-qris" aria-selected="true" data-i18n="tabQris">QRIS</button>
+        <button class="tab" role="tab" id="t-paypal" aria-controls="p-paypal" aria-selected="false" data-i18n="tabPaypal">PayPal</button>
+        <button class="tab" role="tab" id="t-bank" aria-controls="p-bank" aria-selected="false" data-i18n="tabBank">Bank</button>
+        <button class="tab" role="tab" id="t-more" aria-controls="p-more" aria-selected="false" data-i18n="tabWallet">E-wallet</button>
       </div>
 
       <div class="panel" id="p-qris" role="tabpanel" aria-labelledby="t-qris">
         <div class="qris-box">
           <div class="qris-frame" id="qrisFrame"></div>
-          <p class="muted" style="font-size:.9rem">Buka aplikasi bank atau e-wallet apa pun, pilih Scan, lalu masukkan nominal.</p>
-          <a class="btn small ghost" id="qrisDl" download="qris.png" href="#" hidden>Unduh QRIS</a>
+          <p class="muted" id="qrHint" style="font-size:.9rem" data-i18n="qrHint">Buka aplikasi bank atau e-wallet apa pun, pilih Scan, lalu masukkan nominal.</p>
+          <a class="btn small ghost" id="qrisDl" download="qris.png" href="#" hidden data-i18n="qrDl">Unduh QRIS</a>
         </div>
       </div>
       <div class="panel" id="p-paypal" role="tabpanel" aria-labelledby="t-paypal" hidden>
-        <a class="btn mango" id="paypalBtn" href="#" target="_blank" rel="noopener" style="width:100%">Bayar dengan PayPal</a>
-        <p class="pp-note" id="ppNote"></p>
+        <a class="btn mango" id="paypalBtn" href="#" target="_blank" rel="noopener" style="width:100%" data-i18n="paypalBtn">Bayar dengan PayPal</a>
+        <p class="pp-note" id="ppNote" data-i18n="paypalNote"></p>
         <div class="qris-box" id="ppQrWrap" style="margin-top:14px" hidden>
-          <div class="qris-frame" id="ppQrFrame" style="--x:0"></div>
+          <div class="qris-frame" id="ppQrFrame"></div>
         </div>
       </div>
       <div class="panel" id="p-bank" role="tabpanel" aria-labelledby="t-bank" hidden><div class="rows" id="bankRows"></div></div>
       <div class="panel" id="p-more" role="tabpanel" aria-labelledby="t-more" hidden>
         <div class="rows" id="walletRows"></div>
-        <div class="rows" id="linkRows" style="margin-top:10px"></div>
       </div>
     </div>
   </div>
@@ -273,8 +230,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section class="block" id="proyek">
   <div class="wrap">
     <div class="head">
-      <h2>Proyek yang Anda dukung</h2>
-      <p>Diambil langsung dari GitHub. Bintang dan fork membantu, tapi kopi lebih membantu.</p>
+      <h2 data-i18n="reposHead">Proyek yang Anda dukung</h2>
+      <p data-i18n="reposLead">Semua kode di bawah ini publik di GitHub dan dihitung otomatis dari jumlah commit.</p>
     </div>
     <div class="repo-list" id="repos"><div class="repo"><p>Memuat proyek…</p></div></div>
   </div>
@@ -283,7 +240,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section class="block" id="sponsors">
   <div class="wrap">
     <div class="head">
-      <h2>Yang sudah mendukung</h2>
+      <h2 data-i18n="sponsorsHead">Yang sudah mendukung</h2>
       <p id="sponsorHint">Setiap nama di sini merupakan dukungan nyata untuk proyek ini. Terima kasih!</p>
     </div>
     <div class="wall" id="wall"></div>
@@ -292,14 +249,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section class="block">
   <div class="wrap">
-    <div class="head"><h2>Ke mana dukungan Anda pergi</h2></div>
+    <div class="head"><h2 data-i18n="usesHead">Ke mana dukungan Anda pergi</h2></div>
     <div class="uses" id="uses"></div>
   </div>
 </section>
 
 <section class="block" id="faq">
   <div class="wrap">
-    <div class="head"><h2>Pertanyaan yang sering ditanyakan</h2></div>
+    <div class="head"><h2 data-i18n="faqHead">Pertanyaan yang sering ditanyakan</h2></div>
     <div class="faq" id="faqList"></div>
   </div>
 </section>
@@ -308,23 +265,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span id="foot">© <span id="yr"></span></span>
-    <span>Dibuat dengan HTML biasa. Tanpa pelacak.</span>
+    <span data-i18n="footNote">Dibuat dengan HTML biasa. Tanpa pelacak.</span>
   </div>
 </footer>
 
-<aside class="admin" id="admin" aria-label="Panel pemilik">
-  <h3>Panel pemilik</h3>
-  <p>Unggah gambar QR di sini untuk melihat hasilnya. Gambar hanya tersimpan di browser ini.</p>
-  <label for="upQris">Gambar QRIS</label>
-  <input type="file" id="upQris" accept="image/*">
-  <label for="upPp">QR PayPal (opsional)</label>
-  <input type="file" id="upPp" accept="image/*">
-  <p style="margin-top:12px">Agar semua pengunjung melihatnya, simpan file ke folder <b>assets</b> di repo dengan nama <b>qris.png</b> dan <b>paypal-qr.png</b>, lalu commit.</p>
-  <a class="btn small" id="adminDl" download="qris.png" href="#" hidden>Unduh QRIS hasil ubah ukuran</a>
-  <button class="btn small ghost" id="adminReset" type="button">Hapus unggahan</button>
-</aside>
 <div id="toast" role="status" aria-live="polite"></div>
 
+<script src="assets/i18n.js"></script>
 <script>
 /* =====================================================
    UBAH BAGIAN INI SAJA. Sisanya bisa dibiarkan.
@@ -332,63 +279,80 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const CONFIG = {
   githubUser: "RanggaWbp",
   name: "RanggaWbp",
-  headline: "Traktir saya kopi, biar kodenya terus jalan.",
-  lead: "Setiap proyek saya gratis dan terbuka. Kalau salah satunya menghemat waktu Anda, dukungan sekecil apa pun membantu saya merawatnya.",
+  defaultLang: "id",                  // bahasa awal; pengunjung bisa ganti lewat menu di header
 
-  coffeePrice: 15000,               // harga 1 kopi (Rp), dipakai untuk teks "sekitar N gelas"
-  presets: [10000, 25000, 50000, 100000, 250000],
-  defaultAmount: 25000,
-  idrPerUsd: 16000,                 // kurs kasar untuk tombol PayPal
-
-  /* --- QRIS --- */
-  qrisMode: "dynamic",              // "dynamic" (generate QR di browser) atau "image" (gambar statis)
-  qrisImage: "assets/qris.png",     // dipakai saat qrisMode:"image"; timpa file ini dengan QRIS Anda
-  qrisPayload: "https://github.com/RanggaWbp/donasi",   // isi QRIS dinamis (ganti ke link QRIS statis Anda bila perlu)
-
-  paypalUser: "username-paypal",    // dari paypal.me/username-paypal
+  /* --- Pembayaran (semua statis) --- */
+  qrisImage: "assets/qris.png",       // tempel gambar QRIS statis di sini
+  paypalLink: "https://paypal.me/WbpRangga115283",
   paypalQrImage: "assets/paypal-qr.png", // opsional
 
   bank: [
-    { name: "BCA",     number: "1234567890", holder: "Nama Kamu" },
-    { name: "Mandiri", number: "1234567890123", holder: "Nama Kamu" }
+    { name: "Bank Jago", number: "1095 5286 1747", holder: "RanggaWbp" }
   ],
   wallets: [
-    { name: "DANA",  number: "081234567890" },
-    { name: "GoPay", number: "081234567890" },
-    { name: "OVO",   number: "081234567890" }
+    { name: "ShopeePay", number: "085806047666" },
+    { name: "OVO",       number: "085806047666" }
   ],
-  links: [                           // platform donasi lain
-    { label: "Saweria",  url: "https://saweria.co/username" },
-    { label: "Trakteer", url: "https://trakteer.id/username" },
-    { label: "Ko-fi",    url: "https://ko-fi.com/username" }
-  ],
+
   githubSponsors: false,              // tombol GitHub Sponsors di hero
 
-  proof: [                           // angka kecil di bawah tombol; kosongkan [] untuk menyembunyikan
-    { n: "15",  l: "repositori publik" },
-    { n: "5 th", l: "membuka kodemu" }
+  proof: [                            // `l` = kunci bahasa, bukan teks mentah
+    { n: "6",      l: "proofProjects" },
+    { n: "1,3 jt", l: "proofCommits" }
   ],
 
-  uses: [
-    { t: "Server dan domain", d: "Biaya hosting demo, dokumentasi, dan CI yang jalan tiap ada perubahan." },
-    { t: "Waktu perawatan", d: "Membalas issue, meninjau pull request, dan memperbaiki bug lebih cepat." },
-    { t: "Fitur baru", d: "fitur yang paling sering diminta dikerjakan lebih dulu, dengan catatan rilis yang jelas." }
+  /* Daftar proyek STASIS — tidak ditarik dari API.
+     Perbarui `commits` dan `langs` dengan:
+       gh api repos/RanggaWbp/NAMA_REPO/commits --paginate | grep -c '^  "sha"'
+       gh api repos/RanggaWbp/NAMA_REPO/languages | grep -c ':'
+ */
+  projects: [
+    {
+      name: "android_kernel_xiaomi_jasmine_sprout",
+      url: "https://github.com/RanggaWbp/android_kernel_xiaomi_jasmine_sprout",
+      desc: "Xiaomi Mi A2 (jasmine_sprout) custom kernel — Linux 4.4 SDM660, ReSukiSU + SUSFS + Re:Kernel + NoMount + Baseband-Guard + EAS.",
+      commits: 625930, langs: 19
+    },
+    {
+      name: "android_kernel_xiaomi_dipper-q",
+      url: "https://github.com/RanggaWbp/android_kernel_xiaomi_dipper-q",
+      desc: "Xiaomi Mi 8 (dipper) Android 10 kernel source (dipper-q-oss, shallow mirror of MiCode/Xiaomi_Kernel_OpenSource).",
+      commits: 691866, langs: 20
+    },
+    {
+      name: "PlayStoreDetach",
+      url: "https://github.com/RanggaWbp/PlayStoreDetach",
+      desc: "",
+      commits: 53, langs: 4
+    },
+    {
+      name: "Pintu-Air-fuzzy",
+      url: "https://github.com/RanggaWbp/Pintu-Air-fuzzy",
+      desc: "",
+      commits: 10, langs: 2
+    },
+    {
+      name: "Custom-ROM",
+      url: "https://github.com/RanggaWbp/Custom-ROM",
+      desc: "",
+      commits: 1, langs: 0
+    },
+    {
+      name: "donasi",
+      url: "https://github.com/RanggaWbp/donasi",
+      desc: "Landing page donasi untuk proyek open source — QRIS statis, PayPal, bank, e-wallet, 12 bahasa. Tanpa pelacak.",
+      commits: 3, langs: 1
+    }
   ]
 };
 /* ===================== akhir konfigurasi ===================== */
 
 const $ = (s, r = document) => r.querySelector(s);
-const idr = n => "Rp" + new Intl.NumberFormat("id-ID").format(n);
 const el = (tag, props = {}, kids = []) => {
   const n = document.createElement(tag);
   Object.entries(props).forEach(([k, v]) => k === "text" ? n.textContent = v : n.setAttribute(k, v));
   kids.forEach(k => n.append(k));
   return n;
-};
-const store = {
-  get(k){ try { return localStorage.getItem(k); } catch { return null; } },
-  set(k,v){ try { localStorage.setItem(k,v); } catch {} },
-  del(k){ try { localStorage.removeItem(k); } catch {} }
 };
 let toastTimer;
 function toast(msg){
@@ -401,58 +365,56 @@ async function copy(text){
     const ta = el("textarea", { style: "position:fixed;opacity:0" }); ta.value = text;
     document.body.append(ta); ta.select(); document.execCommand("copy"); ta.remove();
   }
-  toast("Tersalin: " + text);
+  toast(t("copied") + text);
 }
 
-/* ---------- teks dasar ---------- */
-document.title = "Dukung " + CONFIG.name + " · Open Source";
-$("#whoName").textContent = CONFIG.name;
-$("#who").href = "https://github.com/" + CONFIG.githubUser;
-$("#headline").textContent = CONFIG.headline;
-$("#lead").textContent = CONFIG.lead;
-$("#yr").textContent = new Date().getFullYear() + " " + CONFIG.name;
-const sp = $("#ctaSponsors");
-if (CONFIG.githubSponsors) sp.href = "https://github.com/sponsors/" + CONFIG.githubUser; else sp.remove();
-CONFIG.proof.forEach(p => $("#proof").append(el("div", {}, [el("b", { text: p.n }), document.createTextNode(p.l)])));
+/* ---------- bahasa ---------- */
+const I18N = window.I18N || {};
+const LANGS = window.LANGS || [["id", "Bahasa Indonesia", "ltr"]];
+const langOf = c => LANGS.find(l => l[0] === c) || LANGS[0];
+const pickLang = () => {
+  let s = null;
+  try { s = localStorage.getItem("lang"); } catch {}
+  if (s && I18N[s]) return s;
+  const n = (navigator.language || "").split("-")[0];
+  return I18N[n] ? n : CONFIG.defaultLang;
+};
+let lang = pickLang();
+const t = k => (I18N[lang] && I18N[lang][k] !== undefined) ? I18N[lang][k]
+  : (I18N.id && I18N.id[k] !== undefined) ? I18N.id[k] : k;
 
-/* ---------- badge ---------- */
-$("#badgeRow").append(
-  el("span", { class: "badge" }, [el("b", { text: "Open source" }), document.createTextNode(" · kode publik di GitHub")]),
-  el("span", { class: "badge" }, [el("b", { text: "Tanpa iklan" }), document.createTextNode(" · tanpa pelacak")])
-);
+/* ---------- teks dasar ---------- */
+function applyStaticText(){
+  document.documentElement.lang = lang;
+  document.documentElement.dir = langOf(lang)[2] || "ltr";
+  document.title = t("docTitle").replace("{name}", CONFIG.name);
+  $("#whoName").textContent = CONFIG.name;
+  $("#who").href = "https://github.com/" + CONFIG.githubUser;
+  $("#yr").textContent = new Date().getFullYear() + " " + CONFIG.name;
+  $("#langSel").setAttribute("aria-label", t("langLabel"));
+  $("#themeBtn").setAttribute("aria-label", t("themeLabel"));
+  document.querySelectorAll("[data-i18n]").forEach(n => {
+    const v = t(n.dataset.i18n);
+    if (v) n.textContent = v;
+  });
+}
+
+/* ---------- badge + angka kecil ---------- */
+function renderBadgeAndProof(){
+  const br = $("#badgeRow"), pf = $("#proof");
+  br.textContent = ""; pf.textContent = "";
+  br.append(
+    el("span", { class: "badge", text: t("badge1") }),
+    el("span", { class: "badge", text: t("badge2") })
+  );
+  CONFIG.proof.forEach(p => pf.append(el("div", {}, [el("b", { text: p.n }), document.createTextNode(t(p.l))])));
+}
 
 /* ---------- tema ---------- */
 $("#themeBtn").addEventListener("click", () => {
   const root = document.documentElement;
   const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme:dark)").matches;
   root.dataset.theme = dark ? "light" : "dark";
-});
-
-/* ---------- nominal ---------- */
-let amount = CONFIG.defaultAmount;
-function setAmount(n, fromInput){
-  amount = Math.max(1000, Math.round(n) || 1000);
-  $("#amountTxt").textContent = idr(amount);
-  const cups = Math.max(1, Math.round(amount / CONFIG.coffeePrice));
-  $("#cupsTxt").textContent = "sekitar " + cups + " gelas kopi";
-  const fill = Math.min(amount / 100000, 1);
-  $("#liquid").style.transform = "translateY(" + (72 - fill * 60) + "px)";
-  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(+c.dataset.v === amount)));
-  if (!fromInput) $("#customAmt").value = "";
-  const usd = (amount / CONFIG.idrPerUsd).toFixed(2);
-  $("#paypalBtn").href = "https://www.paypal.me/" + encodeURIComponent(CONFIG.paypalUser) + "/" + usd + "USD";
-  $("#ppNote").textContent = "Setara sekitar $" + usd + ". Anda bisa mengubah jumlahnya di halaman PayPal.";
-  renderQrisDynamic();
-}
-CONFIG.presets.forEach(v => {
-  const c = el("button", { class: "chip", type: "button", "data-v": v, "aria-pressed": "false", text: idr(v) });
-  c.addEventListener("click", () => setAmount(v));
-  $("#chips").append(c);
-});
-$("#customAmt").addEventListener("input", e => {
-  const raw = e.target.value.replace(/\D/g, "");
-  e.target.value = raw ? new Intl.NumberFormat("id-ID").format(+raw) : "";
-  if (raw) setAmount(+raw, true);
 });
 
 /* ---------- tab ---------- */
@@ -475,7 +437,7 @@ tabs.forEach((t, i) => {
 });
 selectTab(tabs[0]);
 
-/* ---------- QR (QRIS + PayPal) ---------- */
+/* ---------- QR (gambar statis) ---------- */
 function showQR(frame, src, alt, emptyHint){
   frame.querySelectorAll("img,.empty").forEach(n => n.remove());
   const img = el("img", { alt, src });
@@ -485,173 +447,120 @@ function showQR(frame, src, alt, emptyHint){
   });
   frame.append(img);
 }
-/* QRIS dinamis: QR di-generate di browser (library QRCode.js lokal di assets/).
-   Tidak ada request ke server ketiga, tidak ada pelacak. */
-let qrisGenerated = false;
-function renderQrisDynamic(force){
-  if (CONFIG.qrisMode !== "dynamic") return;
-  if (qrisGenerated && !force) return;
-  qrisGenerated = true;
-  const frame = $("#qrisFrame");
-  frame.querySelectorAll("canvas,img,.empty").forEach(n => n.remove());
-  if (typeof window.QRCode === "function") {
-    const q = new QRCode(frame, {
-      text: CONFIG.qrisPayload + "#" + amount,
-      width: 600, height: 600,
-      colorDark: "#17153B", colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.M
-    });
-    const cv = frame.querySelector("canvas");
-    const dl = $("#qrisDl");
-    if (cv && dl) {
-      try { dl.href = cv.toDataURL("image/png"); dl.hidden = false; }
-      catch { dl.hidden = true; }    // canvas taint tidak bisa diunduh
-    }
-  } else {
-    frame.append(el("div", { class: "empty" }, [document.createTextNode(
-      "Library QR belum termuat. Set qrisMode:\"image\" dan unggah assets/qris.png."
-    )]));
-  }
-}
 function loadQR(){
-  const q = store.get("qris_override") || (CONFIG.qrisMode === "image" ? CONFIG.qrisImage : null);
-  if (q) {
-    showQR($("#qrisFrame"), q, "Kode QRIS untuk donasi",
-      "Gambar QRIS belum ada. Simpan sebagai assets/qris.png di repo atau set qrisMode:'dynamic'.");
-    const dl = $("#qrisDl"); dl.href = q; dl.hidden = false;
-  } else {
-    renderQrisDynamic(true);
-  }
+  showQR($("#qrisFrame"), CONFIG.qrisImage, t("qrAlt"), t("qrMissing"));
+  const dl = $("#qrisDl"); dl.href = CONFIG.qrisImage; dl.hidden = false;
 
-  const pp = store.get("pp_override") || CONFIG.paypalQrImage;
+  $("#paypalBtn").href = CONFIG.paypalLink;
   const probe = new Image();
-  probe.onload = () => { $("#ppQrWrap").hidden = false; showQR($("#ppQrFrame"), pp, "Kode QR PayPal", ""); $("#ppQrFrame").style.setProperty("--x", 1); };
+  probe.onload = () => { $("#ppQrWrap").hidden = false; showQR($("#ppQrFrame"), CONFIG.paypalQrImage, t("paypalAlt"), ""); };
   probe.onerror = () => { $("#ppQrWrap").hidden = true; };
-  probe.src = pp;
+  probe.src = CONFIG.paypalQrImage;
 }
-loadQR();
 
-/* QRCode.js dimuat setelah skrip ini. Saat ia siap, render ulang QRIS dinamis. */
-if (typeof window.QRCode === "undefined") window.__qrReady = () => renderQrisDynamic(true);
-
-/* ---------- bank, e-wallet, tautan ---------- */
+/* ---------- bank, e-wallet ---------- */
 function copyRow(title, number, sub){
-  const b = el("button", { class: "btn small ghost", type: "button", text: "Salin" });
+  const b = el("button", { class: "btn small ghost", type: "button", text: t("copy") });
   b.addEventListener("click", () => copy(number));
   return el("div", { class: "row" }, [
     el("div", {}, [el("b", { text: title + " · " + number }), ...(sub ? [el("small", { text: sub })] : [])]), b
   ]);
 }
-CONFIG.bank.forEach(b => $("#bankRows").append(copyRow(b.name, b.number, "a.n. " + b.holder)));
-CONFIG.wallets.forEach(w => $("#walletRows").append(copyRow(w.name, w.number)));
-CONFIG.links.forEach(l => {
-  const a = el("a", { class: "btn small ghost", href: l.url, target: "_blank", rel: "noopener", text: "Buka" });
-  $("#linkRows").append(el("div", { class: "row" }, [el("b", { text: l.label }), a]));
-});
+function renderMethods(){
+  const br = $("#bankRows"), wr = $("#walletRows");
+  br.textContent = ""; wr.textContent = "";
+  CONFIG.bank.forEach(b => br.append(copyRow(b.name, b.number, t("holder") + " " + b.holder)));
+  CONFIG.wallets.forEach(w => wr.append(copyRow(w.name, w.number)));
+}
 
 /* ---------- bagian bawah ---------- */
-CONFIG.uses.forEach(u => $("#uses").append(el("div", {}, [el("h3", { text: u.t }), el("p", { text: u.d })])));
+function renderUses(){
+  const box = $("#uses"); box.textContent = "";
+  const list = (I18N[lang] && I18N[lang].uses) || I18N.id.uses || [];
+  list.forEach(u => box.append(el("div", {}, [el("h3", { text: u.t }), el("p", { text: u.d })])));
+}
 
-/* ---------- data GitHub ---------- */
-(async () => {
-  try {
-    const [uRes, rRes] = await Promise.all([
-      fetch("https://api.github.com/users/" + CONFIG.githubUser),
-      fetch("https://api.github.com/users/" + CONFIG.githubUser + "/repos?per_page=100&sort=updated")
-    ]);
-    if (!uRes.ok || !rRes.ok) throw new Error("gagal");
-    const u = await uRes.json(), repos = await rRes.json();
-    const fb = $("#avatarFallback");
-    fb.replaceWith(el("img", { src: u.avatar_url + "&s=80", alt: "Foto profil " + (u.name || u.login) }));
-    if (u.name) $("#whoName").textContent = u.name;
-    const top = repos.filter(r => !r.fork).sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 6);
-    const box = $("#repos"); box.textContent = "";
-    if (!top.length) throw new Error("kosong");
-    top.forEach(r => box.append(el("a", { class: "repo", href: r.html_url, target: "_blank", rel: "noopener" }, [
-      el("h3", { text: r.name }),
-      el("p", { text: r.description || "Belum ada deskripsi." }),
-      el("div", { class: "meta", text: "★ " + r.stargazers_count + (r.language ? " · " + r.language : "") })
-    ])));
-  } catch {
-    $("#repos").textContent = "";
-    $("#repos").append(el("div", { class: "repo" }, [el("p", { text: "Daftar proyek belum bisa dimuat. Pastikan githubUser di CONFIG sudah benar, lalu muat ulang halaman." })]));
-  }
+/* ---------- avatar (statis, tanpa panggilan API) ---------- */
+(function avatar(){
+  const fb = $("#avatarFallback");
+  if (!fb) return;
+  const img = el("img", { src: "https://avatars.githubusercontent.com/" + CONFIG.githubUser + "?s=80", alt: CONFIG.name });
+  img.addEventListener("error", () => img.replaceWith(fb));
+  fb.replaceWith(img);
 })();
+
+/* ---------- daftar proyek (statis) ---------- */
+const nf = n => new Intl.NumberFormat(lang).format(n);
+function renderRepos(){
+  const box = $("#repos"); box.textContent = "";
+  if (!CONFIG.projects.length) {
+    box.append(el("div", { class: "repo" }, [el("p", { text: t("reposEmpty") })]));
+    return;
+  }
+  CONFIG.projects.forEach(r => box.append(el("a", { class: "repo", href: r.url, target: "_blank", rel: "noopener" }, [
+    el("h3", { text: r.name }),
+    ...(r.desc ? [el("p", { text: r.desc })] : []),
+    el("div", { class: "meta", text: nf(r.commits) + " " + (r.commits === 1 && I18N[lang].metaCommit1 ? I18N[lang].metaCommit1 : t("metaCommits")) + (r.langs ? " · " + r.langs + " " + (r.langs === 1 && I18N[lang].metaLang1 ? I18N[lang].metaLang1 : t("metaLangs")) : "") })
+  ])));
+}
 
 /* ---------- sponsor ---------- */
 const SPONSORS = [
-  /* { login: "nama", amount: 50000, since: "2026-09" }, */
+  /* { login: "nama", amount: 50000 }, */
 ];
-(function wall(){
-  const box = $("#wall");
+function renderWall(){
+  const box = $("#wall"); box.textContent = "";
   if (!SPONSORS.length) {
-    box.append(el("div", { class: "wall-empty", text: "Jadilah yang pertama mendukung — scan QRIS di atas atau pilih metode lainnya." }));
-    $("#sponsorHint").textContent = "Belum ada sponsor. Hubungi saya melalui GitHub jika ingin nama Anda ditampilkan.";
+    box.append(el("div", { class: "wall-empty", text: t("wallEmpty") }));
+    $("#sponsorHint").textContent = t("sponsorsHintEmpty");
   } else {
+    $("#sponsorHint").textContent = t("sponsorsHead");
     SPONSORS.forEach(s => box.append(el("div", { class: "avatar-cell" }, [
       el("img", { src: "https://avatars.githubusercontent.com/" + s.login + "?s=80", alt: s.login }),
       el("span", { text: s.login }),
-      el("small", { text: idr(s.amount) })
+      el("small", { text: s.amount ? nf(s.amount) : "" })
     ])));
   }
-})();
+}
 
 /* ---------- FAQ ---------- */
-const FAQ = [
-  { q: "Apakah saya harus berdonasi?", a: "Tidak. Semua proyek saya gratis dan open source selamanya. Donasi hanya jika Anda ingin membantu." },
-  { q: "Metode pembayaran apa saja yang didukung?", a: "QRIS (semua bank dan e-wallet Indonesia), PayPal, transfer bank, dan e-wallet. Pilih salah satu tab di kartu dukungan." },
-  { q: "Apakah donasi saya dipotong biaya admin?", a: "Sesuai kebijakan masing-masing platform. QRIS antarbank biasanya tanpa biaya, PayPal mengenakan biaya layanan." },
-  { q: "Bisakah saya meminta pengembalian dana?", a: "Donasi bersifat sukarela. Jika ada masalah dengan transaksi, hubungi penyedia pembayaran Anda." },
-  { q: "Bagaimana jika ingin mendukung tetapi tidak punya uang?", a: "Beri bintang repo, bagikan proyek ini, atau laporkan bug. Itu sudah sangat membantu!" }
-];
-FAQ.forEach(f => $("#faqList").append(el("details", { class: "qa" }, [
-  el("summary", { text: f.q }),
-  el("p", { text: f.a })
-])));
+function renderFaq(){
+  const box = $("#faqList"); box.textContent = "";
+  const list = (I18N[lang] && I18N[lang].faq) || I18N.id.faq || [];
+  list.forEach(f => box.append(el("details", { class: "qa" }, [
+    el("summary", { text: f.q }),
+    el("p", { text: f.a })
+  ])));
+}
 
-/* ---------- panel pemilik (buka dengan #admin) ---------- */
-function resizeToDataURL(file, max = 800){
-  return new Promise((res, rej) => {
-    const fr = new FileReader();
-    fr.onerror = rej;
-    fr.onload = () => {
-      const im = new Image();
-      im.onerror = rej;
-      im.onload = () => {
-        const k = Math.min(1, max / Math.max(im.width, im.height));
-        const c = el("canvas"); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
-        const ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
-        ctx.drawImage(im, 0, 0, c.width, c.height);
-        res(c.toDataURL("image/png"));
-      };
-      im.src = fr.result;
-    };
-    fr.readAsDataURL(file);
+/* ---------- render semua ---------- */
+function renderAll(){
+  applyStaticText();
+  renderBadgeAndProof();
+  renderRepos();
+  renderWall();
+  renderUses();
+  renderFaq();
+  renderMethods();
+  loadQR();
+}
+
+/* ---------- pemilih bahasa ---------- */
+(function langPicker(){
+  const sel = $("#langSel");
+  LANGS.forEach(([code, label]) => sel.append(el("option", { value: code, text: label })));
+  sel.value = lang;
+  sel.addEventListener("change", () => {
+    lang = sel.value;
+    try { localStorage.setItem("lang", lang); } catch {}
+    renderAll();
   });
-}
-function initAdmin(){
-  $("#admin").classList.toggle("on", location.hash === "#admin");
-}
-initAdmin(); addEventListener("hashchange", initAdmin);
-$("#upQris").addEventListener("change", async e => {
-  if (!e.target.files[0]) return;
-  try {
-    const d = await resizeToDataURL(e.target.files[0]);
-    store.set("qris_override", d); loadQR();
-    const dl = $("#adminDl"); dl.href = d; dl.hidden = false;
-    toast("QRIS diperbarui di browser ini");
-  } catch { toast("Gambar tidak bisa dibaca. Coba PNG atau JPG."); }
-});
-$("#upPp").addEventListener("change", async e => {
-  if (!e.target.files[0]) return;
-  try { store.set("pp_override", await resizeToDataURL(e.target.files[0])); loadQR(); toast("QR PayPal diperbarui di browser ini"); }
-  catch { toast("Gambar tidak bisa dibaca. Coba PNG atau JPG."); }
-});
-$("#adminReset").addEventListener("click", () => { store.del("qris_override"); store.del("pp_override"); loadQR(); toast("Unggahan dihapus"); });
+})();
 
-setAmount(amount);
+const sp = $("#ctaSponsors");
+if (CONFIG.githubSponsors) sp.href = "https://github.com/sponsors/" + CONFIG.githubUser; else sp.remove();
+
+renderAll();
 </script>
-<script src="assets/qrcode.min.js"></script>
-<script>if (typeof window.__qrReady === "function") window.__qrReady();</script>
 </body>
 </html>

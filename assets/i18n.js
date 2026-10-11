@@ -1,0 +1,539 @@
+/* ============================================================
+   Paket bahasa untuk halaman donasi.
+   Tambah bahasa baru: salin satu blok, ubah `dir` bila perlu
+   (RTL: "rtl"), lalu tambahkan barisnya ke window.LANGS.
+   ============================================================ */
+window.LANGS = [
+  ["id", "Bahasa Indonesia", "ltr"],
+  ["en", "English", "ltr"],
+  ["ar", "العربية", "rtl"],
+  ["bn", "বাংলা", "ltr"],
+  ["de", "Deutsch", "ltr"],
+  ["es", "Español", "ltr"],
+  ["fr", "Français", "ltr"],
+  ["hi", "हिन्दी", "ltr"],
+  ["ja", "日本語", "ltr"],
+  ["pt", "Português", "ltr"],
+  ["ru", "Русский", "ltr"],
+  ["zh", "中文", "ltr"]
+];
+
+window.I18N = {
+
+/* ---------------- Bahasa Indonesia ---------------- */
+id: {
+  langLabel: "Bahasa",
+  themeLabel: "Ganti tema terang/gelap",
+  navDonate: "Donasi", navProjects: "Proyek", navSponsors: "Sponsor", navFaq: "FAQ",
+  docTitle: "Dukung {name} · Open Source",
+  headline: "Traktir saya kopi, biar kodenya terus jalan.",
+  lead: "Semua proyek saya gratis dan terbuka. Kalau salah satunya menghemat waktu Anda, dukungan sekecil apa pun membantu saya merawatnya.",
+  ctaDonate: "Kirim dukungan",
+  badge1: "kode publik di GitHub", badge2: "tanpa pelacak",
+  proofProjects: "proyek open source publik", proofCommits: "total commit",
+  tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Bank", tabWallet: "E-wallet",
+  qrHint: "Buka aplikasi bank atau e-wallet apa pun, pilih Scan, lalu masukkan nominal.",
+  qrDl: "Unduh QRIS", qrAlt: "Kode QRIS untuk donasi", qrMissing: "Gambar QRIS belum ada. Simpan sebagai assets/qris.png di repo ini.",
+  paypalBtn: "Bayar dengan PayPal",
+  paypalNote: "Tautan langsung ke PayPal. Anda bebas mengubah jumlahnya di halaman PayPal.",
+  paypalAlt: "Kode QR PayPal",
+  holder: "a.n.", copy: "Salin", open: "Buka",
+  copied: "Tersalin: ",
+  reposHead: "Proyek yang Anda dukung",
+  reposLead: "Semua kode di bawah ini publik di GitHub dan dihitung otomatis dari jumlah commit. Bintang dan fork membantu, tapi kopi lebih membantu.",
+  metaCommits: "commit", metaLangs: "bahasa",
+  reposEmpty: "Belum ada proyek publik di daftar ini. Ubah daftar proyek di CONFIG.projects dalam index.html.",
+  sponsorsHead: "Yang sudah mendukung",
+  sponsorsHintEmpty: "Belum ada sponsor. Hubungi saya melalui GitHub jika ingin nama Anda ditampilkan.",
+  wallEmpty: "Jadilah yang pertama mendukung — scan QRIS di atas atau pilih metode lainnya.",
+  usesHead: "Ke mana dukungan Anda pergi",
+  uses: [
+    { t: "Server dan domain", d: "Biaya hosting demo, dokumentasi, dan CI yang jalan tiap ada perubahan." },
+    { t: "Waktu perawatan", d: "Membalas issue, meninjau pull request, dan memperbaiki bug lebih cepat." },
+    { t: "Fitur baru", d: "Fitur yang paling sering diminta dikerjakan lebih dulu, dengan catatan rilis yang jelas." }
+  ],
+  faqHead: "Pertanyaan yang sering ditanyakan",
+  faq: [
+    { q: "Apakah saya harus berdonasi?", a: "Tidak. Semua proyek saya gratis dan open source selamanya. Donasi hanya jika Anda ingin membantu." },
+    { q: "Metode pembayaran apa saja yang didukung?", a: "QRIS (semua bank dan e-wallet Indonesia), PayPal, transfer bank, dan e-wallet. Pilih salah satu tab di kartu dukungan." },
+    { q: "Apakah donasi saya dipotong biaya admin?", a: "Sesuai kebijakan masing-masing platform. QRIS antarbank biasanya tanpa biaya, PayPal mengenakan biaya layanan." },
+    { q: "Bisakah saya meminta pengembalian dana?", a: "Donasi bersifat sukarela. Jika ada masalah dengan transaksi, hubungi penyedia pembayaran Anda." },
+    { q: "Bagaimana jika ingin mendukung tetapi tidak punya uang?", a: "Beri bintang repo, bagikan proyek ini, atau laporkan bug. Itu sudah sangat membantu!" }
+  ],
+  footNote: "Dibuat dengan HTML biasa. Tanpa pelacak."
+},
+
+/* ---------------- English ---------------- */
+en: {
+  langLabel: "Language",
+  themeLabel: "Toggle light/dark theme",
+  navDonate: "Donate", navProjects: "Projects", navSponsors: "Sponsors", navFaq: "FAQ",
+  docTitle: "Support {name} · Open Source",
+  headline: "Buy me a coffee, keep the code running.",
+  lead: "All of my projects are free and open source. If any of them saves you time, however small a contribution helps me maintain it.",
+  ctaDonate: "Send support",
+  badge1: "public code on GitHub", badge2: "no trackers",
+  proofProjects: "public open-source projects", proofCommits: "total commits",
+  tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Bank", tabWallet: "E-wallet",
+  qrHint: "Open any bank or e-wallet app, choose Scan, then enter the amount.",
+  qrDl: "Download QRIS", qrAlt: "QRIS code for donations", qrMissing: "QRIS image missing. Save it as assets/qris.png in this repo.",
+  paypalBtn: "Pay with PayPal",
+  paypalNote: "Direct link to PayPal. You are free to change the amount on the PayPal page.",
+  paypalAlt: "PayPal QR code",
+  holder: "a/c", copy: "Copy", open: "Open",
+  copied: "Copied: ",
+  reposHead: "Projects you are supporting",
+  reposLead: "All of the code below is public on GitHub, counted straight from its commit history. Stars and forks help, but coffee helps more.",
+  metaCommits: "commits", metaCommit1: "commit", metaLangs: "languages", metaLang1: "language",
+  reposEmpty: "No public projects on this list yet. Edit CONFIG.projects in index.html.",
+  sponsorsHead: "Who already supports this",
+  sponsorsHintEmpty: "No sponsors yet. Reach me on GitHub if you want your name shown here.",
+  wallEmpty: "Be the first to support — scan the QRIS above or pick another method.",
+  usesHead: "Where your support goes",
+  uses: [
+    { t: "Servers and domains", d: "Hosting for demos, documentation, and CI that runs on every change." },
+    { t: "Maintenance time", d: "Answering issues, reviewing pull requests, and fixing bugs faster." },
+    { t: "New features", d: "The most requested features get built first, with clear release notes." }
+  ],
+  faqHead: "Frequently asked questions",
+  faq: [
+    { q: "Do I have to donate?", a: "No. All my projects stay free and open source forever. Donate only if you want to help." },
+    { q: "Which payment methods are supported?", a: "QRIS (any Indonesian bank or e-wallet), PayPal, bank transfer, and e-wallet. Pick a tab on the support card." },
+    { q: "Are there admin fees on my donation?", a: "Whatever each platform charges. Interbank QRIS is usually free, PayPal charges a service fee." },
+    { q: "Can I ask for a refund?", a: "Donations are voluntary. If something goes wrong with a transaction, contact your payment provider." },
+    { q: "What if I want to help but have no money?", a: "Star a repo, share this page, or report a bug. That already helps a lot!" }
+  ],
+  footNote: "Built with plain HTML. No trackers."
+},
+
+/* ---------------- العربية ---------------- */
+ar: {
+  langLabel: "اللغة",
+  themeLabel: "تبديل الوضع الفاتح/الداكن",
+  navDonate: "تبرّع", navProjects: "المشاريع", navSponsors: "الداعمون", navFaq: "الأسئلة",
+  docTitle: "ادعم {name} · مفتوح المصدر",
+  headline: "ادفع لي فنجان قهوة، وليستمر الكود بالعمل.",
+  lead: "كل مشروعي مجانية ومفتوحة المصدر. إن وفّر أحدها وقتك، فكل تبرّع مهما صغر يساعدني على صيانته.",
+  ctaDonate: "أرسل دعمك",
+  badge1: "كود عام على GitHub", badge2: "بدون متتبِّعات",
+  proofProjects: "مشاريع مفتوحة المصدر عامة", proofCommits: "إجمالي عمليات الإيداع",
+  tabQris: "QRIS", tabPaypal: "باي بال", tabBank: "البنك", tabWallet: "المحفظة",
+  qrHint: "افتح أي تطبيق بنكي أو محفظة، اختر مسح ثم أدخل المبلغ.",
+  qrDl: "تنزيل QRIS", qrAlt: "رمز QRIS للتبرّع", qrMissing: "صورة QRIS غير موجودة. احفظها باسم assets/qris.png في هذا المستودع.",
+  paypalBtn: "ادفع عبر PayPal",
+  paypalNote: "رابط مباشر إلى PayPal. يمكنك تغيير المبلغ في صفحة PayPal.",
+  paypalAlt: "رمز QR الخاص بـ PayPal",
+  holder: "اسم صاحب الحساب", copy: "نسخ", open: "فتح",
+  copied: "تم النسخ: ",
+  reposHead: "المشاريع التي تدعمها",
+  reposLead: "كل الكود أدناه عام على GitHub، ومعدود مباشرة من سجل الإيداع. النجوم والفروع تساعد، لكن القهوة تساعد أكثر.",
+  metaCommits: "إيداع", metaLangs: "لغة برمجة",
+  reposEmpty: "لا مشاريع عامة في هذه القائمة بعد. عدّل CONFIG.projects في index.html.",
+  sponsorsHead: "من يدعم هذا المشروع",
+  sponsorsHintEmpty: "لا يوجد داعمون بعد. تواصل معي عبر GitHub إن أردت ظهور اسمك هنا.",
+  wallEmpty: "كن أول من يدعم — امسح رمز QRIS بالأعلى أو اختر وسيلة أخرى.",
+  usesHead: "أين يذهب دعمك",
+  uses: [
+    { t: "الخوادم والنطاقات", d: "استضافة العروض التوضيحية والتوثيق وCI الذي يعمل مع كل تغيير." },
+    { t: "وقت الصيانة", d: "الرد على التذاكر ومراجعة طلبات السحب وإصلاح الأخطاء أسرع." },
+    { t: "مزايا جديدة", d: "المزايا الأكثر طلباً تُنفَّذ أولاً مع سجل إصدارات واضح." }
+  ],
+  faqHead: "الأسئلة المتكررة",
+  faq: [
+    { q: "هل يجب أن أتبرّع؟", a: "لا. كل مشاريعي تبقى مجانية ومفتوحة المصدر إلى الأبد. تبرّع فقط إن أردت المساعدة." },
+    { q: "ما طرق الدفع المدعومة؟", a: "QRIS (أي بنك أو محفظة إندونيسية) وPayPal والتحويل البنكي والمحافظ الإلكترونية. اختر تبويباً من بطاقة الدعم." },
+    { q: "هل تُخصم رسوم إدارية من تبرّعي؟", a: "حسب سياسة كل منصة. التحويل بين البنوك عبر QRIS عادةً مجاني، وPayPal تفرض رسوم خدمة." },
+    { q: "هل يمكنني طلب استرداد المال؟", a: "التبرّع اختياري. إن واجهت مشكلة في المعاملة، تواصل مع جهة الدفع الخاصة بك." },
+    { q: "ماذا لو أريد الدعم بلا مال؟", a: "امنح المستودع نجمة، أو شارك هذه الصفحة، أو أبلغ عن خلل. هذا يساعد كثيراً!" }
+  ],
+  footNote: "مبنية بـ HTML بسيط. بدون متتبِّعات."
+},
+
+/* ---------------- বাংলা ---------------- */
+bn: {
+  langLabel: "ভাষা",
+  themeLabel: "লাইট/ডার্ক থিম বদলান",
+  navDonate: "দান", navProjects: "প্রজেক্ট", navSponsors: "সমর্থক", navFaq: "প্রশ্ন",
+  docTitle: "{name}-কে সমর্থন করুন · ওপেন সোর্স",
+  headline: "আমাকে এক কাপ কফি দিন, কোড চলতে থাকুক।",
+  lead: "আমার সব প্রজেক্ট বিনামূল্যে ও ওপেন সোর্স। কোনোটা আপনার সময় বাঁচালে, ছোট থেকে ছোট সহায়তাও তার রক্ষণাবেক্ষণে সাহায্য করে।",
+  ctaDonate: "সমর্থন পাঠান",
+  badge1: "GitHub-এ পাবলিক কোড", badge2: "কোনো ট্র্যাকার নেই",
+  proofProjects: "পাবলিক ওপেন সোর্স প্রজেক্ট", proofCommits: "মোট কমিট",
+  tabQris: "QRIS", tabPaypal: "পেপ্যাল", tabBank: "ব্যাংক", tabWallet: "ই-ওয়ালেট",
+  qrHint: "যেকোনো ব্যাংক বা ই-ওয়ালেট অ্যাপ খুলুন, স্ক্যান বেছে নিন, তারপর পরিমাণ লিখুন।",
+  qrDl: "QRIS নামান", qrAlt: "দানের QRIS কোড", qrMissing: "QRIS ছবি নেই। এই রিপোতে assets/qris.png নামে সংরক্ষণ করুন।",
+  paypalBtn: "পেপ্যাল দিয়ে পরিশোধ করুন",
+  paypalNote: "সরাসরি পেপ্যাল লিংক। পেপ্যাল পাতায় পরিমাণ আপনি বদলাতে পারেন।",
+  paypalAlt: "পেপ্যাল QR কোড",
+  holder: "হিসাবের নাম", copy: "কপি", open: "খুলুন",
+  copied: "কপি হয়েছে: ",
+  reposHead: "যে প্রজেক্টগুলো আপনি সমর্থন করছেন",
+  reposLead: "নিচের সব কোড GitHub-এ পাবলিক, এবং কমিট ইতিহাস থেকে সরাসরি গোনা। স্টার ও ফর্ক সাহায্য করে, কিন্তু কফি বেশি করে।",
+  metaCommits: "কমিট", metaLangs: "ভাষা",
+  reposEmpty: "তালিকায় এখনো কোনো পাবলিক প্রজেক্ট নেই। index.html-এর CONFIG.projects বদলান।",
+  sponsorsHead: "যারা ইতিমধ্যে সমর্থন করছেন",
+  sponsorsHintEmpty: "এখনো কোনো সমর্থক নেই। নাম দেখাতে চাইলে GitHub-এ যোগাযোগ করুন।",
+  wallEmpty: "প্রথম সমর্থক হন — উপরের QRIS স্ক্যান করুন বা অন্য উপায় বেছে নিন।",
+  usesHead: "আপনার সহায়তা কোথায় যায়",
+  uses: [
+    { t: "সার্ভার ও ডোমেইন", d: "ডেমো, ডকুমেন্টেশন এবং প্রতিটি পরিবর্তনে চলা CI-এর হোস্টিং খরচ।" },
+    { t: "রক্ষণাবেক্ষণের সময়", d: "ইশ্যুর উত্তর, পুল রিভিউ এবং বাগ দ্রুত ঠিক করা।" },
+    { t: "নতুন ফিচার", d: "সবচেয়ে বেশি চাওয়া ফিচার আগে তৈরি হয়, স্পষ্ট রিলিজ নোটসহ।" }
+  ],
+  faqHead: "সাধারণ প্রশ্নের উত্তর",
+  faq: [
+    { q: "আমাকে কি অবশ্যই দান করতে হবে?", a: "না। আমার সব প্রজেক্ট চিরকাল বিনামূল্যে ও ওপেন সোর্স। ইচ্ছা করলেই দান করুন।" },
+    { q: "কোন কোন পেমেন্ট পদ্ধতি সমর্থিত?", a: "QRIS (যেকোনো ইন্দোনেশীয় ব্যাংক বা ই-ওয়ালেট), পেপ্যাল, ব্যাংক ট্রান্সফার ও ই-ওয়ালেট। সাপোর্ট কার্ডের ট্যাব বেছে নিন।" },
+    { q: "কি আমার দান থেকে কোনো অ্যাডমিন ফি কাটা হয়?", a: "প্ল্যাটফর্মভেদে ফি আলাদা। ইন্টারব্যাংক QRIS সাধারণত ফ্রি, পেপ্যাল সার্ভিস ফি নেয়।" },
+    { q: "টাকা ফেরত চাইতে পারি?", a: "দান স্বেচ্ছায়। লেনদেনে সমস্যা হলে পেমেন্ট প্রোভাইডারের সঙ্গে যোগাযোগ করুন।" },
+    { q: "টাকা না থাকলে কীভাবে সমর্থন করব?", a: "রিপোতে স্টার দিন, এই পেজটি শেয়ার করুন, বা বাগ জানান। এটাই অনেক বড় সাহায্য!" }
+  ],
+  footNote: "সাধারণ HTML দিয়ে তৈরি। কোনো ট্র্যাকার নেই।"
+},
+
+/* ---------------- Deutsch ---------------- */
+de: {
+  langLabel: "Sprache",
+  themeLabel: "Helles/dunkles Design umschalten",
+  navDonate: "Spenden", navProjects: "Projekte", navSponsors: "Unterstützer", navFaq: "FAQ",
+  docTitle: "{name} unterstützen · Open Source",
+  headline: "Schenk mir einen Kaffee, damit der Code läuft.",
+  lead: "Alle meine Projekte sind kostenlos und quelloffen. Falls eines davon Zeit spart, hilft mir jede noch so kleine Spende bei der Wartung.",
+  ctaDonate: "Unterstützung senden",
+  badge1: "öffentlicher Code auf GitHub", badge2: "keine Tracker",
+  proofProjects: "öffentliche Open-Source-Projekte", proofCommits: "Commits insgesamt",
+  tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Bank", tabWallet: "E-Wallet",
+  qrHint: "Öffne eine beliebige Bank- oder E-Wallet-App, wähle Scannen und gib den Betrag ein.",
+  qrDl: "QRIS herunterladen", qrAlt: "QRIS-Code für Spenden", qrMissing: "QRIS-Bild fehlt. Als assets/qris.png in diesem Repo speichern.",
+  paypalBtn: "Mit PayPal bezahlen",
+  paypalNote: "Direkter Link zu PayPal. Den Betrag kannst du auf der PayPal-Seite ändern.",
+  paypalAlt: "PayPal-QR-Code",
+  holder: "Kontoinh.", copy: "Kopieren", open: "Öffnen",
+  copied: "Kopiert: ",
+  reposHead: "Projekte, die du unterstützt",
+  reposLead: "Der gesamte Code unten ist öffentlich auf GitHub und direkt aus dem Commit-Verlauf gezählt. Sterne und Forks helfen, Kaffee hilft mehr.",
+  metaCommits: "Commits", metaLangs: "Sprachen",
+  reposEmpty: "Noch keine öffentlichen Projekte in dieser Liste. CONFIG.projects in index.html anpassen.",
+  sponsorsHead: "Wer schon unterstützt",
+  sponsorsHintEmpty: "Noch keine Unterstützer. Schreib mir über GitHub, wenn dein Name hier stehen soll.",
+  wallEmpty: "Sei die Erste oder der Erste — scanne den QRIS-Code oben oder wähle eine andere Methode.",
+  usesHead: "Wohin deine Unterstützung fließt",
+  uses: [
+    { t: "Server und Domains", d: "Hosting für Demos, Dokumentation und CI, der bei jeder Änderung läuft." },
+    { t: "Wartungszeit", d: "Issues beantworten, Pull Requests prüfen und Bugs schneller beheben." },
+    { t: "Neue Funktionen", d: "Die meistgefragten Features zuerst, mit klaren Release Notes." }
+  ],
+  faqHead: "Häufig gestellte Fragen",
+  faq: [
+    { q: "Muss ich spenden?", a: "Nein. Alle meine Projekte bleiben für immer kostenlos und quelloffen. Spende nur, wenn du magst." },
+    { q: "Welche Zahlungsarten werden unterstützt?", a: "QRIS (jede indonesische Bank oder E-Wallet), PayPal, Banküberweisung und E-Wallet. Wähle einen Tab auf der Unterstützungskarte." },
+    { q: "Fallen Gebühren für meine Spende an?", a: "Je nach Plattform. Innerhalb Indonesiens ist QRIS meist kostenlos, PayPal erhebt eine Servicegebühr." },
+    { q: "Kann ich eine Rückerstattung verlangen?", a: "Spenden sind freiwillig. Bei Problemen mit einer Zahlung wende dich an deinen Zahlungsdienstleister." },
+    { q: "Was, wenn ich unterstützen will, aber kein Geld habe?", a: "Gib einem Repo einen Stern, teile diese Seite oder melde einen Bug. Das hilft schon sehr!" }
+  ],
+  footNote: "Gebaut mit einfachem HTML. Keine Tracker."
+},
+
+/* ---------------- Español ---------------- */
+es: {
+  langLabel: "Idioma",
+  themeLabel: "Cambiar tema claro/oscuro",
+  navDonate: "Donar", navProjects: "Proyectos", navSponsors: "Patrocinadores", navFaq: "FAQ",
+  docTitle: "Apoya a {name} · Código abierto",
+  headline: "Invítame un café y el código sigue corriendo.",
+  lead: "Todos mis proyectos son gratuitos y de código abierto. Si alguno te ahorra tiempo, por pequeña que sea tu aportación me ayuda a mantenerlo.",
+  ctaDonate: "Enviar apoyo",
+  badge1: "código público en GitHub", badge2: "sin rastreadores",
+  proofProjects: "proyectos públicos de código abierto", proofCommits: "commits en total",
+  tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Banco", tabWallet: "Billetera",
+  qrHint: "Abre cualquier app de banco o billetera, elige Escanear e introduce el importe.",
+  qrDl: "Descargar QRIS", qrAlt: "Código QRIS para donaciones", qrMissing: "Falta la imagen QRIS. Guárdala como assets/qris.png en este repositorio.",
+  paypalBtn: "Pagar con PayPal",
+  paypalNote: "Enlace directo a PayPal. Puedes cambiar el importe en la página de PayPal.",
+  paypalAlt: "Código QR de PayPal",
+  holder: "a nombre de", copy: "Copiar", open: "Abrir",
+  copied: "Copiado: ",
+  reposHead: "Los proyectos que apoyas",
+  reposLead: "Todo el código de abajo es público en GitHub y se cuenta directamente de su historial de commits. Las estrellas y los forks ayudan, el café ayuda más.",
+  metaCommits: "commits", metaLangs: "lenguajes",
+  reposEmpty: "Todavía no hay proyectos públicos en esta lista. Edita CONFIG.projects en index.html.",
+  sponsorsHead: "Quién ya apoya esto",
+  sponsorsHintEmpty: "Aún no hay patrocinadores. Escríbeme por GitHub si quieres que aparezca tu nombre.",
+  wallEmpty: "Sé la primera persona en apoyar: escanea el QRIS de arriba o elige otro método.",
+  usesHead: "Adónde va tu apoyo",
+  uses: [
+    { t: "Servidores y dominios", d: "Alojamiento de demos, documentación y CI que se ejecuta con cada cambio." },
+    { t: "Tiempo de mantenimiento", d: "Responder issues, revisar pull requests y corregir errores más rápido." },
+    { t: "Funciones nuevas", d: "Las funciones más pedidas se hacen primero, con notas de versión claras." }
+  ],
+  faqHead: "Preguntas frecuentes",
+  faq: [
+    { q: "¿Tengo que donar?", a: "No. Todos mis proyectos siguen siendo gratuitos y de código abierto para siempre. Dona solo si quieres." },
+    { q: "¿Qué métodos de pago se aceptan?", a: "QRIS (cualquier banco o billetera de Indonesia), PayPal, transferencia bancaria y billetera. Elige una pestaña de la tarjeta de apoyo." },
+    { q: "¿Se descuenta algún cargo por donación?", a: "Según la política de cada plataforma. El QRIS interbancario suele ser gratis, PayPal cobra una tarifa de servicio." },
+    { q: "¿Puedo pedir un reembolso?", a: "Las donaciones son voluntarias. Si hay un problema con la transacción, contacta a tu proveedor de pago." },
+    { q: "¿Y si quiero apoyar y no tengo dinero?", a: "Pon una estrella al repo, comparte esta página o reporta un error. ¡Eso ya ayuda muchísimo!" }
+  ],
+  footNote: "Hecho con HTML a secas. Sin rastreadores."
+},
+
+/* ---------------- Français ---------------- */
+fr: {
+  langLabel: "Langue",
+  themeLabel: "Basculer thème clair/sombre",
+  navDonate: "Faire un don", navProjects: "Projets", navSponsors: "Sponsors", navFaq: "FAQ",
+  docTitle: "Soutenir {name} · Open source",
+  headline: "Offrez-moi un café, le code continue de tourner.",
+  lead: "Tous mes projets sont gratuits et open source. Si l'un d'eux vous fait gagner du temps, le moindre don m'aide à l'entretenir.",
+  ctaDonate: "Envoyer un soutien",
+  badge1: "code public sur GitHub", badge2: "sans traqueurs",
+  proofProjects: "projets open source publics", proofCommits: "commits au total",
+  tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Banque", tabWallet: "Portefeuille",
+  qrHint: "Ouvrez l'application de votre banque ou portefeuille, choisissez Scanner, puis saisissez le montant.",
+  qrDl: "Télécharger le QRIS", qrAlt: "Code QRIS pour les dons", qrMissing: "Image QRIS manquante. Enregistrez-la sous assets/qris.png dans ce dépôt.",
+  paypalBtn: "Payer avec PayPal",
+  paypalNote: "Lien direct vers PayPal. Vous pouvez modifier le montant sur la page PayPal.",
+  paypalAlt: "Code QR PayPal",
+  holder: "au nom de", copy: "Copier", open: "Ouvrir",
+  copied: "Copié : ",
+  reposHead: "Les projets que vous soutenez",
+  reposLead: "Tout le code ci-dessous est public sur GitHub, compté directement dans son historique de commits. Les étoiles et les forks aident, le café aide davantage.",
+  metaCommits: "commits", metaLangs: "langages",
+  reposEmpty: "Aucun projet public dans cette liste pour l'instant. Modifiez CONFIG.projects dans index.html.",
+  sponsorsHead: "Ceux qui soutiennent déjà",
+  sponsorsHintEmpty: "Pas encore de sponsor. Contactez-moi sur GitHub si vous voulez voir votre nom ici.",
+  wallEmpty: "Soyez le premier à soutenir — scannez le QRIS ci-dessus ou choisissez une autre méthode.",
+  usesHead: "Où va votre soutien",
+  uses: [
+    { t: "Serveurs et noms de domaine", d: "Hébergement des démos, de la documentation et de la CI qui tourne à chaque modification." },
+    { t: "Temps de maintenance", d: "Répondre aux issues, relire les pull requests et corriger les bugs plus vite." },
+    { t: "Nouvelles fonctionnalités", d: "Les fonctionnalités les plus demandées sont traitées en premier, avec des notes de version claires." }
+  ],
+  faqHead: "Questions fréquentes",
+  faq: [
+    { q: "Dois-je faire un don ?", a: "Non. Tous mes projets restent gratuits et open source à vie. Faites un don seulement si vous le souhaitez." },
+    { q: "Quels moyens de paiement sont acceptés ?", a: "QRIS (toute banque ou portefeuille indonésien), PayPal, virement bancaire et portefeuille électronique. Choisissez un onglet sur la carte de soutien." },
+    { q: "Des frais sont-ils prélevés sur mon don ?", a: "Selon la politique de chaque plateforme. Le QRIS interbancaire est en général gratuit, PayPal prélève des frais de service." },
+    { q: "Puis-je demander un remboursement ?", a: "Les dons sont volontaires. En cas de problème avec une transaction, contactez votre prestataire de paiement." },
+    { q: "Et si je veux soutenir sans argent ?", a: "Mettez une étoile au dépôt, partagez cette page ou signalez un bug. Cela aide déjà énormément !" }
+  ],
+  footNote: "Construit en HTML brut. Sans traqueurs."
+},
+
+/* ---------------- हिन्दी ---------------- */
+hi: {
+  langLabel: "भाषा",
+  themeLabel: "हल्का/गहरा थीम बदलें",
+  navDonate: "दान", navProjects: "प्रोजेक्ट", navSponsors: "समर्थक", navFaq: "FAQ",
+  docTitle: "{name} का समर्थन करें · ओपन सोर्स",
+  headline: "मुझे एक कॉफी पिला दो, कोड चलता रहे।",
+  lead: "मेरे सारे प्रोजेक्ट मुफ़्त और ओपन सोर्स हैं। अगर कोई एक आपका समय बचाता है, तो छोटा सा भी सहयोग उसे बनाए रखने में मदद करता है।",
+  ctaDonate: "सहयोग भेजें",
+  badge1: "GitHub पर सार्वजनिक कोड", badge2: "कोई ट्रैकर नहीं",
+  proofProjects: "सार्वजनिक ओपन सोर्स प्रोजेक्ट", proofCommits: "कुल कमिट",
+  tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "बैंक", tabWallet: "ई-वॉलेट",
+  qrHint: "किसी भी बैंक या ई-वॉलेट ऐप को खोलें, स्कैन चुनें, फिर राशि भरें।",
+  qrDl: "QRIS डाउनलोड करें", qrAlt: "दान के लिए QRIS कोड", qrMissing: "QRIS इमेज नहीं मिली। इस रिपो में assets/qris.png के नाम से सेव करें।",
+  paypalBtn: "PayPal से भुगतान करें",
+  paypalNote: "सीधा PayPal लिंक। राशि आप PayPal पेज पर बदल सकते हैं।",
+  paypalAlt: "PayPal QR कोड",
+  holder: "खाताधारक", copy: "कॉपी", open: "खोलें",
+  copied: "कॉपी हो गया: ",
+  reposHead: "वे प्रोजेक्ट जिन्हें आप समर्थन दे रहे हैं",
+  reposLead: "नीचे का सारा कोड GitHub पर सार्वजनिक है और उसके कमिट इतिहास से सीधा गिना गया है। स्टार और फोर्क मदद करते हैं, कॉफी ज़्यादा करती है।",
+  metaCommits: "कमिट", metaLangs: "भाषाएँ",
+  reposEmpty: "इस सूची में अभी कोई सार्वजनिक प्रोजेक्ट नहीं है। index.html में CONFIG.projects बदलें।",
+  sponsorsHead: "जो पहले से समर्थन कर रहे हैं",
+  sponsorsHintEmpty: "अभी कोई प्रायोजक नहीं है। अपना नाम दिखाना चाहें तो GitHub पर संपर्क करें।",
+  wallEmpty: "पहला समर्थक बनें — ऊपर का QRIS स्कैन करें या कोई और तरीका चुनें।",
+  usesHead: "आपका सहयोग कहाँ जाता है",
+  uses: [
+    { t: "सर्वर और डोमेन", d: "डेमो, दस्तावेज़ और हर बदलाव पर चलने वाले CI की होस्टिंग लागत।" },
+    { t: "रखरखाव का समय", d: "इश्यू के जवाब, पुल रिव्यू और बग तेज़ी से ठीक करना।" },
+    { t: "नए फीचर", d: "सबसे ज़्यादा माँगे गए फीचर पहले, साफ़ रिलीज़ नोट्स के साथ।" }
+  ],
+  faqHead: "अक्सर पूछे जाने वाले सवाल",
+  faq: [
+    { q: "क्या मुझे दान करना ही होगा?", a: "नहीं। मेरे सारे प्रोजेक्ट हमेशा मुफ़्त और ओपन सोर्स रहेंगे। दान तभी करें जब आप चाहें।" },
+    { q: "कौन-कौन से भुगतान तरीके समर्थित हैं?", a: "QRIS (कोई भी इंडोनेशियाई बैंक या ई-वॉलेट), PayPal, बैंक ट्रांसफर और ई-वॉलेट। सपोर्ट कार्ड पर कोई टैब चुनें।" },
+    { q: "क्या मेरे दान से एडमिन फी कटती है?", a: "हर प्लेटफ़ॉर्म की अपनी नीति है। इंटरबैंक QRIS आमतौर पर मुफ़्त है, PayPal सेवा शुल्क लेता है।" },
+    { q: "क्या मैं पैसे वापस माँग सकता हूँ?", a: "दान स्वैच्छिक है। लेनदेन में दिक्कत हो तो अपने भुगतान प्रोवाइडर से संपर्क करें।" },
+    { q: "अगर पैसे नहीं हैं तो कैसे समर्थन करें?", a: "रिपो को स्टार दें, यह पेज शेयर करें, या बग रिपोर्ट करें। वह भी बहुत मदद करता है!" }
+  ],
+  footNote: "सादे HTML से बना। कोई ट्रैकर नहीं।"
+},
+
+/* ---------------- 日本語 ---------------- */
+ja: {
+  langLabel: "言語",
+  themeLabel: "ライト/ダークテーマの切り替え",
+  navDonate: "寄付", navProjects: "プロジェクト", navSponsors: "支援者", navFaq: "FAQ",
+  docTitle: "{name} を支援する · オープンソース",
+  headline: "コーヒーをおごってください。コードが動き続けます。",
+  lead: "私のプロジェクトはすべて無料のオープンソースです。どれか一つでも時間を節約できたなら、少額の支援もメンテナンスに役立ちます。",
+  ctaDonate: "支援を送る",
+  badge1: "GitHub 上の公開コード", badge2: "トラッカーなし",
+  proofProjects: "公開中のオープンソースプロジェクト", proofCommits: "合計コミット数",
+  tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "銀行", tabWallet: "ウォレット",
+  qrHint: "銀行またはウォレットのアプリを開き、スキャンを選んで金額を入力してください。",
+  qrDl: "QRIS をダウンロード", qrAlt: "寄付用 QRIS コード", qrMissing: "QRIS 画像がありません。このリポジトリに assets/qris.png として保存してください。",
+  paypalBtn: "PayPal で支払う",
+  paypalNote: "PayPal への直接リンクです。金額は PayPal のページで自由に変更できます。",
+  paypalAlt: "PayPal QR コード",
+  holder: "名義", copy: "コピー", open: "開く",
+  copied: "コピーしました: ",
+  reposHead: "あなたが支援しているプロジェクト",
+  reposLead: "以下のコードはすべて GitHub 上で公開されており、コミット履歴から直接数えています。スターとフォークも役立ちますが、コーヒーの方がさらに役立ちます。",
+  metaCommits: "コミット", metaLangs: "言語",
+  reposEmpty: "このリストに公開プロジェクトがまだありません。index.html の CONFIG.projects を編集してください。",
+  sponsorsHead: "すでに支援してくれた方",
+  sponsorsHintEmpty: "まだ支援者はいません。名前を載せたい場合は GitHub からご連絡ください。",
+  wallEmpty: "最初の支援者になってください — 上の QRIS をスキャンするか別の方法を選んでください。",
+  usesHead: "支援はどこに使われるか",
+  uses: [
+    { t: "サーバーとドメイン", d: "デモ・ドキュメント・変更のたびに走る CI のホスティング費用。" },
+    { t: "メンテナンスの時間", d: "Issue への返信、プルリクエストのレビュー、バグ修正の高速化。" },
+    { t: "新機能", d: "要望の多い機能から順に、明確なリリースノート付きで実装します。" }
+  ],
+  faqHead: "よくある質問",
+  faq: [
+    { q: "寄付は必須ですか？", a: "いいえ。私のプロジェクトは永久に無料のオープンソースです。ご希望の方だけどうぞ。" },
+    { q: "どの支払い方法に対応していますか？", a: "QRIS（インドネシアの銀行・ウォレット全般）、PayPal、銀行振込、ウォレット。支援カードのタブから選べます。" },
+    { q: "寄付に手数料はかかりますか？", a: "プラットフォームごとの規定どおりです。銀行間 QRIS は通常無料、PayPal は手数料がかかります。" },
+    { q: "返金はできますか？", a: "寄付は自発的なものです。取引に問題がある場合は決済事業者へご連絡ください。" },
+    { q: "お金がなくても支援できますか？", a: "リポジトリにスターを付けたり、このページを共有したり、バグを報告してください。それだけでも大いに役立ちます！" }
+  ],
+  footNote: "シンプルな HTML 製。トラッカーなし。"
+},
+
+/* ---------------- Português ---------------- */
+pt: {
+  langLabel: "Idioma",
+  themeLabel: "Alternar tema claro/escuro",
+  navDonate: "Doar", navProjects: "Projetos", navSponsors: "Apoiadores", navFaq: "FAQ",
+  docTitle: "Apoie {name} · Código aberto",
+  headline: "Pague um café para mim e o código continua rodando.",
+  lead: "Todos os meus projetos são gratuitos e de código aberto. Se algum deles economiza seu tempo, qualquer contribuição me ajuda a mantê-lo.",
+  ctaDonate: "Enviar apoio",
+  badge1: "código público no GitHub", badge2: "sem rastreadores",
+  proofProjects: "projetos públicos de código aberto", proofCommits: "commits no total",
+  tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Banco", tabWallet: "Carteira",
+  qrHint: "Abra o app do seu banco ou carteira, escolha Escanear e digite o valor.",
+  qrDl: "Baixar QRIS", qrAlt: "Código QRIS para doações", qrMissing: "Imagem do QRIS ausente. Salve como assets/qris.png neste repositório.",
+  paypalBtn: "Pagar com PayPal",
+  paypalNote: "Link direto para o PayPal. Você pode alterar o valor na página do PayPal.",
+  paypalAlt: "Código QR do PayPal",
+  holder: "titular", copy: "Copiar", open: "Abrir",
+  copied: "Copiado: ",
+  reposHead: "Os projetos que você apoia",
+  reposLead: "Todo o código abaixo é público no GitHub, contado direto do histórico de commits. Estrelas e forks ajudam, café ajuda mais.",
+  metaCommits: "commits", metaLangs: "linguagens",
+  reposEmpty: "Ainda não há projetos públicos nesta lista. Edite CONFIG.projects no index.html.",
+  sponsorsHead: "Quem já apoia isto",
+  sponsorsHintEmpty: "Ainda não há apoiadores. Fale comigo no GitHub se quiser aparecer aqui.",
+  wallEmpty: "Seja o primeiro a apoiar — escaneie o QRIS acima ou escolha outro método.",
+  usesHead: "Para onde vai o seu apoio",
+  uses: [
+    { t: "Servidores e domínios", d: "Hospedagem de demos, documentação e CI que roda a cada alteração." },
+    { t: "Tempo de manutenção", d: "Responder issues, revisar pull requests e corrigir bugs mais rápido." },
+    { t: "Novos recursos", d: "Os recursos mais pedidos vêm primeiro, com notas de versão claras." }
+  ],
+  faqHead: "Perguntas frequentes",
+  faq: [
+    { q: "Preciso doar?", a: "Não. Todos os meus projetos continuam gratuitos e de código aberto para sempre. Doe só se quiser." },
+    { q: "Quais formas de pagamento são aceitas?", a: "QRIS (qualquer banco ou carteira da Indonésia), PayPal, transferência bancária e carteira. Escolha uma aba no cartão de apoio." },
+    { q: "Há alguma taxa sobre a minha doação?", a: "Depende da política de cada plataforma. O QRIS entre bancos costuma ser gratuito, o PayPal cobra taxa de serviço." },
+    { q: "Posso pedir reembolso?", a: "Doações são voluntárias. Em caso de problema com a transação, fale com o seu provedor de pagamento." },
+    { q: "E se eu quiser apoiar sem dinheiro?", a: "Dê uma estrela ao repositório, compartilhe esta página ou reporte um bug. Já ajuda muito!" }
+  ],
+  footNote: "Feito em HTML puro. Sem rastreadores."
+},
+
+/* ---------------- Русский ---------------- */
+ru: {
+  langLabel: "Язык",
+  themeLabel: "Переключить светлую/тёмную тему",
+  navDonate: "Поддержать", navProjects: "Проекты", navSponsors: "Спонсоры", navFaq: "Вопросы",
+  docTitle: "Поддержите {name} · Открытый код",
+  headline: "Купите мне кофе, и код продолжит работать.",
+  lead: "Все мои проекты бесплатны и с открытым исходным кодом. Если один из них сэкономил вам время, любая помощь помогает мне его поддерживать.",
+  ctaDonate: "Отправить поддержку",
+  badge1: "публичный код на GitHub", badge2: "без трекеров",
+  proofProjects: "публичных open source проектов", proofCommits: "коммитов всего",
+  tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Банк", tabWallet: "Кошелёк",
+  qrHint: "Откройте приложение банка или кошелька, выберите «Сканировать» и введите сумму.",
+  qrDl: "Скачать QRIS", qrAlt: "Код QRIS для пожертвований", qrMissing: "Изображение QRIS отсутствует. Сохраните его как assets/qris.png в этом репозитории.",
+  paypalBtn: "Оплатить через PayPal",
+  paypalNote: "Прямая ссылка на PayPal. Сумму можно изменить на странице PayPal.",
+  paypalAlt: "QR-код PayPal",
+  holder: "владелец счёта", copy: "Копировать", open: "Открыть",
+  copied: "Скопировано: ",
+  reposHead: "Проекты, которые вы поддерживаете",
+  reposLead: "Весь код ниже публичен на GitHub и посчитан прямо по истории коммитов. Звёзды и форки помогают, кофе помогает больше.",
+  metaCommits: "коммитов", metaCommit1: "коммит", metaLangs: "языков", metaLang1: "язык",
+  reposEmpty: "В этом списке пока нет публичных проектов. Измените CONFIG.projects в index.html.",
+  sponsorsHead: "Кто уже поддерживает",
+  sponsorsHintEmpty: "Пока нет спонсоров. Напишите мне на GitHub, если хотите увидеть своё имя здесь.",
+  wallEmpty: "Станьте первым — отсканируйте QRIS выше или выберите другой способ.",
+  usesHead: "Куда идёт ваша поддержка",
+  uses: [
+    { t: "Серверы и домены", d: "Хостинг демо, документации и CI, запускаемого при каждом изменении." },
+    { t: "Время на поддержку", d: "Ответы на issues, ревью pull request и более быстрые исправления багов." },
+    { t: "Новые функции", d: "Самые запрашиваемые функции делаются первыми, с понятными release notes." }
+  ],
+  faqHead: "Частые вопросы",
+  faq: [
+    { q: "Обязательно ли жертвовать?", a: "Нет. Все мои проекты навсегда бесплатны и с открытым кодом. Жертвуйте только если хотите." },
+    { q: "Какие способы оплаты поддерживаются?", a: "QRIS (любой индонезийский банк или кошелёк), PayPal, банковский перевод и электронный кошелёк. Выберите вкладку на карточке поддержки." },
+    { q: "Взимается ли комиссия с пожертвования?", a: "Зависит от политики платформы. Межбанковский QRIS обычно бесплатен, PayPal берёт комиссию за обслуживание." },
+    { q: "Можно ли запросить возврат?", a: "Пожертвования добровольные. Если с операцией возникла проблема, обратитесь в свой платёжный сервис." },
+    { q: "Что если я хочу поддержать, но у меня нет денег?", a: "Поставьте звезду репозиторию, поделитесь этой страницей или сообщите об ошибке. Это тоже очень помогает!" }
+  ],
+  footNote: "Сделано на чистом HTML. Без трекеров."
+},
+
+/* ---------------- 中文 ---------------- */
+zh: {
+  langLabel: "语言",
+  themeLabel: "切换浅色/深色主题",
+  navDonate: "捐赠", navProjects: "项目", navSponsors: "赞助者", navFaq: "常见问题",
+  docTitle: "支持 {name} · 开源",
+  headline: "请我喝杯咖啡，让代码继续跑下去。",
+  lead: "我的所有项目都免费且开源。只要其中一个帮你省了时间，再小的支持也能帮我把它维护下去。",
+  ctaDonate: "送出支持",
+  badge1: "GitHub 上的公开代码", badge2: "无追踪器",
+  proofProjects: "个公开开源项目", proofCommits: "次提交总数",
+  tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "银行", tabWallet: "电子钱包",
+  qrHint: "打开任意银行或电子钱包应用，选择扫码，然后输入金额。",
+  qrDl: "下载 QRIS", qrAlt: "捐赠用 QRIS 二维码", qrMissing: "缺少 QRIS 图片。请在本仓库保存为 assets/qris.png。",
+  paypalBtn: "用 PayPal 付款",
+  paypalNote: "直达 PayPal 的链接。金额可以在 PayPal 页面自行修改。",
+  paypalAlt: "PayPal 二维码",
+  holder: "户名", copy: "复制", open: "打开",
+  copied: "已复制：",
+  reposHead: "你正在支持的项目",
+  reposLead: "下面所有代码都在 GitHub 上公开，数字直接来自提交记录。星星和 fork 有帮助，咖啡更有帮助。",
+  metaCommits: "次提交", metaLangs: "种语言",
+  reposEmpty: "这个列表里还没有公开项目。请修改 index.html 中的 CONFIG.projects。",
+  sponsorsHead: "已经支持我的人",
+  sponsorsHintEmpty: "目前还没有赞助者。想让名字出现在这里，请通过 GitHub 联系我。",
+  wallEmpty: "成为第一位支持者 —— 扫描上面的 QRIS，或选择其他方式。",
+  usesHead: "你的支持用在了哪里",
+  uses: [
+    { t: "服务器与域名", d: "演示、文档以及每次改动都会运行的 CI 的托管费用。" },
+    { t: "维护时间", d: "回复 issue、审阅 pull request，以及更快地修复 bug。" },
+    { t: "新功能", d: "呼声最高的功能优先实现，并附上清晰的发布说明。" }
+  ],
+  faqHead: "常见问题",
+  faq: [
+    { q: "我必须捐赠吗？", a: "不必。我的所有项目永远免费且开源。只有在你愿意时才捐赠。" },
+    { q: "支持哪些付款方式？", a: "QRIS（印尼任何银行或电子钱包）、PayPal、银行转账和电子钱包。在支持卡片上选一个标签页。" },
+    { q: "捐赠会被扣手续费吗？", a: "取决于各平台政策。跨行 QRIS 通常免费，PayPal 会收取服务费。" },
+    { q: "可以申请退款吗？", a: "捐赠是自愿的。如果交易出现问题，请联系你的支付服务商。" },
+    { q: "想支持但没有钱怎么办？", a: "给仓库点个 star、分享这个页面，或者报个 bug。这些都帮了大忙！" }
+  ],
+  footNote: "纯 HTML 制作。无追踪器。"
+}
+
+};
