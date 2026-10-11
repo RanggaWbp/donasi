@@ -114,6 +114,7 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 .row{display:flex;align-items:center;justify-content:space-between;gap:12px;border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--paper)}
 .row b{display:block}
 .row small{color:var(--muted)}
+.row-actions{display:flex;gap:6px;flex-wrap:wrap;flex:none}
 .pp-note{font-size:.9rem;color:var(--muted);margin-top:12px}
 #xdaNote{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
 
@@ -167,7 +168,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .uses>div+div{border-left:0;border-top:2px solid var(--line)}
   nav a.link{display:none}
 }
-@media (max-width:420px){.tabs{grid-template-columns:repeat(2,1fr)}.cup{width:76px}}
+@media (max-width:420px){.tabs{grid-template-columns:repeat(2,1fr)}.cup{width:76px}
+  .row{flex-wrap:wrap}
+  .row-actions{width:100%;justify-content:flex-end}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -302,7 +306,7 @@ const CONFIG = {
     { name: "Bank Jago", number: "1095 5286 1747", holder: "Rangga Jati Wisesa Bintoro Putra" }
   ],
   wallets: [
-    { name: "ShopeePay", number: "085806047666" },
+    { name: "ShopeePay", number: "085806047666", link: "https://app.u.shopeepay.co.id/u/cCtAKzFxurjNqKRtMHxWx" },
     { name: "OVO",       number: "085806047666" }
   ],
 
@@ -538,18 +542,27 @@ function loadQR(){
 }
 
 /* ---------- bank, e-wallet ---------- */
-function copyRow(title, number, sub){
+function copyRow(title, number, sub, extra){
   const b = el("button", { class: "btn small ghost", type: "button", text: t("copy") });
   b.addEventListener("click", () => copy(number));
   return el("div", { class: "row" }, [
-    el("div", {}, [el("b", { text: title + " · " + number }), ...(sub ? [el("small", { text: sub })] : [])]), b
+    el("div", {}, [el("b", { text: title + " · " + number }), ...(sub ? [el("small", { text: sub })] : [])]),
+    el("div", { class: "row-actions" }, [b, ...(extra ? [extra] : [])])
   ]);
+}
+/* Baris e-wallet: kalau punya deep link, tambahkan tombol yang langsung
+   membuka aplikasinya (mis. ShopeePay universal link). */
+function walletRow(w){
+  const deep = w.link
+    ? el("a", { class: "btn small", href: w.link, target: "_blank", rel: "noopener", text: t("openApp") })
+    : null;
+  return copyRow(w.name, w.number, null, deep);
 }
 function renderMethods(){
   const br = $("#bankRows"), wr = $("#walletRows");
   br.textContent = ""; wr.textContent = "";
   CONFIG.bank.forEach(b => br.append(copyRow(b.name, b.number, t("holder") + " " + b.holder)));
-  CONFIG.wallets.forEach(w => wr.append(copyRow(w.name, w.number)));
+  CONFIG.wallets.forEach(w => wr.append(walletRow(w)));
 }
 
 /* ---------- bagian bawah ---------- */
