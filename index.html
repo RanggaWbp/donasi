@@ -193,6 +193,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="cta">
         <a class="btn" href="#support" id="ctaMain" data-i18n="ctaDonate">Kirim dukungan</a>
         <a class="btn ghost" id="ctaTelegram" href="#" target="_blank" rel="noopener" data-i18n="ctaTelegram">Telegram</a>
+        <a class="btn ghost" id="ctaFacebook" href="#" target="_blank" rel="noopener" data-i18n="ctaFacebook">Facebook</a>
         <a class="btn ghost" id="ctaSponsors" href="#" target="_blank" rel="noopener">GitHub Sponsors</a>
       </div>
       <div class="proof" id="proof"></div>
@@ -267,7 +268,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span id="foot">© <span id="yr"></span></span>
-    <span><a id="footTg" href="#" target="_blank" rel="noopener">t.me/wbprangga</a> · <span data-i18n="footNote">Dibuat dengan HTML biasa. Tanpa pelacak.</span></span>
+    <span><a id="footTg" href="#" target="_blank" rel="noopener">t.me/wbprangga</a> · <a id="footFb" href="#" target="_blank" rel="noopener">Facebook</a> · <span data-i18n="footNote">Dibuat dengan HTML biasa. Tanpa pelacak.</span></span>
   </div>
 </footer>
 
@@ -304,6 +305,7 @@ const CONFIG = {
   ],
 
   telegram: "https://t.me/wbprangga",  // tombol kontak di hero + footer
+  facebook: "https://web.facebook.com/rangga.wbp.5",
 
   /* Daftar proyek STASIS — tidak ditarik dari API, jadi tidak ada request ke GitHub.
      Semua repo akun ini ikut, termasuk fork (ditandai `fork: true`).
@@ -640,6 +642,8 @@ const sp = $("#ctaSponsors");
 if (CONFIG.githubSponsors) sp.href = "https://github.com/sponsors/" + CONFIG.githubUser; else sp.remove();
 $("#ctaTelegram").href = CONFIG.telegram;
 $("#footTg").href = CONFIG.telegram;
+$("#ctaFacebook").href = CONFIG.facebook;
+$("#footFb").href = CONFIG.facebook;
 
 renderAll();
 </script>
