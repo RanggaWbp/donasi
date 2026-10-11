@@ -9,8 +9,9 @@ Demo: https://ranggawbp.github.io/donasi/
 
 - **QRIS & PayPal statis** — gambar QR dibaca langsung dari `assets/`. Tidak ada generator QR, tidak ada nominal yang dipilih di halaman.
 - **Multi-metode** — QRIS, PayPal, transfer bank (Bank Jago), e-wallet (ShopeePay & OVO).
-- **12 bahasa** — id, en, ar, bn, de, es, fr, hi, ja, pt, ru, zh. Otomatis mengikuti bahasa browser, bisa diganti lewat menu di header, dan `dir="rtl"` diatur sendiri untuk Arab. Tersimpan di `localStorage`.
-- **Daftar proyek statis** — jumlah commit dan jumlah bahasa pemrograman diisi manual di `CONFIG.projects`, jadi halaman tetap jalan tanpa panggilan API.
+- **Kontak Telegram** — tombol di hero dan tautan `t.me/wbprangga` di footer, diisi dari `CONFIG.telegram`.
+- **12 bahasa** — id, en, ar, bn, de, es, fr, hi, ja, pt, ru, zh. Otomatis mengikuti bahasa browser, bisa diganti lewat menu di header, dan `dir="rtl"` diatur sendiri untuk Arab. Tersimpan di `localStorage`. Angka (jumlah commit) diformat pakai `Intl` per bahasa, dan bentuk jamak mengikuti aturan tiap bahasa.
+- **Daftar proyek statis** — semua repo akun (termasuk fork, ditandai label `fork`) ada di `CONFIG.projects` dengan jumlah commit masing-masing, jadi halaman tetap jalan tanpa panggilan API. Tidak ada nomor telemetri yang diambil saat dibuka.
 - **Dinding sponsor**, **FAQ**, dan **badge** — semuanya dapat dikonfigurasi.
 - **Dark mode** (mengikuti sistem + toggle manual), **responsif** penuh, dan **aksesibel** (tab keyboard, ARIA, fokus terlihat).
 - **Slot iklan opsional** — `<head>` sudah ada komentar penanda untuk Google AdSense.
@@ -23,7 +24,7 @@ Demo: https://ranggawbp.github.io/donasi/
    - `bank`, `wallets` — nomor rekening dan e-wallet.
    - `paypalLink` — tautan `https://paypal.me/USERNAME`.
    - `qrisImage`, `paypalQrImage` — path gambar QR (lihat bagian QR di bawah).
-   - `projects` — daftar proyek + jumlah commit + jumlah bahasa.
+   - `projects` — daftar proyek + jumlah commit. Tambahkan `fork: true` pada repo hasil fork.
    - `proof` — dua angka kecil di bawah tombol. `l` berisi **kunci bahasa**, bukan teks mentah.
    - `githubUser` — username GitHub Anda (untuk avatar).
 3. Simpan, commit, push.
@@ -59,12 +60,18 @@ Field ketiga `LANGS` adalah arah teks. Isi `"rtl"` untuk bahasa kanan-ke-kiri.
 
 ### Memperbarui jumlah commit proyek
 
+Cara tercepat — hitung semua repo sekaligus dan bandingkan dengan yang ada di halaman:
+
 ```bash
-gh api repos/RanggaWbp/NAMA_REPO/commits --paginate -i | grep -i '^link:' | grep -o 'page=[0-9]*' | tail -1
-gh api repos/RanggaWbp/NAMA_REPO/languages | grep -c ':'
+for r in $(gh api 'users/RanggaWbp/repos?per_page=100' --paginate -q '.[].name'); do
+  n=$(gh api "repos/RanggaWbp/$r/commits?per_page=1" -i 2>/dev/null \
+      | grep -o 'page=[0-9]*' | tail -1 | cut -d= -f2)
+  printf '%8s  %s\n' "${n:-1}" "$r"
+done | sort -rn
 ```
 
-Salin hasilnya ke `commits` dan `langs` di `CONFIG.projects`.
+Salin angkanya ke `commits` di `CONFIG.projects`. Untuk repo baru, tambahkan satu blok
+`{ name, url, desc, commits }` — beri `fork: true` kalau repo itu hasil fork.
 
 ### Iklan (opsional)
 
@@ -80,10 +87,13 @@ Tidak ada cookie, tidak ada analitik, tidak ada panggilan API. Satu-satunya requ
 
 GitHub Pages sendiri mengumpulkan data telemetri standar platform mereka — di luar kode halaman ini.
 
+Halaman ini **tidak** memanggil `api.github.com`; daftar proyek diisi manual di `CONFIG.projects`.
+
 ## 🎨 Kustomisasi lanjutan
 
 - **Warna**: ubah variabel `:root` di `<style>` (`--brand`, `--mango`, dll).
 - **FAQ & "Ke mana dukungan Anda pergi"**: ubah array `faq` dan `uses` di dalam tiap bahasa di `assets/i18n.js`.
+- **Validasi bahasa**: `node check-i18n.js assets/i18n.js` (dari skill `static-site-i18n`) — gagal kalau ada kunci yang tidak sama antar bahasa.
 - **Sponsor**: isi array `SPONSORS` — `{ login: "username-github", amount: 50000 }`. Avatar diambil dari GitHub.
 - **Font**: ganti link Google Fonts di `<head>`.
 
