@@ -90,7 +90,13 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 .badge b{font-weight:800;color:var(--ink)}
 
 /* support card */
-.support{background:var(--paper);border:2px solid var(--ink);border-radius:22px;box-shadow:8px 8px 0 var(--shadow);padding:24px}
+.support{background:var(--paper);border:2px solid var(--ink);border-radius:22px;box-shadow:8px 8px 0 var(--shadow);padding:24px;scroll-margin-top:96px}
+.support.flash{animation:flash 1.1s ease-out}
+@keyframes flash{
+  0%,100%{box-shadow:8px 8px 0 var(--shadow)}
+  25%,60%{box-shadow:8px 8px 0 var(--mango),0 0 0 6px var(--mango)}
+}
+@media (prefers-reduced-motion:reduce){.support.flash{animation:none;box-shadow:8px 8px 0 var(--mango),0 0 0 6px var(--mango)}}
 
 .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:16px}
 .tab{font:600 .9rem var(--body);padding:.6rem .3rem;border-radius:10px;border:2px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
@@ -192,7 +198,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <h1 id="headline" data-i18n="headline">Traktir saya kopi, biar kodenya terus jalan.</h1>
       <p class="lead" id="lead" data-i18n="lead">Semua proyek saya gratis dan terbuka. Kalau salah satunya menghemat waktu Anda, dukungan sekecil apa pun membantu saya merawatnya.</p>
       <div class="cta">
-        <a class="btn" href="#support" id="ctaMain" data-i18n="ctaDonate">Kirim dukungan</a>
+        <a class="btn" href="#support" id="ctaMain" data-i18n="ctaDonate" data-target="support">Kirim dukungan</a>
         <a class="btn ghost" id="ctaTelegram" href="#" target="_blank" rel="noopener" data-i18n="ctaTelegram">Telegram</a>
         <a class="btn ghost" id="ctaFacebook" href="#" target="_blank" rel="noopener" data-i18n="ctaFacebook">Facebook</a>
         <a class="btn ghost" id="ctaXda" href="#" target="_blank" rel="noopener">XDA</a>
@@ -658,6 +664,24 @@ $("#ctaFacebook").href = CONFIG.facebook;
 $("#footFb").href = CONFIG.facebook;
 $("#footXda").href = CONFIG.xda;
 $("#ctaXda").href = CONFIG.xda;
+
+/* Tombol/link yang menuju kartu dukungan: di desktop kartunya sudah kelihatan,
+   jadi klik biasa tidak scroll ke mana pun dan terasa "tidak terjadi apa-apa".
+   Sorot kartunya + fokuskan tab pertama. */
+document.querySelectorAll('a[href="#support"]').forEach(a => {
+  a.addEventListener("click", e => {
+    const card = $("#support");
+    e.preventDefault();
+    history.replaceState(null, "", "#support");
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    card.classList.remove("flash");
+    void card.offsetWidth;            // paksa animasi bisa diulang
+    card.classList.add("flash");
+    const first = card.querySelector(".tab[aria-selected='true']");
+    if (first) first.focus({ preventScroll: true });
+  });
+});
+$("#support").addEventListener("animationend", e => e.target.classList.remove("flash"));
 
 renderAll();
 </script>
