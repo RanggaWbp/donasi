@@ -237,6 +237,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <p data-i18n="reposLead">Semua kode di bawah ini publik di GitHub dan dihitung otomatis dari jumlah commit.</p>
     </div>
     <div class="repo-list" id="repos"><div class="repo"><p>Memuat proyek…</p></div></div>
+    <p class="pp-note" id="xdaNote"></p>
   </div>
 </section>
 
@@ -268,7 +269,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span id="foot">© <span id="yr"></span></span>
-    <span><a id="footTg" href="#" target="_blank" rel="noopener">t.me/wbprangga</a> · <a id="footFb" href="#" target="_blank" rel="noopener">Facebook</a> · <span data-i18n="footNote">Dibuat dengan HTML biasa. Tanpa pelacak.</span></span>
+    <span><a id="footTg" href="#" target="_blank" rel="noopener">t.me/wbprangga</a> · <a id="footFb" href="#" target="_blank" rel="noopener">Facebook</a> · <a id="footXda" href="#" target="_blank" rel="noopener">XDA</a> · <span data-i18n="footNote">Dibuat dengan HTML biasa. Tanpa pelacak.</span></span>
   </div>
 </footer>
 
@@ -306,6 +307,7 @@ const CONFIG = {
 
   telegram: "https://t.me/wbprangga",  // tombol kontak di hero + footer
   facebook: "https://web.facebook.com/rangga.wbp.5",
+  xda: "https://xdaforums.com/m/rangga-wbp.10154013/",
 
   /* Daftar proyek STASIS — tidak ditarik dari API, jadi tidak ada request ke GitHub.
      Semua repo akun ini ikut, termasuk fork (ditandai `fork: true`).
@@ -583,6 +585,14 @@ function renderRepos(){
     ...(r.desc ? [el("p", { text: r.desc })] : []),
     el("div", { class: "meta", text: nf(r.commits) + " " + plural(r.commits, "metaCommits", "metaCommit1", "metaCommit2") })
   ])));
+  const note = $("#xdaNote");
+  if (note) {
+    note.textContent = "";
+    if (CONFIG.xda) note.append(
+      document.createTextNode(t("xdaNote") + " "),
+      el("a", { href: CONFIG.xda, target: "_blank", rel: "noopener", text: "xdaforums.com/m/rangga-wbp" })
+    );
+  }
 }
 
 /* ---------- sponsor ---------- */
@@ -644,6 +654,7 @@ $("#ctaTelegram").href = CONFIG.telegram;
 $("#footTg").href = CONFIG.telegram;
 $("#ctaFacebook").href = CONFIG.facebook;
 $("#footFb").href = CONFIG.facebook;
+$("#footXda").href = CONFIG.xda;
 
 renderAll();
 </script>
