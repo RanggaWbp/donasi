@@ -1,4 +1,4 @@
-# ☕ Traktir Kopi — Halaman Donasi
+# 🥤 Traktir Es Teh — Halaman Donasi
 
 Landing page donasi untuk proyek open source. HTML, CSS, dan JavaScript biasa —
 **tanpa framework, tanpa build step, tanpa pelacak**. Buka `index.html` langsung di browser atau deploy ke GitHub Pages.
