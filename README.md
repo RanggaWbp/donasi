@@ -8,7 +8,7 @@ Demo: https://ranggawbp.github.io/donasi/
 ## ✨ Fitur
 
 - **QRIS & PayPal statis** — gambar QR dibaca langsung dari `assets/`. Tidak ada generator QR, tidak ada nominal yang dipilih di halaman.
-- **Multi-metode** — QRIS, PayPal, transfer bank (Bank Jago), e-wallet (ShopeePay & OVO).
+- **Multi-metode** — QRIS, PayPal, transfer bank (Bank Jago), e-wallet (ShopeePay, GoPay & OVO).
 - **Kontak** — Telegram (`CONFIG.telegram`) dan Facebook (`CONFIG.facebook`) sebagai tombol di hero; ketiganya plus XDA (`CONFIG.xda`) sebagai tautan di footer. Profil XDA juga muncul di bawah daftar proyek lewat kunci bahasa `xdaNote`.
 - **12 bahasa** — id, en, ar, bn, de, es, fr, hi, ja, pt, ru, zh. Otomatis mengikuti bahasa browser, bisa diganti lewat menu di header, dan `dir="rtl"` diatur sendiri untuk Arab. Tersimpan di `localStorage`. Angka (jumlah commit) diformat pakai `Intl` per bahasa, dan bentuk jamak mengikuti aturan tiap bahasa.
 - **Daftar proyek statis** — semua repo akun (termasuk fork, ditandai label `fork`) ada di `CONFIG.projects` dengan jumlah commit masing-masing, jadi halaman tetap jalan tanpa panggilan API. Tidak ada nomor telemetri yang diambil saat dibuka.
