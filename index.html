@@ -268,7 +268,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </div>
       <div class="panel" id="p-paypal" role="tabpanel" aria-labelledby="t-paypal" hidden>
-        <a class="btn mango" id="paypalBtn" href="#" target="_blank" rel="noopener" style="width:100%" data-i18n="paypalBtn">Bayar dengan PayPal</a>
+        <div class="rows" id="ppRows"></div>
+        <a class="btn mango" id="paypalBtn" href="#" target="_blank" rel="noopener" style="width:100%;margin-top:12px" data-i18n="paypalBtn">Bayar dengan PayPal</a>
         <p class="pp-note" id="ppNote" data-i18n="paypalNote"></p>
         <div class="qris-box" id="ppQrWrap" style="margin-top:14px" hidden>
           <div class="qris-frame" id="ppQrFrame"></div>
@@ -342,6 +343,7 @@ const CONFIG = {
   /* --- Pembayaran (semua statis) --- */
   qrisImage: "assets/qris.png",       // tempel gambar QRIS statis di sini
   paypalLink: "https://paypal.me/WbpRangga115283",
+  paypalHolder: "Rangga Jati Wisesa Bintoro Putra", // nama pemilik akun PayPal
   paypalQrImage: "assets/paypal-qr.png", // QR PayPal; kosongkan "" kalau mau tombol saja
 
   bank: [
@@ -577,6 +579,17 @@ function loadQR(){
   const dl = $("#qrisDl"); dl.href = CONFIG.qrisImage; dl.hidden = false;
 
   $("#paypalBtn").href = CONFIG.paypalLink;
+  /* Nama pemilik akun PayPal, ditampilkan seperti rekening bank supaya
+     pendukung tahu ke siapa uangnya pergi sebelum menekan tombol. */
+  const pr = $("#ppRows");
+  pr.textContent = "";
+  if (CONFIG.paypalHolder) {
+    /* Tampilkan alamat paypal.me-nya (bukan nomor), diambil dari tautan
+       supaya tidak ada dua tempat yang harus diubah. */
+    const handle = (CONFIG.paypalLink || "").replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+    pr.append(copyRow("PayPal", handle || "paypal.me", t("holder") + " " + CONFIG.paypalHolder));
+  }
+
   const wrap = $("#ppQrWrap"), pp = CONFIG.paypalQrImage;
   if (!pp) { wrap.hidden = true; return; }
   const probe = new Image();
