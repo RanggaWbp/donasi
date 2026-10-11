@@ -29,7 +29,7 @@ id: {
   headline: "Traktir saya es teh, biar kodenya terus jalan.",
   lead: "Semua proyek saya gratis dan terbuka. Kalau salah satunya menghemat waktu Anda, dukungan sekecil apa pun membantu saya merawatnya.",
   ctaDonate: "Kirim dukungan", ctaTelegram: "Telegram", ctaFacebook: "Facebook",
-  badge1: "kode publik di GitHub", badge2: "tanpa pelacak",
+  badge1: "kode publik di GitHub", badge2: "gratis selamanya",
   proofProjects: "proyek open source publik", proofCommits: "total commit",
   tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Bank", tabWallet: "E-wallet",
   qrHint: "Buka aplikasi bank atau e-wallet apa pun, pilih Scan, lalu masukkan nominal.",
@@ -61,7 +61,7 @@ id: {
     { q: "Bisakah saya meminta pengembalian dana?", a: "Donasi bersifat sukarela. Jika ada masalah dengan transaksi, hubungi penyedia pembayaran Anda." },
     { q: "Bagaimana jika ingin mendukung tetapi tidak punya uang?", a: "Beri bintang repo, bagikan proyek ini, atau laporkan bug. Itu sudah sangat membantu!" }
   ],
-  footNote: "Dibuat dengan HTML biasa. Tanpa pelacak."
+  footNote: "Dibuat dengan HTML biasa."
 },
 
 /* ---------------- English ---------------- */
@@ -73,7 +73,7 @@ en: {
   headline: "Buy me an iced tea, keep the code running.",
   lead: "All of my projects are free and open source. If any of them saves you time, however small a contribution helps me maintain it.",
   ctaDonate: "Send support", ctaTelegram: "Telegram", ctaFacebook: "Facebook",
-  badge1: "public code on GitHub", badge2: "no trackers",
+  badge1: "public code on GitHub", badge2: "free forever",
   proofProjects: "public open-source projects", proofCommits: "total commits",
   tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Bank", tabWallet: "E-wallet",
   qrHint: "Open any bank or e-wallet app, choose Scan, then enter the amount.",
@@ -105,7 +105,7 @@ en: {
     { q: "Can I ask for a refund?", a: "Donations are voluntary. If something goes wrong with a transaction, contact your payment provider." },
     { q: "What if I want to help but have no money?", a: "Star a repo, share this page, or report a bug. That already helps a lot!" }
   ],
-  footNote: "Built with plain HTML. No trackers."
+  footNote: "Built with plain HTML."
 },
 
 /* ---------------- العربية ---------------- */
@@ -117,7 +117,7 @@ ar: {
   headline: "ادفع لي شايًا مثلجًا، وليستمر الكود بالعمل.",
   lead: "كل مشروعي مجانية ومفتوحة المصدر. إن وفّر أحدها وقتك، فكل تبرّع مهما صغر يساعدني على صيانته.",
   ctaDonate: "أرسل دعمك", ctaTelegram: "تيليجرام", ctaFacebook: "فيسبوك",
-  badge1: "كود عام على GitHub", badge2: "بدون متتبِّعات",
+  badge1: "كود عام على GitHub", badge2: "مجاني للأبد",
   proofProjects: "مشاريع مفتوحة المصدر عامة", proofCommits: "إجمالي عمليات الإيداع",
   tabQris: "QRIS", tabPaypal: "باي بال", tabBank: "البنك", tabWallet: "المحفظة",
   qrHint: "افتح أي تطبيق بنكي أو محفظة، اختر مسح ثم أدخل المبلغ.",
@@ -149,7 +149,7 @@ ar: {
     { q: "هل يمكنني طلب استرداد المال؟", a: "التبرّع اختياري. إن واجهت مشكلة في المعاملة، تواصل مع جهة الدفع الخاصة بك." },
     { q: "ماذا لو أريد الدعم بلا مال؟", a: "امنح المستودع نجمة، أو شارك هذه الصفحة، أو أبلغ عن خلل. هذا يساعد كثيراً!" }
   ],
-  footNote: "مبنية بـ HTML بسيط. بدون متتبِّعات."
+  footNote: "مبنية بـ HTML بسيط."
 },
 
 /* ---------------- বাংলা ---------------- */
@@ -161,7 +161,7 @@ bn: {
   headline: "আমাকে এক গ্লাস আইসড টি দিন, কোড চলতে থাকুক।",
   lead: "আমার সব প্রজেক্ট বিনামূল্যে ও ওপেন সোর্স। কোনোটা আপনার সময় বাঁচালে, ছোট থেকে ছোট সহায়তাও তার রক্ষণাবেক্ষণে সাহায্য করে।",
   ctaDonate: "সমর্থন পাঠান", ctaTelegram: "টেলিগ্রাম", ctaFacebook: "ফেসবুক",
-  badge1: "GitHub-এ পাবলিক কোড", badge2: "কোনো ট্র্যাকার নেই",
+  badge1: "GitHub-এ পাবলিক কোড", badge2: "চিরকাল বিনামূল্যে",
   proofProjects: "পাবলিক ওপেন সোর্স প্রজেক্ট", proofCommits: "মোট কমিট",
   tabQris: "QRIS", tabPaypal: "পেপ্যাল", tabBank: "ব্যাংক", tabWallet: "ই-ওয়ালেট",
   qrHint: "যেকোনো ব্যাংক বা ই-ওয়ালেট অ্যাপ খুলুন, স্ক্যান বেছে নিন, তারপর পরিমাণ লিখুন।",
@@ -193,7 +193,7 @@ bn: {
     { q: "টাকা ফেরত চাইতে পারি?", a: "দান স্বেচ্ছায়। লেনদেনে সমস্যা হলে পেমেন্ট প্রোভাইডারের সঙ্গে যোগাযোগ করুন।" },
     { q: "টাকা না থাকলে কীভাবে সমর্থন করব?", a: "রিপোতে স্টার দিন, এই পেজটি শেয়ার করুন, বা বাগ জানান। এটাই অনেক বড় সাহায্য!" }
   ],
-  footNote: "সাধারণ HTML দিয়ে তৈরি। কোনো ট্র্যাকার নেই।"
+  footNote: "সাধারণ HTML দিয়ে তৈরি।"
 },
 
 /* ---------------- Deutsch ---------------- */
@@ -205,7 +205,7 @@ de: {
   headline: "Schenk mir einen Eistee, damit der Code läuft.",
   lead: "Alle meine Projekte sind kostenlos und quelloffen. Falls eines davon Zeit spart, hilft mir jede noch so kleine Spende bei der Wartung.",
   ctaDonate: "Unterstützung senden", ctaTelegram: "Telegram", ctaFacebook: "Facebook",
-  badge1: "öffentlicher Code auf GitHub", badge2: "keine Tracker",
+  badge1: "öffentlicher Code auf GitHub", badge2: "für immer kostenlos",
   proofProjects: "öffentliche Open-Source-Projekte", proofCommits: "Commits insgesamt",
   tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Bank", tabWallet: "E-Wallet",
   qrHint: "Öffne eine beliebige Bank- oder E-Wallet-App, wähle Scannen und gib den Betrag ein.",
@@ -237,7 +237,7 @@ de: {
     { q: "Kann ich eine Rückerstattung verlangen?", a: "Spenden sind freiwillig. Bei Problemen mit einer Zahlung wende dich an deinen Zahlungsdienstleister." },
     { q: "Was, wenn ich unterstützen will, aber kein Geld habe?", a: "Gib einem Repo einen Stern, teile diese Seite oder melde einen Bug. Das hilft schon sehr!" }
   ],
-  footNote: "Gebaut mit einfachem HTML. Keine Tracker."
+  footNote: "Gebaut mit einfachem HTML."
 },
 
 /* ---------------- Español ---------------- */
@@ -249,7 +249,7 @@ es: {
   headline: "Invítame un té helado y el código sigue corriendo.",
   lead: "Todos mis proyectos son gratuitos y de código abierto. Si alguno te ahorra tiempo, por pequeña que sea tu aportación me ayuda a mantenerlo.",
   ctaDonate: "Enviar apoyo", ctaTelegram: "Telegram", ctaFacebook: "Facebook",
-  badge1: "código público en GitHub", badge2: "sin rastreadores",
+  badge1: "código público en GitHub", badge2: "gratis para siempre",
   proofProjects: "proyectos públicos de código abierto", proofCommits: "commits en total",
   tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Banco", tabWallet: "Billetera",
   qrHint: "Abre cualquier app de banco o billetera, elige Escanear e introduce el importe.",
@@ -281,7 +281,7 @@ es: {
     { q: "¿Puedo pedir un reembolso?", a: "Las donaciones son voluntarias. Si hay un problema con la transacción, contacta a tu proveedor de pago." },
     { q: "¿Y si quiero apoyar y no tengo dinero?", a: "Pon una estrella al repo, comparte esta página o reporta un error. ¡Eso ya ayuda muchísimo!" }
   ],
-  footNote: "Hecho con HTML a secas. Sin rastreadores."
+  footNote: "Hecho con HTML a secas."
 },
 
 /* ---------------- Français ---------------- */
@@ -293,7 +293,7 @@ fr: {
   headline: "Offrez-moi un thé glacé, le code continue de tourner.",
   lead: "Tous mes projets sont gratuits et open source. Si l'un d'eux vous fait gagner du temps, le moindre don m'aide à l'entretenir.",
   ctaDonate: "Envoyer un soutien", ctaTelegram: "Telegram", ctaFacebook: "Facebook",
-  badge1: "code public sur GitHub", badge2: "sans traqueurs",
+  badge1: "code public sur GitHub", badge2: "gratuit pour toujours",
   proofProjects: "projets open source publics", proofCommits: "commits au total",
   tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Banque", tabWallet: "Portefeuille",
   qrHint: "Ouvrez l'application de votre banque ou portefeuille, choisissez Scanner, puis saisissez le montant.",
@@ -325,7 +325,7 @@ fr: {
     { q: "Puis-je demander un remboursement ?", a: "Les dons sont volontaires. En cas de problème avec une transaction, contactez votre prestataire de paiement." },
     { q: "Et si je veux soutenir sans argent ?", a: "Mettez une étoile au dépôt, partagez cette page ou signalez un bug. Cela aide déjà énormément !" }
   ],
-  footNote: "Construit en HTML brut. Sans traqueurs."
+  footNote: "Construit en HTML brut."
 },
 
 /* ---------------- हिन्दी ---------------- */
@@ -337,7 +337,7 @@ hi: {
   headline: "मुझे एक आइस्ड टी पिला दो, कोड चलता रहे।",
   lead: "मेरे सारे प्रोजेक्ट मुफ़्त और ओपन सोर्स हैं। अगर कोई एक आपका समय बचाता है, तो छोटा सा भी सहयोग उसे बनाए रखने में मदद करता है।",
   ctaDonate: "सहयोग भेजें", ctaTelegram: "टेलीग्राम", ctaFacebook: "फ़ेसबुक",
-  badge1: "GitHub पर सार्वजनिक कोड", badge2: "कोई ट्रैकर नहीं",
+  badge1: "GitHub पर सार्वजनिक कोड", badge2: "हमेशा मुफ़्त",
   proofProjects: "सार्वजनिक ओपन सोर्स प्रोजेक्ट", proofCommits: "कुल कमिट",
   tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "बैंक", tabWallet: "ई-वॉलेट",
   qrHint: "किसी भी बैंक या ई-वॉलेट ऐप को खोलें, स्कैन चुनें, फिर राशि भरें।",
@@ -369,7 +369,7 @@ hi: {
     { q: "क्या मैं पैसे वापस माँग सकता हूँ?", a: "दान स्वैच्छिक है। लेनदेन में दिक्कत हो तो अपने भुगतान प्रोवाइडर से संपर्क करें।" },
     { q: "अगर पैसे नहीं हैं तो कैसे समर्थन करें?", a: "रिपो को स्टार दें, यह पेज शेयर करें, या बग रिपोर्ट करें। वह भी बहुत मदद करता है!" }
   ],
-  footNote: "सादे HTML से बना। कोई ट्रैकर नहीं।"
+  footNote: "सादे HTML से बना।"
 },
 
 /* ---------------- 日本語 ---------------- */
@@ -381,7 +381,7 @@ ja: {
   headline: "アイスティーをおごってください。コードが動き続けます。",
   lead: "私のプロジェクトはすべて無料のオープンソースです。どれか一つでも時間を節約できたなら、少額の支援もメンテナンスに役立ちます。",
   ctaDonate: "支援を送る", ctaTelegram: "Telegram", ctaFacebook: "Facebook",
-  badge1: "GitHub 上の公開コード", badge2: "トラッカーなし",
+  badge1: "GitHub 上の公開コード", badge2: "ずっと無料",
   proofProjects: "公開中のオープンソースプロジェクト", proofCommits: "合計コミット数",
   tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "銀行", tabWallet: "ウォレット",
   qrHint: "銀行またはウォレットのアプリを開き、スキャンを選んで金額を入力してください。",
@@ -413,7 +413,7 @@ ja: {
     { q: "返金はできますか？", a: "寄付は自発的なものです。取引に問題がある場合は決済事業者へご連絡ください。" },
     { q: "お金がなくても支援できますか？", a: "リポジトリにスターを付けたり、このページを共有したり、バグを報告してください。それだけでも大いに役立ちます！" }
   ],
-  footNote: "シンプルな HTML 製。トラッカーなし。"
+  footNote: "シンプルな HTML 製。"
 },
 
 /* ---------------- Português ---------------- */
@@ -425,7 +425,7 @@ pt: {
   headline: "Pague um chá gelado para mim e o código continua rodando.",
   lead: "Todos os meus projetos são gratuitos e de código aberto. Se algum deles economiza seu tempo, qualquer contribuição me ajuda a mantê-lo.",
   ctaDonate: "Enviar apoio", ctaTelegram: "Telegram", ctaFacebook: "Facebook",
-  badge1: "código público no GitHub", badge2: "sem rastreadores",
+  badge1: "código público no GitHub", badge2: "grátis para sempre",
   proofProjects: "projetos públicos de código aberto", proofCommits: "commits no total",
   tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Banco", tabWallet: "Carteira",
   qrHint: "Abra o app do seu banco ou carteira, escolha Escanear e digite o valor.",
@@ -457,7 +457,7 @@ pt: {
     { q: "Posso pedir reembolso?", a: "Doações são voluntárias. Em caso de problema com a transação, fale com o seu provedor de pagamento." },
     { q: "E se eu quiser apoiar sem dinheiro?", a: "Dê uma estrela ao repositório, compartilhe esta página ou reporte um bug. Já ajuda muito!" }
   ],
-  footNote: "Feito em HTML puro. Sem rastreadores."
+  footNote: "Feito em HTML puro."
 },
 
 /* ---------------- Русский ---------------- */
@@ -469,7 +469,7 @@ ru: {
   headline: "Купите мне холодный чай, и код продолжит работать.",
   lead: "Все мои проекты бесплатны и с открытым исходным кодом. Если один из них сэкономил вам время, любая помощь помогает мне его поддерживать.",
   ctaDonate: "Отправить поддержку", ctaTelegram: "Telegram", ctaFacebook: "Facebook",
-  badge1: "публичный код на GitHub", badge2: "без трекеров",
+  badge1: "публичный код на GitHub", badge2: "бесплатно навсегда",
   proofProjects: "публичных open source проектов", proofCommits: "коммитов всего",
   tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "Банк", tabWallet: "Кошелёк",
   qrHint: "Откройте приложение банка или кошелька, выберите «Сканировать» и введите сумму.",
@@ -501,7 +501,7 @@ ru: {
     { q: "Можно ли запросить возврат?", a: "Пожертвования добровольные. Если с операцией возникла проблема, обратитесь в свой платёжный сервис." },
     { q: "Что если я хочу поддержать, но у меня нет денег?", a: "Поставьте звезду репозиторию, поделитесь этой страницей или сообщите об ошибке. Это тоже очень помогает!" }
   ],
-  footNote: "Сделано на чистом HTML. Без трекеров."
+  footNote: "Сделано на чистом HTML."
 },
 
 /* ---------------- 中文 ---------------- */
@@ -513,7 +513,7 @@ zh: {
   headline: "请我喝杯冰茶，让代码继续跑下去。",
   lead: "我的所有项目都免费且开源。只要其中一个帮你省了时间，再小的支持也能帮我把它维护下去。",
   ctaDonate: "送出支持", ctaTelegram: "Telegram", ctaFacebook: "Facebook",
-  badge1: "GitHub 上的公开代码", badge2: "无追踪器",
+  badge1: "GitHub 上的公开代码", badge2: "永久免费",
   proofProjects: "个公开开源项目", proofCommits: "次提交总数",
   tabQris: "QRIS", tabPaypal: "PayPal", tabBank: "银行", tabWallet: "电子钱包",
   qrHint: "打开任意银行或电子钱包应用，选择扫码，然后输入金额。",
@@ -545,7 +545,7 @@ zh: {
     { q: "可以申请退款吗？", a: "捐赠是自愿的。如果交易出现问题，请联系你的支付服务商。" },
     { q: "想支持但没有钱怎么办？", a: "给仓库点个 star、分享这个页面，或者报个 bug。这些都帮了大忙！" }
   ],
-  footNote: "纯 HTML 制作。无追踪器。"
+  footNote: "纯 HTML 制作。"
 }
 
 };

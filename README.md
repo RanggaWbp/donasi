@@ -1,7 +1,7 @@
 # 🥤 Traktir Es Teh — Halaman Donasi
 
 Landing page donasi untuk proyek open source. HTML, CSS, dan JavaScript biasa —
-**tanpa framework, tanpa build step, tanpa pelacak**. Buka `index.html` langsung di browser atau deploy ke GitHub Pages.
+**tanpa framework dan tanpa build step**. Buka `index.html` langsung di browser atau deploy ke GitHub Pages.
 
 Demo: https://ranggawbp.github.io/donasi/
 
@@ -15,7 +15,6 @@ Demo: https://ranggawbp.github.io/donasi/
 - **Dinding sponsor**, **FAQ**, dan **badge** — semuanya dapat dikonfigurasi.
 - **Dark mode** (mengikuti sistem + toggle manual), **responsif** penuh, dan **aksesibel** (tab keyboard, ARIA, fokus terlihat).
 - **Slot iklan opsional** — `<head>` sudah ada komentar penanda untuk Google AdSense.
-- **Tanpa pelacak** — nol cookie, nol analitik, nol request pelacak.
 
 ## 🚀 Cara pakai
 
@@ -75,7 +74,7 @@ Salin angkanya ke `commits` di `CONFIG.projects`. Untuk repo baru, tambahkan sat
 
 ### Iklan (opsional)
 
-`<head>` sudah berisi komentar penanda tempat menempelkan skrip Google AdSense setelah akun Anda disetujui. **Pertimbangkan risikonya** — halaman ini berisi data keuangan (nomor rekening, QRIS). Bercampurnya pelacak iklan dengan halaman pembayaran adalah risiko keamanan dan kepercayaan. Mendukung proyek secara langsung lebih etis daripada menjual perhatian pendukung.
+`<head>` sudah berisi komentar penanda tempat menempelkan skrip Google AdSense setelah akun Anda disetujui. **Pertimbangkan risikonya**: halaman ini berisi data keuangan (nomor rekening, QRIS). Bercampurnya iklan dengan halaman pembayaran adalah risiko keamanan dan kepercayaan. Mendukung proyek secara langsung lebih etis daripada menjual perhatian pendukung.
 
 ## 🔒 Privasi
 

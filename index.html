@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Traktir Es Teh · Dukung Proyek Open Source RanggaWbp</title>
-<meta name="description" content="Dukung proyek open source RanggaWbp lewat QRIS, PayPal, transfer bank, atau e-wallet. Semua proyek gratis dan terbuka.">
+<meta name="description" content="Dukung proyek open source RanggaWbp lewat QRIS, PayPal, transfer bank, atau e-wallet.">
 <meta name="author" content="RanggaWbp">
 <meta name="theme-color" content="#4B3FE0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#8F86FF" media="(prefers-color-scheme: dark)">
@@ -320,7 +320,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span id="foot">© <span id="yr"></span></span>
-    <span><a id="footTg" href="#" target="_blank" rel="noopener">t.me/wbprangga</a> · <a id="footFb" href="#" target="_blank" rel="noopener">Facebook</a> · <a id="footXda" href="#" target="_blank" rel="noopener">XDA</a> · <span data-i18n="footNote">Dibuat dengan HTML biasa. Tanpa pelacak.</span></span>
+    <span><a id="footTg" href="#" target="_blank" rel="noopener">t.me/wbprangga</a> · <a id="footFb" href="#" target="_blank" rel="noopener">Facebook</a> · <a id="footXda" href="#" target="_blank" rel="noopener">XDA</a> · <span data-i18n="footNote">Dibuat dengan HTML biasa.</span></span>
   </div>
 </footer>
 
@@ -345,8 +345,8 @@ const CONFIG = {
     { name: "Bank Jago", number: "1095 5286 1747", holder: "Rangga Jati Wisesa Bintoro Putra" }
   ],
   wallets: [
-    { name: "ShopeePay", number: "085806047666", link: "https://app.u.shopeepay.co.id/u/cCtAKzFxurjNqKRtMHxWx" },
-    { name: "OVO",       number: "085806047666" }
+    { name: "ShopeePay", number: "085806047666", holder: "Rangga Jati Wisesa Bintoro Putra", link: "https://app.u.shopeepay.co.id/u/cCtAKzFxurjNqKRtMHxWx" },
+    { name: "OVO",       number: "085806047666", holder: "Rangga Jati Wisesa Bintoro Putra" }
   ],
 
   githubSponsors: false,              // tombol GitHub Sponsors di hero
@@ -444,7 +444,7 @@ const CONFIG = {
     {
       name: "donasi",
       url: "https://github.com/RanggaWbp/donasi",
-      desc: "Landing page donasi untuk proyek open source: QRIS & PayPal statis, bank, e-wallet, 12 bahasa. Tanpa pelacak.",
+      desc: "Landing page donasi untuk proyek open source: QRIS & PayPal statis, bank, e-wallet, 12 bahasa.",
       commits: 5
     },
     {
@@ -589,13 +589,15 @@ function copyRow(title, number, sub, extra){
     el("div", { class: "row-actions" }, [b, ...(extra ? [extra] : [])])
   ]);
 }
-/* Baris e-wallet: kalau punya deep link, tambahkan tombol yang langsung
-   membuka aplikasinya (mis. ShopeePay universal link). */
+/* Baris e-wallet: pemilik rekening ditampilkan seperti di bank, dan kalau
+   punya deep link tambahkan tombol yang langsung membuka aplikasinya
+   (mis. ShopeePay universal link). */
 function walletRow(w){
   const deep = w.link
     ? el("a", { class: "btn small", href: w.link, target: "_blank", rel: "noopener", text: t("openApp") })
     : null;
-  return copyRow(w.name, w.number, null, deep);
+  const sub = w.holder ? t("holder") + " " + w.holder : null;
+  return copyRow(w.name, w.number, sub, deep);
 }
 function renderMethods(){
   const br = $("#bankRows"), wr = $("#walletRows");
