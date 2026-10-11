@@ -49,7 +49,7 @@ id: {
   wallEmpty: "Jadilah yang pertama mendukung — scan QRIS di atas atau pilih metode lainnya.",
   usesHead: "Ke mana dukungan Anda pergi",
   uses: [
-    { t: "Server dan domain", d: "Biaya hosting demo, dokumentasi, dan CI yang jalan tiap ada perubahan." },
+    { t: "Beli token AI", d: "Biaya token model AI untuk menulis, meninjau, dan men-debug kode." },
     { t: "Waktu perawatan", d: "Membalas issue, meninjau pull request, dan memperbaiki bug lebih cepat." },
     { t: "Fitur baru", d: "Fitur yang paling sering diminta dikerjakan lebih dulu, dengan catatan rilis yang jelas." }
   ],
@@ -93,7 +93,7 @@ en: {
   wallEmpty: "Be the first to support — scan the QRIS above or pick another method.",
   usesHead: "Where your support goes",
   uses: [
-    { t: "Servers and domains", d: "Hosting for demos, documentation, and CI that runs on every change." },
+    { t: "Buying AI tokens", d: "Cost of AI model tokens for writing, reviewing, and debugging code." },
     { t: "Maintenance time", d: "Answering issues, reviewing pull requests, and fixing bugs faster." },
     { t: "New features", d: "The most requested features get built first, with clear release notes." }
   ],
@@ -137,7 +137,7 @@ ar: {
   wallEmpty: "كن أول من يدعم — امسح رمز QRIS بالأعلى أو اختر وسيلة أخرى.",
   usesHead: "أين يذهب دعمك",
   uses: [
-    { t: "الخوادم والنطاقات", d: "استضافة العروض التوضيحية والتوثيق وCI الذي يعمل مع كل تغيير." },
+    { t: "شراء رصيد الذكاء الاصطناعي", d: "تكلفة رصيد نماذج الذكاء الاصطناعي لكتابة الكود ومراجعته وتصحيحه." },
     { t: "وقت الصيانة", d: "الرد على التذاكر ومراجعة طلبات السحب وإصلاح الأخطاء أسرع." },
     { t: "مزايا جديدة", d: "المزايا الأكثر طلباً تُنفَّذ أولاً مع سجل إصدارات واضح." }
   ],
@@ -181,7 +181,7 @@ bn: {
   wallEmpty: "প্রথম সমর্থক হন — উপরের QRIS স্ক্যান করুন বা অন্য উপায় বেছে নিন।",
   usesHead: "আপনার সহায়তা কোথায় যায়",
   uses: [
-    { t: "সার্ভার ও ডোমেইন", d: "ডেমো, ডকুমেন্টেশন এবং প্রতিটি পরিবর্তনে চলা CI-এর হোস্টিং খরচ।" },
+    { t: "এআই টোকেন কেনা", d: "কোড লেখা, রিভিউ ও ডিবাগ করতে এআই মডেলের টোকেনের খরচ।" },
     { t: "রক্ষণাবেক্ষণের সময়", d: "ইশ্যুর উত্তর, পুল রিভিউ এবং বাগ দ্রুত ঠিক করা।" },
     { t: "নতুন ফিচার", d: "সবচেয়ে বেশি চাওয়া ফিচার আগে তৈরি হয়, স্পষ্ট রিলিজ নোটসহ।" }
   ],
@@ -225,7 +225,7 @@ de: {
   wallEmpty: "Sei die Erste oder der Erste — scanne den QRIS-Code oben oder wähle eine andere Methode.",
   usesHead: "Wohin deine Unterstützung fließt",
   uses: [
-    { t: "Server und Domains", d: "Hosting für Demos, Dokumentation und CI, der bei jeder Änderung läuft." },
+    { t: "KI-Tokens kaufen", d: "Kosten für KI-Modell-Tokens zum Schreiben, Prüfen und Debuggen von Code." },
     { t: "Wartungszeit", d: "Issues beantworten, Pull Requests prüfen und Bugs schneller beheben." },
     { t: "Neue Funktionen", d: "Die meistgefragten Features zuerst, mit klaren Release Notes." }
   ],
@@ -269,7 +269,7 @@ es: {
   wallEmpty: "Sé la primera persona en apoyar: escanea el QRIS de arriba o elige otro método.",
   usesHead: "Adónde va tu apoyo",
   uses: [
-    { t: "Servidores y dominios", d: "Alojamiento de demos, documentación y CI que se ejecuta con cada cambio." },
+    { t: "Comprar tokens de IA", d: "Coste de los tokens de modelos de IA para escribir, revisar y depurar código." },
     { t: "Tiempo de mantenimiento", d: "Responder issues, revisar pull requests y corregir errores más rápido." },
     { t: "Funciones nuevas", d: "Las funciones más pedidas se hacen primero, con notas de versión claras." }
   ],
@@ -313,7 +313,7 @@ fr: {
   wallEmpty: "Soyez le premier à soutenir — scannez le QRIS ci-dessus ou choisissez une autre méthode.",
   usesHead: "Où va votre soutien",
   uses: [
-    { t: "Serveurs et noms de domaine", d: "Hébergement des démos, de la documentation et de la CI qui tourne à chaque modification." },
+    { t: "Acheter des jetons d'IA", d: "Coût des jetons de modèles d'IA pour écrire, relire et déboguer le code." },
     { t: "Temps de maintenance", d: "Répondre aux issues, relire les pull requests et corriger les bugs plus vite." },
     { t: "Nouvelles fonctionnalités", d: "Les fonctionnalités les plus demandées sont traitées en premier, avec des notes de version claires." }
   ],
@@ -357,7 +357,7 @@ hi: {
   wallEmpty: "पहला समर्थक बनें — ऊपर का QRIS स्कैन करें या कोई और तरीका चुनें।",
   usesHead: "आपका सहयोग कहाँ जाता है",
   uses: [
-    { t: "सर्वर और डोमेन", d: "डेमो, दस्तावेज़ और हर बदलाव पर चलने वाले CI की होस्टिंग लागत।" },
+    { t: "एआई टोकन खरीदना", d: "कोड लिखने, समीक्षा और डीबग करने के लिए एआई मॉडल टोकन का खर्च।" },
     { t: "रखरखाव का समय", d: "इश्यू के जवाब, पुल रिव्यू और बग तेज़ी से ठीक करना।" },
     { t: "नए फीचर", d: "सबसे ज़्यादा माँगे गए फीचर पहले, साफ़ रिलीज़ नोट्स के साथ।" }
   ],
@@ -401,7 +401,7 @@ ja: {
   wallEmpty: "最初の支援者になってください — 上の QRIS をスキャンするか別の方法を選んでください。",
   usesHead: "支援はどこに使われるか",
   uses: [
-    { t: "サーバーとドメイン", d: "デモ・ドキュメント・変更のたびに走る CI のホスティング費用。" },
+    { t: "AI トークンの購入", d: "コードの作成・レビュー・デバッグに使う AI モデルのトークン費用。" },
     { t: "メンテナンスの時間", d: "Issue への返信、プルリクエストのレビュー、バグ修正の高速化。" },
     { t: "新機能", d: "要望の多い機能から順に、明確なリリースノート付きで実装します。" }
   ],
@@ -445,7 +445,7 @@ pt: {
   wallEmpty: "Seja o primeiro a apoiar — escaneie o QRIS acima ou escolha outro método.",
   usesHead: "Para onde vai o seu apoio",
   uses: [
-    { t: "Servidores e domínios", d: "Hospedagem de demos, documentação e CI que roda a cada alteração." },
+    { t: "Comprar tokens de IA", d: "Custo dos tokens de modelos de IA para escrever, revisar e depurar código." },
     { t: "Tempo de manutenção", d: "Responder issues, revisar pull requests e corrigir bugs mais rápido." },
     { t: "Novos recursos", d: "Os recursos mais pedidos vêm primeiro, com notas de versão claras." }
   ],
@@ -489,7 +489,7 @@ ru: {
   wallEmpty: "Станьте первым — отсканируйте QRIS выше или выберите другой способ.",
   usesHead: "Куда идёт ваша поддержка",
   uses: [
-    { t: "Серверы и домены", d: "Хостинг демо, документации и CI, запускаемого при каждом изменении." },
+    { t: "Покупка токенов ИИ", d: "Стоимость токенов ИИ-моделей для написания, ревью и отладки кода." },
     { t: "Время на поддержку", d: "Ответы на issues, ревью pull request и более быстрые исправления багов." },
     { t: "Новые функции", d: "Самые запрашиваемые функции делаются первыми, с понятными release notes." }
   ],
@@ -533,7 +533,7 @@ zh: {
   wallEmpty: "成为第一位支持者 —— 扫描上面的 QRIS，或选择其他方式。",
   usesHead: "你的支持用在了哪里",
   uses: [
-    { t: "服务器与域名", d: "演示、文档以及每次改动都会运行的 CI 的托管费用。" },
+    { t: "购买 AI 代币额度", d: "用于编写、审查和调试代码的 AI 模型 token 费用。" },
     { t: "维护时间", d: "回复 issue、审阅 pull request，以及更快地修复 bug。" },
     { t: "新功能", d: "呼声最高的功能优先实现，并附上清晰的发布说明。" }
   ],
