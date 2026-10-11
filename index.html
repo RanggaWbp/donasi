@@ -33,6 +33,8 @@
   --bg:#F5F4FB; --paper:#FFFFFF; --ink:#17153B; --muted:#5E5B80; --line:#D9D6EE;
   --brand:#4B3FE0; --brand-ink:#FFFFFF; --mango:#FFC93C; --qris:#E11D2E; --ok:#0E8F5B;
   --shadow:#17153B;
+  --r:14px;        /* satu skala radius untuk semua kotak */
+  --r-pill:999px;  /* hanya tombol, badge, tag */
   --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
   --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
@@ -51,7 +53,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
 img{max-width:100%;display:block}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--mango);outline-offset:3px;border-radius:6px}
+:focus-visible{outline:3px solid var(--mango);outline-offset:3px;border-radius:var(--r-pill)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em}
 h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800}
@@ -59,7 +61,7 @@ h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:700}
 h3{font-size:1.15rem;font-weight:700}
 p{margin:0}
 .muted{color:var(--muted)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:600 1rem var(--body);padding:.85rem 1.3rem;border-radius:12px;border:2px solid var(--ink);background:var(--brand);color:var(--brand-ink);text-decoration:none;cursor:pointer;box-shadow:3px 3px 0 var(--shadow);transition:transform .12s,box-shadow .12s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:600 1rem var(--body);padding:.85rem 1.3rem;border-radius:var(--r);border:2px solid var(--ink);background:var(--brand);color:var(--brand-ink);text-decoration:none;cursor:pointer;box-shadow:3px 3px 0 var(--shadow);transition:transform .12s,box-shadow .12s}
 .btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--shadow)}
 .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
 .btn.ghost{background:transparent;color:var(--ink)}
@@ -72,10 +74,10 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .who{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:600}
 .who img,.avatar-fallback{width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:var(--mango);object-fit:cover}
 nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-nav a.link{padding:.4rem .7rem;text-decoration:none;border-radius:8px;color:var(--muted);font-weight:500}
+nav a.link{padding:.4rem .7rem;text-decoration:none;border-radius:var(--r);color:var(--muted);font-weight:500}
 nav a.link:hover{color:var(--ink);background:var(--paper)}
-.icon-btn{width:40px;height:40px;border-radius:10px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;font-size:1.1rem}
-.lang{width:auto;height:40px;padding:0 .45rem;border-radius:10px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);font:600 .8rem var(--body);cursor:pointer}
+.icon-btn{width:40px;height:40px;border-radius:var(--r);border:2px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;font-size:1.1rem}
+.lang{width:auto;height:40px;padding:0 .45rem;border-radius:var(--r);border:2px solid var(--ink);background:var(--paper);color:var(--ink);font:600 .8rem var(--body);cursor:pointer}
 
 /* hero */
 .hero{padding:40px 0 72px}
@@ -86,11 +88,11 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 .proof{display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
 .proof b{display:block;font:800 1.6rem var(--display);color:var(--ink)}
 .badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.badge{font:600 .85rem var(--body);padding:.35rem .8rem;border-radius:999px;border:2px solid var(--line);color:var(--muted);background:var(--paper)}
+.badge{font:600 .85rem var(--body);padding:.35rem .8rem;border-radius:var(--r-pill);border:2px solid var(--line);color:var(--muted);background:var(--paper)}
 .badge b{font-weight:800;color:var(--ink)}
 
 /* support card */
-.support{background:var(--paper);border:2px solid var(--ink);border-radius:22px;box-shadow:8px 8px 0 var(--shadow);padding:24px;scroll-margin-top:96px}
+.support{background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);box-shadow:8px 8px 0 var(--shadow);padding:24px;scroll-margin-top:96px}
 .support.flash{animation:flash 1.1s ease-out}
 @keyframes flash{
   0%,100%{box-shadow:8px 8px 0 var(--shadow)}
@@ -99,11 +101,11 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 @media (prefers-reduced-motion:reduce){.support.flash{animation:none;box-shadow:8px 8px 0 var(--mango),0 0 0 6px var(--mango)}}
 
 .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:16px}
-.tab{font:600 .9rem var(--body);padding:.6rem .3rem;border-radius:10px;border:2px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab{font:600 .9rem var(--body);padding:.6rem .3rem;border-radius:var(--r);border:2px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
 .tab[aria-selected="true"]{border-color:var(--ink);color:var(--ink);background:var(--bg)}
 .panel[hidden]{display:none}
 .qris-box{display:grid;place-items:center;text-align:center;gap:12px}
-.qris-frame{width:100%;max-width:280px;aspect-ratio:1;border:2px solid var(--ink);border-radius:16px;background:#fff;display:grid;place-items:center;overflow:hidden;position:relative}
+.qris-frame{width:100%;max-width:280px;aspect-ratio:1;border:2px solid var(--ink);border-radius:var(--r);background:#fff;display:grid;place-items:center;overflow:hidden;position:relative}
 .qris-frame::before{content:"QRIS";position:absolute;top:0;left:0;right:0;background:var(--qris);color:#fff;font:800 .8rem var(--display);padding:4px;letter-spacing:.06em;z-index:2}
 #ppQrFrame::before{content:"PayPal";background:#003087}
 .qris-frame img{width:100%;height:100%;object-fit:contain;padding:28px 10px 10px}
@@ -111,7 +113,7 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 .empty{padding:28px 18px;text-align:center;color:#5E5B80;font-size:.9rem}
 .empty code{background:#eee;padding:1px 5px;border-radius:4px}
 .rows{display:grid;gap:10px}
-.row{display:flex;align-items:center;justify-content:space-between;gap:12px;border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--paper)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;border:2px solid var(--line);border-radius:var(--r);padding:10px 12px;background:var(--paper)}
 .row b{display:block}
 .row small{color:var(--muted)}
 .row-actions{display:flex;gap:6px;flex-wrap:wrap;flex:none}
@@ -123,16 +125,17 @@ section.block{padding:72px 0;border-top:2px solid var(--line)}
 .head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:32px}
 .head p{max-width:32em;color:var(--muted)}
 
-.repo-list{display:grid;gap:0;border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:var(--paper)}
+.repo-list{display:grid;gap:0;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;background:var(--paper)}
 .repo{display:grid;grid-template-columns:1fr auto;gap:8px 20px;padding:18px 22px;text-decoration:none;border-bottom:2px solid var(--line)}
 .repo:last-child{border-bottom:0}
 .repo:hover{background:var(--bg)}
 .repo h3{font-size:1.1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.repo .fork{font:600 .7rem var(--body);letter-spacing:.02em;text-transform:uppercase;padding:.15rem .45rem;border-radius:6px;border:2px solid var(--line);color:var(--muted);background:var(--bg)}
+.repo .fork{font:600 .7rem var(--body);letter-spacing:.02em;text-transform:uppercase;padding:.15rem .45rem;border-radius:var(--r-pill);border:2px solid var(--line);color:var(--muted);background:var(--bg)}
 .repo p{grid-column:1;color:var(--muted);font-size:.95rem}
 .repo .meta{grid-row:1/3;grid-column:2;align-self:center;text-align:right;color:var(--muted);font-size:.9rem}
+.repo .num{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
 
-.uses{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink);border-radius:18px;overflow:hidden}
+.uses{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden}
 .uses>div{padding:24px;background:var(--paper)}
 .uses>div+div{border-left:2px solid var(--line)}
 .uses h3{margin-bottom:8px}
@@ -140,15 +143,15 @@ section.block{padding:72px 0;border-top:2px solid var(--line)}
 
 /* sponsor wall */
 .wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
-.avatar-cell{display:grid;place-items:center;gap:8px;padding:18px 10px;border:2px solid var(--line);border-radius:14px;background:var(--paper);text-align:center}
+.avatar-cell{display:grid;place-items:center;gap:8px;padding:18px 10px;border:2px solid var(--line);border-radius:var(--r);background:var(--paper);text-align:center}
 .avatar-cell img{width:56px;height:56px;border-radius:50%;border:2px solid var(--ink)}
 .avatar-cell span{font-size:.9rem;font-weight:600}
 .avatar-cell small{font-size:.8rem;color:var(--muted)}
-.wall-empty{border:2px dashed var(--line);border-radius:14px;padding:22px;text-align:center;color:var(--muted);grid-column:1/-1}
+.wall-empty{border:2px dashed var(--line);border-radius:var(--r);padding:22px;text-align:center;color:var(--muted);grid-column:1/-1}
 
 /* FAQ */
 .faq{display:grid;gap:12px}
-details.qa{border:2px solid var(--line);border-radius:14px;background:var(--paper);padding:0 18px}
+details.qa{border:2px solid var(--line);border-radius:var(--r);background:var(--paper);padding:0 18px}
 details.qa summary{cursor:pointer;padding:16px 0;font-weight:600;list-style:none}
 details.qa summary::-webkit-details-marker{display:none}
 details.qa summary::after{content:"+";float:right;font-size:1.3rem;line-height:1.2;color:var(--muted)}
@@ -159,8 +162,43 @@ footer{padding:40px 0 56px;border-top:2px solid var(--line);color:var(--muted);f
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 /* toast */
-#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:.7rem 1.1rem;border-radius:12px;font-weight:600;transition:transform .25s;z-index:30}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:.7rem 1.1rem;border-radius:var(--r);font-weight:600;transition:transform .25s;z-index:30}
 #toast.show{transform:translate(-50%,0)}
+
+/* ---------- gerak: masuk saat di-scroll ----------
+   CSS murni, tanpa JavaScript dan tanpa library: scroll jadi timeline.
+   Semua aturan di dalam @supports, jadi browser tanpa animation-timeline
+   hanya melihat konten statis (tidak ada yang tersembunyi). */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .head, .repo, .uses>div, details.qa, .wall-empty, .wall .avatar-cell, #xdaNote{
+      animation:rise .9s linear both;
+      animation-timeline:view();
+      /* Akhir range harus SELALU tercapai. "entry 92%" berhenti sedikit
+         sebelum elemen masuk penuh, jadi masih ada sisa scroll di ujung
+         dokumen. Memakai "cover" atau angka di atas 100% membuat elemen
+         terakhir berhenti di tengah animasi (opacity 0.84). */
+      animation-range:entry 0% entry 92%;
+    }
+    /* Geser AWAL range, bukan akhirnya, supaya antar kolom tidak serentak
+       (selisih 6% dari tinggi elemen, terasa seperti stagger 30 sampai 80ms). */
+    .uses>div:nth-child(2), .repo:nth-child(2), .wall .avatar-cell:nth-child(2){animation-range:entry 6% entry 92%}
+    .uses>div:nth-child(3), .repo:nth-child(3), .wall .avatar-cell:nth-child(3){animation-range:entry 12% entry 92%}
+    .repo:nth-child(4), .wall .avatar-cell:nth-child(4){animation-range:entry 18% entry 92%}
+    @keyframes rise{
+      from{opacity:0;transform:translateY(18px)}
+      to{opacity:1;transform:none}
+    }
+  }
+}
+
+/* ---------- daftar proyek: 6 baris dulu ---------- */
+.repo.hide{display:none}
+#reposMore{margin-top:16px}
+@media (prefers-reduced-motion:reduce){
+  .repo.hide{display:block}   /* tanpa gerak, jangan sembunyikan apa pun */
+  #reposMore{display:none}
+}
 
 @media (max-width:860px){
   .hero .wrap{grid-template-columns:1fr;gap:40px}
@@ -249,6 +287,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <p data-i18n="reposLead">Semua kode di bawah ini publik di GitHub dan dihitung otomatis dari jumlah commit.</p>
     </div>
     <div class="repo-list" id="repos"><div class="repo"><p>Memuat proyek…</p></div></div>
+    <button class="btn small ghost" id="reposMore" type="button" hidden></button>
     <p class="pp-note" id="xdaNote"></p>
   </div>
 </section>
@@ -321,7 +360,7 @@ const CONFIG = {
   facebook: "https://web.facebook.com/rangga.wbp.5",
   xda: "https://xdaforums.com/m/rangga-wbp.10154013/",
 
-  /* Daftar proyek STASIS — tidak ditarik dari API, jadi tidak ada request ke GitHub.
+  /* Daftar proyek STASIS; tidak ditarik dari API, jadi tidak ada request ke GitHub.
      Semua repo akun ini ikut, termasuk fork (ditandai `fork: true`).
      Perbarui `commits` dengan:
        gh api repos/RanggaWbp/NAMA_REPO/commits?per_page=1 -i | grep -o 'page=[0-9]*' | tail -1
@@ -349,7 +388,7 @@ const CONFIG = {
     {
       name: "android_kernel_xiaomi_jasmine_sprout",
       url: "https://github.com/RanggaWbp/android_kernel_xiaomi_jasmine_sprout",
-      desc: "Xiaomi Mi A2 (jasmine_sprout) custom kernel — Linux 4.4 SDM660, ReSukiSU + SUSFS + Re:Kernel + NoMount + Baseband-Guard + EAS. Dedicated single-device tree.",
+      desc: "Xiaomi Mi A2 (jasmine_sprout) custom kernel, Linux 4.4 SDM660, ReSukiSU + SUSFS + Re:Kernel + NoMount + Baseband-Guard + EAS. Dedicated single-device tree.",
       commits: 625930
     },
     {
@@ -405,7 +444,7 @@ const CONFIG = {
     {
       name: "donasi",
       url: "https://github.com/RanggaWbp/donasi",
-      desc: "Landing page donasi untuk proyek open source — QRIS & PayPal statis, bank, e-wallet, 12 bahasa. Tanpa pelacak.",
+      desc: "Landing page donasi untuk proyek open source: QRIS & PayPal statis, bank, e-wallet, 12 bahasa. Tanpa pelacak.",
       commits: 5
     },
     {
@@ -583,8 +622,9 @@ function renderUses(){
 
 /* ---------- daftar proyek (statis) ---------- */
 const nf = n => new Intl.NumberFormat(lang).format(n);
+const REPO_VISIBLE = 6;              // sisanya di balik tombol "tampilkan semua"
 /* Bahasa Slavia butuh bentuk jamak berbeda: 1 коммит, 3 коммита, 5 коммитов.
-   `one`/`few` opsional — kalau tidak ada, jatuh ke bentuk jamak biasa. */
+   `one`/`few` opsional; kalau tidak ada, jatuh ke bentuk jamak biasa. */
 function plural(n, many, one, few){
   const L = I18N[lang] || {};
   if (n === 1 && one && L[one]) return L[one];
@@ -592,20 +632,60 @@ function plural(n, many, one, few){
   if (few && L[few] && m10 >= 2 && m10 <= 4 && !(m100 >= 12 && m100 <= 14)) return L[few];
   return t(many);
 }
+/* ---------- angka commit: naik dari 0 sekali saat masuk layar ---------- */
+let countUpDone = false;             // sudah pernah berhitung; jangan ulang saat ganti bahasa
+function countUp(root){
+  const nums = root.querySelectorAll(".num[data-count]");
+  if (!nums.length) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finish = () => nums.forEach(s => s.textContent = nf(+s.dataset.count));
+  if (reduce || countUpDone || !("IntersectionObserver" in window)) { finish(); return; }
+  nums.forEach(s => s.textContent = nf(0));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      io.disconnect();
+      countUpDone = true;
+      const t0 = performance.now(), dur = 900;
+      const step = now => {
+        const k = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - k, 3);          // ease-out: cepat dulu
+        nums.forEach(s => s.textContent = nf(Math.round(+s.dataset.count * eased)));
+        if (k < 1) requestAnimationFrame(step); else finish();
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.35 });
+  io.observe(nums[0]);
+}
+
+let reposExpanded = false;
 function renderRepos(){
   const box = $("#repos"); box.textContent = "";
   if (!CONFIG.projects.length) {
     box.append(el("div", { class: "repo" }, [el("p", { text: t("reposEmpty") })]));
     return;
   }
-  CONFIG.projects.forEach(r => box.append(el("a", { class: "repo", href: r.url, target: "_blank", rel: "noopener" }, [
-    el("h3", {}, [
-      document.createTextNode(r.name),
-      ...(r.fork ? [el("span", { class: "fork", text: t("forkTag") })] : [])
-    ]),
-    ...(r.desc ? [el("p", { text: r.desc })] : []),
-    el("div", { class: "meta", text: nf(r.commits) + " " + plural(r.commits, "metaCommits", "metaCommit1", "metaCommit2") })
-  ])));
+  CONFIG.projects.forEach((r, i) => {
+    const row = el("a", { class: "repo", href: r.url, target: "_blank", rel: "noopener" }, [
+      el("h3", {}, [
+        document.createTextNode(r.name),
+        ...(r.fork ? [el("span", { class: "fork", text: t("forkTag") })] : [])
+      ]),
+      ...(r.desc ? [el("p", { text: r.desc })] : []),
+      el("div", { class: "meta" }, [el("span", {
+        class: "num", "data-count": r.commits,
+        text: nf(r.commits)
+      }), document.createTextNode(" " + plural(r.commits, "metaCommits", "metaCommit1", "metaCommit2"))])
+    ]);
+    if (i >= REPO_VISIBLE && !reposExpanded) row.classList.add("hide");
+    box.append(row);
+  });
+  const more = $("#reposMore");
+  if (more) {
+    more.hidden = reposExpanded || CONFIG.projects.length <= REPO_VISIBLE;
+    more.textContent = t("reposMore") + " (" + (CONFIG.projects.length - REPO_VISIBLE) + ")";
+  }
   const note = $("#xdaNote");
   if (note) {
     note.textContent = "";
@@ -614,6 +694,7 @@ function renderRepos(){
       el("a", { class: "btn small ghost", href: CONFIG.xda, target: "_blank", rel: "noopener", text: "XDA · Rangga Wbp" })
     );
   }
+  countUp(box);
 }
 
 /* ---------- sponsor ---------- */
@@ -695,6 +776,15 @@ document.querySelectorAll('a[href="#support"]').forEach(a => {
   });
 });
 $("#support").addEventListener("animationend", e => e.target.classList.remove("flash"));
+
+/* Tombol "tampilkan semua" di daftar proyek */
+$("#reposMore").addEventListener("click", () => {
+  reposExpanded = true;
+  renderRepos();
+  const rows = document.querySelectorAll("#repos .repo");
+  const first = rows[REPO_VISIBLE];
+  if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+});
 
 renderAll();
 </script>
