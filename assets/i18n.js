@@ -48,6 +48,7 @@ id: {
   sponsorsHead: "Yang sudah mendukung",
   sponsorsHintEmpty: "Belum ada sponsor. Kabari saya di Telegram: t.me/wbprangga",
   sponsorsThanks: "Setiap nama di sini adalah dukungan nyata untuk proyek ini. Terima kasih!",
+  claimAsk: "Sudah pernah donasi tapi nama Anda belum ada di sini? Kabari saya di Telegram, nanti saya tambahkan.",
   wallEmpty: "Jadilah yang pertama mendukung. Scan QRIS di atas atau pilih metode lainnya.",
   usesHead: "Ke mana dukungan Anda pergi",
   uses: [
@@ -94,6 +95,7 @@ en: {
   sponsorsHead: "Who already supports this",
   sponsorsHintEmpty: "No sponsors yet. Message me on Telegram: t.me/wbprangga",
   sponsorsThanks: "Every name here is real support for this project. Thank you!",
+  claimAsk: "Already donated but your name is not here yet? Message me on Telegram and I will add it.",
   wallEmpty: "Be the first to support. Scan the QRIS above or pick another method.",
   usesHead: "Where your support goes",
   uses: [
@@ -140,6 +142,7 @@ ar: {
   sponsorsHead: "من يدعم هذا المشروع",
   sponsorsHintEmpty: "لا يوجد داعمون بعد. راسلني على تيليجرام: t.me/wbprangga",
   sponsorsThanks: "كل اسم هنا دعم حقيقي لهذا المشروع. شكراً لكم!",
+  claimAsk: "تبرّعت من قبل لكن اسمك غير موجود هنا؟ راسلني على تيليجرام وسأضيفه.",
   wallEmpty: "كن أول من يدعم. امسح رمز QRIS بالأعلى أو اختر وسيلة أخرى.",
   usesHead: "أين يذهب دعمك",
   uses: [
@@ -186,6 +189,7 @@ bn: {
   sponsorsHead: "যারা ইতিমধ্যে সমর্থন করছেন",
   sponsorsHintEmpty: "এখনো কোনো সমর্থক নেই। টেলিগ্রামে জানান: t.me/wbprangga",
   sponsorsThanks: "এখানকার প্রতিটি নাম এই প্রজেক্টের প্রতি সত্যিকারের সহায়তা। ধন্যবাদ!",
+  claimAsk: "আগে দান করেছেন কিন্তু আপনার নাম এখানে নেই? টেলিগ্রামে জানান, আমি যোগ করে দেব।",
   wallEmpty: "প্রথম সমর্থক হন। উপরের QRIS স্ক্যান করুন বা অন্য উপায় বেছে নিন।",
   usesHead: "আপনার সহায়তা কোথায় যায়",
   uses: [
@@ -232,6 +236,7 @@ de: {
   sponsorsHead: "Wer schon unterstützt",
   sponsorsHintEmpty: "Noch keine Unterstützer. Schreib mir auf Telegram: t.me/wbprangga",
   sponsorsThanks: "Jeder Name hier ist echte Unterstützung für dieses Projekt. Danke!",
+  claimAsk: "Schon gespendet, aber dein Name fehlt hier? Schreib mir auf Telegram, ich trage ihn ein.",
   wallEmpty: "Sei die Erste oder der Erste. Scanne den QRIS-Code oben oder wähle eine andere Methode.",
   usesHead: "Wohin deine Unterstützung fließt",
   uses: [
@@ -278,6 +283,7 @@ es: {
   sponsorsHead: "Quién ya apoya esto",
   sponsorsHintEmpty: "Aún no hay patrocinadores. Escríbeme por Telegram: t.me/wbprangga",
   sponsorsThanks: "Cada nombre aquí es apoyo real para este proyecto. ¡Gracias!",
+  claimAsk: "¿Ya donaste pero tu nombre no aparece aquí? Escríbeme por Telegram y lo añado.",
   wallEmpty: "Sé la primera persona en apoyar. Escanea el QRIS de arriba o elige otro método.",
   usesHead: "Adónde va tu apoyo",
   uses: [
@@ -324,6 +330,7 @@ fr: {
   sponsorsHead: "Ceux qui soutiennent déjà",
   sponsorsHintEmpty: "Pas encore de sponsor. Écrivez-moi sur Telegram : t.me/wbprangga",
   sponsorsThanks: "Chaque nom ici est un vrai soutien à ce projet. Merci !",
+  claimAsk: "Vous avez déjà fait un don mais votre nom n'apparaît pas ici ? Écrivez-moi sur Telegram, je l'ajouterai.",
   wallEmpty: "Soyez le premier à soutenir. Scannez le QRIS ci-dessus ou choisissez une autre méthode.",
   usesHead: "Où va votre soutien",
   uses: [
@@ -370,6 +377,7 @@ hi: {
   sponsorsHead: "जो पहले से समर्थन कर रहे हैं",
   sponsorsHintEmpty: "अभी कोई प्रायोजक नहीं है। टेलीग्राम पर संपर्क करें: t.me/wbprangga",
   sponsorsThanks: "यहाँ हर नाम इस प्रोजेक्ट के लिए सच्चा सहयोग है। धन्यवाद!",
+  claimAsk: "पहले दान किया है पर आपका नाम यहाँ नहीं है? टेलीग्राम पर बताएँ, मैं जोड़ दूँगा।",
   wallEmpty: "पहला समर्थक बनें। ऊपर का QRIS स्कैन करें या कोई और तरीका चुनें।",
   usesHead: "आपका सहयोग कहाँ जाता है",
   uses: [
@@ -416,6 +424,7 @@ ja: {
   sponsorsHead: "すでに支援してくれた方",
   sponsorsHintEmpty: "まだ支援者はいません。Telegram でご連絡ください: t.me/wbprangga",
   sponsorsThanks: "ここにある名前はすべて、このプロジェクトへの実際の支援です。ありがとうございます。",
+  claimAsk: "すでに支援したのに名前がない場合は、Telegram でご連絡ください。追加します。",
   wallEmpty: "最初の支援者になってください。上の QRIS をスキャンするか別の方法を選んでください。",
   usesHead: "支援はどこに使われるか",
   uses: [
@@ -462,6 +471,7 @@ pt: {
   sponsorsHead: "Quem já apoia isto",
   sponsorsHintEmpty: "Ainda não há apoiadores. Fale comigo no Telegram: t.me/wbprangga",
   sponsorsThanks: "Cada nome aqui é apoio real a este projeto. Obrigado!",
+  claimAsk: "Já doou mas seu nome não está aqui? Fale comigo no Telegram que eu adiciono.",
   wallEmpty: "Seja o primeiro a apoiar. Escaneie o QRIS acima ou escolha outro método.",
   usesHead: "Para onde vai o seu apoio",
   uses: [
@@ -508,6 +518,7 @@ ru: {
   sponsorsHead: "Кто уже поддерживает",
   sponsorsHintEmpty: "Пока нет спонсоров. Напишите мне в Telegram: t.me/wbprangga",
   sponsorsThanks: "Каждое имя здесь — настоящая поддержка проекта. Спасибо!",
+  claimAsk: "Уже жертвовали, но вашего имени здесь нет? Напишите мне в Telegram, я добавлю.",
   wallEmpty: "Станьте первым. Отсканируйте QRIS выше или выберите другой способ.",
   usesHead: "Куда идёт ваша поддержка",
   uses: [
@@ -554,6 +565,7 @@ zh: {
   sponsorsHead: "已经支持我的人",
   sponsorsHintEmpty: "目前还没有赞助者。通过 Telegram 联系我：t.me/wbprangga",
   sponsorsThanks: "这里的每个名字都是对本项目的真实支持。谢谢！",
+  claimAsk: "已经捐赠但这里没有你的名字？通过 Telegram 告诉我，我会加上。",
   wallEmpty: "成为第一位支持者。扫描上面的 QRIS，或选择其他方式。",
   usesHead: "你的支持用在了哪里",
   uses: [

@@ -142,15 +142,29 @@ section.block{padding:72px 0;border-top:2px solid var(--line)}
 .uses p{color:var(--muted);font-size:.97rem}
 
 /* sponsor wall */
-.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+/* Sel dibuat 210px, bukan 150px: teks nominal+tanggal terpanjang 168px
+   ("US$ 10,74 · 12 de out. de 2026" di Portugis), jadi 165px bikin meluber.
+   Wall tetap rapi karena kartu biasanya hanya beberapa. */
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
 .avatar-cell{display:grid;place-items:center;gap:8px;padding:18px 10px;border:2px solid var(--line);border-radius:var(--r);background:var(--paper);text-align:center}
 .avatar-cell img{width:56px;height:56px;border-radius:50%;border:2px solid var(--ink)}
 .avatar-cell .initials{width:56px;height:56px;border-radius:50%;border:2px solid var(--ink);
   background:var(--mango);color:#17153B;display:grid;place-items:center;
   font:800 1.15rem var(--display);letter-spacing:.02em}
 .avatar-cell .who{font-size:.9rem;font-weight:600;line-height:1.25}
+/* Nominal dan tanggal masing-masing satu unit: jangan pecah di tengahnya
+   ("12 Okt" lalu "2026"). Kalau tidak muat, yang turun baris seluruh tanggal. */
 .avatar-cell small{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.avatar-cell small .money,
+.avatar-cell small .when{white-space:nowrap}
+.avatar-cell small .sep{margin:0 .5em}
 .wall-empty{border:2px dashed var(--line);border-radius:var(--r);padding:22px;text-align:center;color:var(--muted);grid-column:1/-1}
+/* Ajakan bagi yang sudah donasi tapi namanya belum tampil. Sengaja di bawah
+   dinding, bukan di atasnya, supaya tidak menyaingi nama para pendukung. */
+.claim{margin:18px 0 0;color:var(--muted);font-size:.95rem}
+.claim a{color:var(--brand);font-weight:600;text-decoration:underline;
+  text-underline-offset:2px;text-decoration-thickness:1px}
+.claim a:hover{color:var(--ink)}
 
 /* FAQ */
 .faq{display:grid;gap:12px}
@@ -317,6 +331,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <p id="sponsorHint">Every name here is real support for this project. Thank you!</p>
     </div>
     <div class="wall" id="wall"></div>
+    <p class="claim" id="sponsorClaim"></p>
   </div>
 </section>
 
@@ -842,6 +857,10 @@ function money(amount, currency){
       minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount);
   } catch { return amount + " " + (currency || ""); }
 }
+/* Tanggal pakai format bawaan per bahasa ("12 Okt 2026", "2026年10月12日",
+   "12 de out. de 2026"). Jangan dibentuk sendiri dari formatToParts: di Jepang
+   dan Cina bulan jadi "10月" dan komponennya hilang, hasilnya "12 10 2026".
+   Selnya dibuat cukup lebar di CSS supaya teks terpanjang (168px) tetap muat. */
 function shortDate(iso){
   try {
     const d = new Date(iso + "T00:00:00Z");
@@ -853,6 +872,8 @@ function renderWall(){
   if (!SPONSORS.length) {
     box.append(el("div", { class: "wall-empty", text: t("wallEmpty") }));
     $("#sponsorHint").textContent = t("sponsorsHintEmpty");
+    const c = $("#sponsorClaim");
+    if (c) c.textContent = "";      // belum ada donasi, ajakan ini belum relevan
     return;
   }
   $("#sponsorHint").textContent = t("sponsorsThanks");
@@ -860,14 +881,36 @@ function renderWall(){
     const avatar = s.login
       ? el("img", { src: "https://avatars.githubusercontent.com/" + s.login + "?s=80", alt: s.name })
       : el("span", { class: "initials", "aria-hidden": "true", text: initials(s.name) });
-    const meta = [s.amount != null ? money(s.amount, s.currency) : "", s.date ? shortDate(s.date) : ""]
-      .filter(Boolean).join(" · ");
+    const meta = el("small", {});
+    const parts = [];
+    if (s.amount != null) parts.push(el("span", { class: "money", text: money(s.amount, s.currency) }));
+    if (s.date) parts.push(el("span", { class: "when", text: shortDate(s.date) }));
+    parts.forEach((p, i) => {
+      if (i) meta.append(el("span", { class: "sep", "aria-hidden": "true", text: "·" }));
+      meta.append(p);
+    });
     box.append(el("div", { class: "avatar-cell" }, [
       avatar,
       el("span", { class: "who", text: s.name }),
-      el("small", { text: meta })
+      meta
     ]));
   });
+  renderClaim();
+}
+
+/* ---------- sudah donasi tapi namanya belum tampil? ----------
+   Alamat Telegram diambil dari CONFIG, bukan ditulis di dalam 12 terjemahan,
+   supaya tautannya satu sumber dan tidak bisa jadi usang. */
+function renderClaim(){
+  const box = $("#sponsorClaim");
+  if (!box) return;
+  box.textContent = "";
+  if (!CONFIG.telegram) return;
+  const handle = CONFIG.telegram.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  box.append(
+    document.createTextNode(t("claimAsk") + " "),
+    el("a", { href: CONFIG.telegram, target: "_blank", rel: "noopener", text: handle })
+  );
 }
 
 /* ---------- FAQ ---------- */
