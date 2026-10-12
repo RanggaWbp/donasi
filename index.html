@@ -121,17 +121,27 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
 .hero h1{margin-bottom:20px}
 .hero .lead{font-size:1.15rem;color:var(--muted);max-width:34em;margin-bottom:28px}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+/* Baris tombol hero. Lima tombol TIDAK bisa muat satu baris: label terpanjang
+   (Rusia "Отправить поддержку") butuh 574px di kolom 533px, dan Jerman serta
+   Prancis juga lewat. Kalau dibiarkan membungkus, XDA terlempar sendirian ke
+   baris kedua dan menyisakan 455px kosong di sebelahnya.
+   Jadi disusun dua baris yang keduanya penuh: tombol utama membentang penuh,
+   empat tombol sosial jadi grid empat kolom sama lebar. Tidak ada anak yatim,
+   tidak ada sel kosong, dan lebarnya sama di 12 bahasa. */
+.hero .cta{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:28px}
+.hero .cta .btn{padding-left:.6rem;padding-right:.6rem;font-size:.92rem;white-space:nowrap}
+.hero .cta .btn:first-child{grid-column:1/-1;padding-left:1.05rem;padding-right:1.05rem;font-size:1rem}
 .proof{display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
 .proof b{display:block;font:800 1.6rem var(--display);color:var(--ink)}
 .badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-/* Pita fakta: badge kepercayaan di satu baris, angka di baris berikutnya,
-   keduanya rata kiri. Dipisah dari hero supaya hero tinggal judul, paragraf,
-   dan tombol. Sempat dicoba badge di kiri dan angka di kanan pada satu baris,
-   tapi di 1280px itu menyisakan lubang 478px di tengah; menyebar empat itemnya
-   merata malah memisahkan dua badge yang seharusnya terbaca berpasangan. */
-.band{padding:0 0 56px}
-.band .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+/* Pita fakta: badge kepercayaan di ujung kiri, angka di ujung kanan, dipisah
+   garis atas. Sempat dicoba dua baris rata kiri, tapi separuh kanan jadi kosong
+   dan terbaca seperti konten tumpah, bukan bar. Dengan isi di kedua ujung plus
+   garis pemisah, ruang tengahnya terbaca sebagai jarak yang disengaja.
+   Di layar sempit keduanya ditumpuk lagi (lihat media query 860px). */
+.band{padding:0 0 48px}
+.band .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px 40px;
+  flex-wrap:wrap;border-top:2px solid var(--line);padding-top:22px}
 .band .badge-row{margin-bottom:0}
 .badge{font:600 .85rem var(--body);padding:.35rem .8rem;border-radius:var(--r-pill);border:2px solid var(--line);color:var(--muted);background:var(--paper)}
 .badge b{font-weight:800;color:var(--ink)}
@@ -170,7 +180,12 @@ section.block{padding:72px 0;border-top:2px solid var(--line)}
    yang lengket menutupi judulnya (terukur 42px di HP, 0px di desktop). Jarak
    ini mengimbangi tinggi header; diubah bersama header di media query ponsel. */
 section[id],#support{scroll-margin-top:88px}
-.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+/* Kepala seksi ditumpuk: judul di atas, paragraf di bawah, keduanya rata kiri.
+   Sebelumnya judul kiri dan paragraf kanan pada satu baris, dan karena
+   justify-content:space-between, jarak antar keduanya berbeda-beda tiap seksi
+   (terukur 43px di Proyek, 164px di Sponsor). Pola judul-kiri/paragraf-kanan
+   itu juga ada di daftar tolak panduan desain. */
+.head{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:32px}
 .head p{max-width:32em;color:var(--muted)}
 
 .repo-list{display:grid;gap:0;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;background:var(--paper)}
@@ -284,11 +299,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media (max-width:860px){
   .hero .wrap{grid-template-columns:1fr;gap:40px}
+  /* Pita ditumpuk di layar sempit: dengan space-between di lebar ini jarak
+     tengahnya jadi lebih besar dari kontennya sendiri. */
+  .band .wrap{flex-direction:column;align-items:flex-start;gap:18px}
   .uses{grid-template-columns:1fr}
   .uses>div:first-child{grid-column:auto;border-bottom:0}
   .uses>div+div{border-top:2px solid var(--line)}
   .uses>div:nth-child(3){border-left:0}
   nav a.link{display:none}
+}
+/* Di bawah 560px empat kolom tidak muat: kolom grid tidak bisa menyusut di
+   bawah lebar labelnya ("Facebook"), jadi gridnya memaksa halaman melebar
+   (terukur 345px di viewport 320px). Dua kolom, tombol utama tetap penuh. */
+@media (max-width:560px){
+  .hero .cta{grid-template-columns:repeat(2,1fr)}
 }
 /* ---------- ponsel ----------
    Di bawah 520px header tidak muat satu baris: avatar + nama + pemilih bahasa +
