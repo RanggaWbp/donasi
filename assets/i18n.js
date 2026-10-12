@@ -4,8 +4,8 @@
    (RTL: "rtl"), lalu tambahkan barisnya ke window.LANGS.
    ============================================================ */
 window.LANGS = [
-  ["id", "Bahasa Indonesia", "ltr"],
   ["en", "English", "ltr"],
+  ["id", "Bahasa Indonesia", "ltr"],
   ["ar", "العربية", "rtl"],
   ["bn", "বাংলা", "ltr"],
   ["de", "Deutsch", "ltr"],
