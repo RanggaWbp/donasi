@@ -12,12 +12,16 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Buy me an iced tea, keep the code running">
 <meta property="og:description" content="Support RanggaWbp open source projects via QRIS, PayPal, bank transfer, or e-wallet.">
-<meta property="og:image" content="assets/og.png">
+<meta property="og:image" content="https://ranggawbp.github.io/donasi/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Buy me an iced tea, keep the code running. QRIS, PayPal, Bank Jago, ShopeePay, GoPay, OVO, DANA.">
 <meta property="og:url" content="https://ranggawbp.github.io/donasi/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Buy me an iced tea, keep the code running">
 <meta name="twitter:description" content="Support RanggaWbp open source projects via QRIS, PayPal, bank transfer, or e-wallet.">
-<meta name="twitter:image" content="assets/og.png">
+<meta name="twitter:image" content="https://ranggawbp.github.io/donasi/assets/og.png">
+<meta name="twitter:image:alt" content="Buy me an iced tea, keep the code running. QRIS, PayPal, Bank Jago, ShopeePay, GoPay, OVO, DANA.">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥤</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +34,9 @@
 
 <style>
 :root{
+  /* Memberi tahu browser tema yang sedang aktif, jadi scrollbar dan kontrol
+     form (dropdown <select>) diwarnai browser sendiri tanpa CSS tambahan. */
+  color-scheme:light;
   --bg:#FDF2F6; --paper:#FFFFFF; --ink:#2A1F3D; --muted:#6B5B85; --line:#D4B7C9;
   --brand:#B23A6B; --brand-ink:#FFFFFF; --mango:#FFC93C; --mango-ink:#2A1020;
   --qris:#E11D2E;
@@ -51,12 +58,14 @@
     /* Bukan hitam murni: #000 di atas latar berwarna terbaca seperti kotoran,
        dan tidak punya sisa terang untuk dibedakan dari bayangannya sendiri. */
     --ground:linear-gradient(135deg,#1E1226 0%,#241531 55%,#2A1838 100%);
+    color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#1E1226; --paper:#251733; --ink:#FBF3F8; --muted:#C4AEC8; --line:#553C66;
   --brand:#FF9EC4; --brand-ink:#2A1020; --shadow:#0E0818;
   --ground:linear-gradient(135deg,#1E1226 0%,#241531 55%,#2A1838 100%);
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--bg)}
@@ -70,12 +79,20 @@ body{margin:0;background:transparent;color:var(--ink);font-family:var(--body);fo
 body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--ground);pointer-events:none}
 img{max-width:100%;display:block}
 a{color:inherit}
+/* Warna blok teks terpilih. Panduan desain yang dipakai halaman ini menghitung
+   ini sebagai bagian desain yang tetap terlihat walau tidak digambar sendiri.
+   Pasangan warnanya sama dengan tombol utama, jadi kontrasnya sudah terukur:
+   5.66:1 di tema terang, 9.17:1 di tema gelap. */
+::selection{background:var(--brand);color:var(--brand-ink)}
 /* Cincin fokus tadinya kuning --mango, dan di tema terang itu hanya 1.4:1 di atas
    latar pink: praktis tidak terlihat, padahal minimum 3:1. Dipakai --brand, yang
    di tema terang 5.2:1 di atas latar dan 5.7:1 di atas kartu, di tema gelap 9:1. */
 :focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:var(--r-pill)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em;text-wrap:balance}
+/* balance pada judul dan pretty pada paragraf menghilangkan kata yatim di baris
+   terakhir. Gratis, tidak ada biaya render yang terukur. */
+p{text-wrap:pretty}
 h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800}
 h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:700}
 h3{font-size:1.15rem;font-weight:700}
@@ -100,7 +117,7 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 .lang{width:auto;height:40px;padding:0 .45rem;border-radius:var(--r);border:2px solid var(--ink);background:var(--paper);color:var(--ink);font:600 .8rem var(--body);cursor:pointer}
 
 /* hero */
-.hero{padding:40px 0 72px}
+.hero{padding:40px 0 48px}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
 .hero h1{margin-bottom:20px}
 .hero .lead{font-size:1.15rem;color:var(--muted);max-width:34em;margin-bottom:28px}
@@ -108,6 +125,14 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 .proof{display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
 .proof b{display:block;font:800 1.6rem var(--display);color:var(--ink)}
 .badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+/* Pita fakta: badge kepercayaan di satu baris, angka di baris berikutnya,
+   keduanya rata kiri. Dipisah dari hero supaya hero tinggal judul, paragraf,
+   dan tombol. Sempat dicoba badge di kiri dan angka di kanan pada satu baris,
+   tapi di 1280px itu menyisakan lubang 478px di tengah; menyebar empat itemnya
+   merata malah memisahkan dua badge yang seharusnya terbaca berpasangan. */
+.band{padding:0 0 56px}
+.band .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.band .badge-row{margin-bottom:0}
 .badge{font:600 .85rem var(--body);padding:.35rem .8rem;border-radius:var(--r-pill);border:2px solid var(--line);color:var(--muted);background:var(--paper)}
 .badge b{font-weight:800;color:var(--ink)}
 
@@ -130,8 +155,7 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 #ppQrFrame::before{content:"PayPal";background:#003087}
 .qris-frame img{width:100%;height:100%;object-fit:contain;padding:28px 10px 10px}
 .qris-frame canvas{width:100%;height:100%;object-fit:contain;padding:28px 10px 10px}
-.empty{padding:28px 18px;text-align:center;color:#5E5B80;font-size:.9rem}
-.empty code{background:#eee;padding:1px 5px;border-radius:4px}
+.empty{padding:28px 18px;text-align:center;color:var(--muted);font-size:.9rem}
 .rows{display:grid;gap:10px}
 .row{display:flex;align-items:center;justify-content:space-between;gap:12px;border:2px solid var(--line);border-radius:var(--r);padding:10px 12px;background:var(--paper)}
 .row b{display:block}
@@ -159,9 +183,13 @@ section[id],#support{scroll-margin-top:88px}
 .repo .meta{grid-row:1/3;grid-column:2;align-self:center;text-align:right;color:var(--muted);font-size:.9rem}
 .repo .num{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
 
-.uses{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden}
+/* Grid dua kolom dengan item pertama membentang penuh. Sebelumnya tiga kolom
+   sama persis (356px 356px 356px), dan itu ada di daftar tolak panduan desain.
+   Semua sel terpakai, tidak ada sel kosong di ujung. */
+.uses{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden}
 .uses>div{padding:24px;background:var(--paper)}
-.uses>div+div{border-left:2px solid var(--line)}
+.uses>div:first-child{grid-column:1/-1;border-bottom:2px solid var(--line)}
+.uses>div:nth-child(3){border-left:2px solid var(--line)}
 .uses h3{margin-bottom:8px}
 .uses p{color:var(--muted);font-size:.97rem}
 
@@ -257,7 +285,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (max-width:860px){
   .hero .wrap{grid-template-columns:1fr;gap:40px}
   .uses{grid-template-columns:1fr}
-  .uses>div+div{border-left:0;border-top:2px solid var(--line)}
+  .uses>div:first-child{grid-column:auto;border-bottom:0}
+  .uses>div+div{border-top:2px solid var(--line)}
+  .uses>div:nth-child(3){border-left:0}
   nav a.link{display:none}
 }
 /* ---------- ponsel ----------
@@ -287,7 +317,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .btn.small{padding:.7rem .9rem}
   .tab{min-height:44px}
 }
-@media (max-width:420px){.tabs{grid-template-columns:repeat(2,1fr)}.cup{width:76px}
+@media (max-width:420px){.tabs{grid-template-columns:repeat(2,1fr)}
   .row{flex-wrap:wrap}
   /* Tombol mengisi lebar baris: tadinya rata kanan dan menyisakan ruang kosong
      di kiri untuk baris yang hanya punya satu tombol (GoPay, OVO). */
@@ -320,7 +350,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section class="hero">
   <div class="wrap">
     <div>
-      <div class="badge-row" id="badgeRow"></div>
       <h1 id="headline" data-i18n="headline">Buy me an iced tea, keep the code running.</h1>
       <p class="lead" id="lead" data-i18n="lead">All of my projects are free and open source. If any of them saves you time, however small a contribution helps me maintain it.</p>
       <div class="cta">
@@ -331,7 +360,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <a class="btn ghost" id="ctaXda" href="#" target="_blank" rel="noopener">XDA</a>
         <a class="btn ghost" id="ctaSponsors" href="#" target="_blank" rel="noopener">GitHub Sponsors</a>
       </div>
-      <div class="proof" id="proof"></div>
     </div>
 
     <!-- Kartu dukungan -->
@@ -363,6 +391,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="rows" id="walletRows"></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Pita fakta: badge kepercayaan dan angka commit, dipindah keluar dari hero.
+     Panduan desain yang dipakai halaman ini membatasi hero pada maksimal empat
+     elemen teks; dengan badge dan statistik di dalamnya, hero-nya berisi sebelas
+     (2 badge + judul + paragraf + 5 tombol + 2 statistik) sehingga tombol utama
+     bersaing dengan semua itu. Di sini keduanya punya barisnya sendiri. -->
+<section class="band" id="band">
+  <div class="wrap">
+    <div class="badge-row" id="badgeRow"></div>
+    <div class="proof" id="proof"></div>
   </div>
 </section>
 
