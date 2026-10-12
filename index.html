@@ -336,7 +336,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
     <!-- Kartu dukungan -->
     <div class="support" id="support">
-      <div class="tabs" role="tablist" aria-label="Metode pembayaran">
+      <div class="tabs" role="tablist" aria-label="Payment methods">
         <button class="tab" role="tab" id="t-qris" aria-controls="p-qris" aria-selected="true" data-i18n="tabQris">QRIS</button>
         <button class="tab" role="tab" id="t-paypal" aria-controls="p-paypal" aria-selected="false" data-i18n="tabPaypal">PayPal</button>
         <button class="tab" role="tab" id="t-bank" aria-controls="p-bank" aria-selected="false" data-i18n="tabBank">Bank</button>
@@ -676,6 +676,12 @@ function applyStaticText(){
   $("#yr").textContent = new Date().getFullYear() + " " + CONFIG.name;
   $("#langSel").setAttribute("aria-label", t("langLabel"));
   $("#themeBtn").setAttribute("aria-label", t("themeLabel"));
+  /* Dua label ini tadinya ditulis langsung di markup sebagai teks Indonesia dan
+     Inggris, jadi pembaca layar mendengarnya sama di 12 bahasa. */
+  const tablist = document.querySelector(".tabs");
+  if (tablist) tablist.setAttribute("aria-label", t("methodsLabel"));
+  const hintClose = $("#langHintClose");
+  if (hintClose) hintClose.setAttribute("aria-label", t("closeLabel"));
   document.querySelectorAll("[data-i18n]").forEach(n => {
     const v = t(n.dataset.i18n);
     if (v) n.textContent = v;

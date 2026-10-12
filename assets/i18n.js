@@ -24,6 +24,7 @@ window.I18N = {
 id: {
   langLabel: "Bahasa",
   themeLabel: "Ganti tema terang/gelap",
+  methodsLabel: "Metode pembayaran", closeLabel: "Tutup",
   navDonate: "Donasi", navProjects: "Proyek", navSponsors: "Sponsor", navFaq: "FAQ",
   docTitle: "Dukung {name} · Open Source",
   headline: "Traktir saya es teh, biar kodenya terus jalan.",
@@ -71,6 +72,7 @@ id: {
 en: {
   langLabel: "Language",
   themeLabel: "Toggle light/dark theme",
+  methodsLabel: "Payment methods", closeLabel: "Close",
   navDonate: "Donate", navProjects: "Projects", navSponsors: "Sponsors", navFaq: "FAQ",
   docTitle: "Support {name} · Open Source",
   headline: "Buy me an iced tea, keep the code running.",
@@ -118,6 +120,7 @@ en: {
 ar: {
   langLabel: "اللغة",
   themeLabel: "تبديل الوضع الفاتح/الداكن",
+  methodsLabel: "طرق الدفع", closeLabel: "إغلاق",
   navDonate: "تبرّع", navProjects: "المشاريع", navSponsors: "الداعمون", navFaq: "الأسئلة",
   docTitle: "ادعم {name} · مفتوح المصدر",
   headline: "ادفع لي شايًا مثلجًا، وليستمر الكود بالعمل.",
@@ -165,6 +168,7 @@ ar: {
 bn: {
   langLabel: "ভাষা",
   themeLabel: "লাইট/ডার্ক থিম বদলান",
+  methodsLabel: "পেমেন্ট পদ্ধতি", closeLabel: "বন্ধ করুন",
   navDonate: "দান", navProjects: "প্রজেক্ট", navSponsors: "সমর্থক", navFaq: "প্রশ্ন",
   docTitle: "{name}-কে সমর্থন করুন · ওপেন সোর্স",
   headline: "আমাকে এক গ্লাস আইসড টি দিন, কোড চলতে থাকুক।",
@@ -212,6 +216,7 @@ bn: {
 de: {
   langLabel: "Sprache",
   themeLabel: "Helles/dunkles Design umschalten",
+  methodsLabel: "Zahlungsmethoden", closeLabel: "Schließen",
   navDonate: "Spenden", navProjects: "Projekte", navSponsors: "Unterstützer", navFaq: "FAQ",
   docTitle: "{name} unterstützen · Open Source",
   headline: "Schenk mir einen Eistee, damit der Code läuft.",
@@ -259,6 +264,7 @@ de: {
 es: {
   langLabel: "Idioma",
   themeLabel: "Cambiar tema claro/oscuro",
+  methodsLabel: "Métodos de pago", closeLabel: "Cerrar",
   navDonate: "Donar", navProjects: "Proyectos", navSponsors: "Patrocinadores", navFaq: "FAQ",
   docTitle: "Apoya a {name} · Código abierto",
   headline: "Invítame un té helado y el código sigue corriendo.",
@@ -306,6 +312,7 @@ es: {
 fr: {
   langLabel: "Langue",
   themeLabel: "Basculer thème clair/sombre",
+  methodsLabel: "Moyens de paiement", closeLabel: "Fermer",
   navDonate: "Faire un don", navProjects: "Projets", navSponsors: "Sponsors", navFaq: "FAQ",
   docTitle: "Soutenir {name} · Open source",
   headline: "Offrez-moi un thé glacé, le code continue de tourner.",
@@ -353,6 +360,7 @@ fr: {
 hi: {
   langLabel: "भाषा",
   themeLabel: "हल्का/गहरा थीम बदलें",
+  methodsLabel: "भुगतान के तरीके", closeLabel: "बंद करें",
   navDonate: "दान", navProjects: "प्रोजेक्ट", navSponsors: "समर्थक", navFaq: "FAQ",
   docTitle: "{name} का समर्थन करें · ओपन सोर्स",
   headline: "मुझे एक आइस्ड टी पिला दो, कोड चलता रहे।",
@@ -400,6 +408,7 @@ hi: {
 ja: {
   langLabel: "言語",
   themeLabel: "ライト/ダークテーマの切り替え",
+  methodsLabel: "支払い方法", closeLabel: "閉じる",
   navDonate: "寄付", navProjects: "プロジェクト", navSponsors: "支援者", navFaq: "FAQ",
   docTitle: "{name} を支援する · オープンソース",
   headline: "アイスティーをおごってください。コードが動き続けます。",
@@ -447,6 +456,7 @@ ja: {
 pt: {
   langLabel: "Idioma",
   themeLabel: "Alternar tema claro/escuro",
+  methodsLabel: "Formas de pagamento", closeLabel: "Fechar",
   navDonate: "Doar", navProjects: "Projetos", navSponsors: "Apoiadores", navFaq: "FAQ",
   docTitle: "Apoie {name} · Código aberto",
   headline: "Pague um chá gelado para mim e o código continua rodando.",
@@ -494,6 +504,7 @@ pt: {
 ru: {
   langLabel: "Язык",
   themeLabel: "Переключить светлую/тёмную тему",
+  methodsLabel: "Способы оплаты", closeLabel: "Закрыть",
   navDonate: "Поддержать", navProjects: "Проекты", navSponsors: "Спонсоры", navFaq: "Вопросы",
   docTitle: "Поддержите {name} · Открытый код",
   headline: "Купите мне холодный чай, и код продолжит работать.",
@@ -541,6 +552,7 @@ ru: {
 zh: {
   langLabel: "语言",
   themeLabel: "切换浅色/深色主题",
+  methodsLabel: "支付方式", closeLabel: "关闭",
   navDonate: "捐赠", navProjects: "项目", navSponsors: "赞助者", navFaq: "常见问题",
   docTitle: "支持 {name} · 开源",
   headline: "请我喝杯冰茶，让代码继续跑下去。",
