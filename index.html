@@ -144,11 +144,14 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
   flex-wrap:wrap;border-top:2px solid var(--line);padding-top:22px}
 .band .badge-row{margin-bottom:0}
 .band-facts{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap}
-.band .visits{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font:600 .9rem var(--body)}
-/* Badge hits.sh dirancang untuk README, jadi pada ukuran aslinya (20px) angkanya
-   blur dan pada ukuran yang terbaca ia terlalu besar untuk teks footer 15px.
-   Di sini tingginya 28px, sejajar dengan badge kepercayaan di sebelahnya. */
-.band .visits img{height:28px;width:auto;border-radius:4px}
+.band .visits{display:inline-flex;align-items:baseline;gap:7px;color:var(--muted);font:600 .9rem var(--body)}
+/* Angkanya teks halaman, bukan gambar: ukurannya ikut teks dan tidak bisa gagal
+   dimuat seperti gambar. tabular-nums supaya lebarnya tidak bergoyang saat
+   angkanya berubah. */
+.band .visits b{font:800 1.15rem var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
+/* [hidden] dari UA stylesheet kalah oleh display:inline-flex di atas, jadi
+   penghitung yang gagal dimuat akan tetap tampil tanpa aturan ini. */
+[hidden]{display:none!important}
 .badge{font:600 .85rem var(--body);padding:.35rem .8rem;border-radius:var(--r-pill);border:2px solid var(--line);color:var(--muted);background:var(--paper)}
 .badge b{font-weight:800;color:var(--ink)}
 
@@ -250,9 +253,6 @@ details.qa p{padding:0 0 16px;color:var(--muted);font-size:.97rem}
 
 footer{padding:40px 0 56px;border-top:2px solid var(--line);color:var(--muted);font-size:.95rem}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-/* Penghitung kunjungan dari pihak ketiga (hits.sh). Dipisah supaya jelas ini
-   bukan bagian dari janji "tanpa pelacak" halaman ini: ia memang melakukan
-   satu permintaan ke luar. */
 /* toast */
 #toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:.7rem 1.1rem;border-radius:var(--r);font-weight:600;transition:transform .25s;z-index:30}
 #toast.show{transform:translate(-50%,0)}
@@ -435,28 +435,25 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="band-facts">
       <div class="badge-row" id="badgeRow"></div>
-      <!-- Penghitung kunjungan. Pihak ketiga: hits.sh, tanpa cookie dan tanpa
-           menyimpan IP. Yang dihitung adalah permintaan gambar, jadi ini jumlah
-           MUAT HALAMAN, bukan orang unik: memuat ulang ikut terhitung.
-           Ditaruh di sini, bukan di footer, karena badge dari hits.sh dirancang
-           untuk README: pada 20px (ukuran aslinya) angkanya blur, dan pada
-           ukuran yang terbaca ia terlalu besar untuk teks footer 15px. Di sini
-           tingginya 28px, sejajar dengan badge kepercayaan di sebelahnya.
-           src diisi oleh skrip (lihat syncHitsBadge) karena warna badge harus
-           ikut tema yang aktif; satu warna tetap tidak bisa kontras di latar
-           pink pucat sekaligus di latar plum gelap. Nilainya hanya diubah saat
-           tema benar-benar berganti, supaya berpindah bahasa tidak memicu
-           permintaan baru dan menambah angkanya sendiri.
-           referrerpolicy=no-referrer supaya halaman ini tidak ikut mengirim
-           alamat asal ke pihak ketiga. -->
-      <span class="visits">
+      <!-- Penghitung kunjungan. Pihak ketiga: Abacus (abacus.jasoncameron.dev),
+           tanpa akun, tanpa cookie, tanpa menyimpan IP. Yang dihitung adalah
+           permintaan ke /hit, jadi ini jumlah MUAT HALAMAN, bukan orang unik:
+           memuat ulang ikut terhitung.
+           Sebelumnya memakai badge SVG dari hits.sh, dan itu gagal di perangkat
+           yang memasang pemblokir: hits.sh terdaftar di daftar StevenBlack
+           (0.0.0.0 hits.sh) yang dipakai luas oleh Pi-hole, AdGuard Home, dan
+           pemblokir tingkat DNS. Begitu gambarnya gagal dimuat, yang tersisa
+           hanya tulisan "Kunjungan" tanpa angka.
+           Abacus mengembalikan JSON yang bisa dibaca skrip, jadi angkanya
+           dirender sebagai teks halaman: tidak bisa gagal sebagai gambar,
+           ukurannya ikut teks, dan kalau permintaannya sendiri yang gagal,
+           seluruh penghitung disembunyikan supaya tidak ada label yang
+           menggantung tanpa angka.
+           Nilainya diambil sekali saat muat (loadVisits), bukan tiap renderAll,
+           supaya berpindah bahasa tidak menambah angkanya sendiri. -->
+      <span class="visits" id="visits" hidden>
         <span data-i18n="visitsLabel">Visits</span>
-        <a href="https://hits.sh/ranggawbp.github.io/donasi/visits/" target="_blank" rel="noopener">
-          <!-- Tanpa atribut width: lebar SVG dari hits.sh berubah mengikuti
-               panjang angkanya dan SVG-nya tidak punya viewBox. -->
-          <img id="hitsImg" alt="" height="28" referrerpolicy="no-referrer" decoding="async"
-               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='28'/%3E">
-        </a>
+        <b id="visitsNum">0</b>
       </span>
     </div>
     <div class="proof" id="proof"></div>
@@ -801,22 +798,30 @@ function renderBadgeAndProof(){
 }
 
 /* ---------- penghitung kunjungan ----------
-   Warna badge harus ikut tema yang aktif. Satu warna tetap tidak bisa kontras
-   di latar pink pucat sekaligus di latar plum gelap: terukur, warna yang lolos
-   di tema terang hanya 3.26:1 di tema gelap, dan warna yang lolos di tema gelap
-   nyaris tidak terlihat di tema terang. Dua warna, masing-masing lolos ambang
-   3:1 untuk bentuk dan 4.5:1 untuk angkanya.
-   src hanya diubah kalau temanya benar-benar berganti, supaya berpindah bahasa
-   (yang memanggil renderAll) tidak memicu permintaan baru dan menambah angka. */
-function syncHitsBadge(){
-  const img = $("#hitsImg");
-  if (!img) return;
-  const dark = document.documentElement.dataset.theme
-    ? document.documentElement.dataset.theme === "dark"
-    : matchMedia("(prefers-color-scheme:dark)").matches;
-  const url = "https://hits.sh/ranggawbp.github.io/donasi/visits.svg?label=%20&style=flat-square&color="
-            + (dark ? "D8AECB" : "7E4C6B");
-  if (img.getAttribute("src") !== url) img.src = url;
+   Diambil sekali saja, bukan tiap renderAll(), karena renderAll juga dipanggil
+   saat berpindah bahasa: kalau ikut dipanggil di sana, tiap ganti bahasa
+   menambah angkanya sendiri. */
+let visitCount = null;
+async function loadVisits(){
+  const box = $("#visits");
+  if (!box) return;
+  try {
+    const r = await fetch("https://abacus.jasoncameron.dev/hit/ranggawbp.github.io/donasi", { cache: "no-store" });
+    if (!r.ok) return;
+    const d = await r.json();
+    if (typeof d.value !== "number") return;
+    visitCount = d.value;
+    renderVisits();
+  } catch {
+    /* Gagal (diblokir, atau layanannya mati): biarkan tersembunyi. Label tanpa
+       angka lebih buruk daripada tidak ada penghitung sama sekali. */
+  }
+}
+function renderVisits(){
+  const box = $("#visits");
+  if (!box || visitCount === null) return;
+  $("#visitsNum").textContent = nf(visitCount);
+  box.hidden = false;
 }
 
 /* ---------- tema ---------- */
@@ -824,7 +829,6 @@ $("#themeBtn").addEventListener("click", () => {
   const root = document.documentElement;
   const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme:dark)").matches;
   root.dataset.theme = dark ? "light" : "dark";
-  syncHitsBadge();
 });
 
 /* ---------- tab ---------- */
@@ -1111,7 +1115,7 @@ function renderAll(){
   renderMethods();
   renderSocialRow();
   loadQR();
-  syncHitsBadge();
+  renderVisits();
 }
 
 /* ---------- pemilih bahasa ---------- */
@@ -1201,6 +1205,7 @@ $("#reposMore").addEventListener("click", () => {
 });
 
 renderAll();
+loadVisits();
 </script>
 </body>
 </html>
