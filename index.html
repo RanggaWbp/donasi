@@ -30,9 +30,14 @@
 
 <style>
 :root{
-  --bg:#F5F4FB; --paper:#FFFFFF; --ink:#17153B; --muted:#5E5B80; --line:#D9D6EE;
-  --brand:#4B3FE0; --brand-ink:#FFFFFF; --mango:#FFC93C; --qris:#E11D2E; --ok:#0E8F5B;
-  --shadow:#17153B;
+  --bg:#FDF2F6; --paper:#FFFFFF; --ink:#2A1F3D; --muted:#6B5B85; --line:#D4B7C9;
+  --brand:#B23A6B; --brand-ink:#FFFFFF; --mango:#FFC93C; --mango-ink:#2A1020;
+  --qris:#E11D2E;
+  --shadow:#2A1F3D;
+  /* Latar halaman bergradasi pink ke lavender. Rentang luminansinya hanya 0.028
+     (nyaris rata) supaya terasa seperti satu warna yang hangat, bukan garis.
+     Gradasi yang terang-gelapnya jauh membuat mata terus memfokus ulang. */
+  --ground:linear-gradient(135deg,#FDF2F6 0%,#F8F2FB 55%,#F2F0FC 100%);
   --r:14px;        /* satu skala radius untuk semua kotak */
   --r-pill:999px;  /* hanya tombol, badge, tag */
   --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
@@ -40,20 +45,35 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#12102B; --paper:#1D1A42; --ink:#F1EFFF; --muted:#A9A5D6; --line:#3A3670;
-    --brand:#8F86FF; --brand-ink:#12102B; --shadow:#000000;
+    --bg:#1E1226; --paper:#251733; --ink:#FBF3F8; --muted:#C4AEC8; --line:#553C66;
+    --brand:#FF9EC4; --brand-ink:#2A1020;
+    --shadow:#0E0818;
+    /* Bukan hitam murni: #000 di atas latar berwarna terbaca seperti kotoran,
+       dan tidak punya sisa terang untuk dibedakan dari bayangannya sendiri. */
+    --ground:linear-gradient(135deg,#1E1226 0%,#241531 55%,#2A1838 100%);
   }
 }
 :root[data-theme="dark"]{
-  --bg:#12102B; --paper:#1D1A42; --ink:#F1EFFF; --muted:#A9A5D6; --line:#3A3670;
-  --brand:#8F86FF; --brand-ink:#12102B; --shadow:#000000;
+  --bg:#1E1226; --paper:#251733; --ink:#FBF3F8; --muted:#C4AEC8; --line:#553C66;
+  --brand:#FF9EC4; --brand-ink:#2A1020; --shadow:#0E0818;
+  --ground:linear-gradient(135deg,#1E1226 0%,#241531 55%,#2A1838 100%);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:transparent;color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+/* Gradasi latar dipasang sebagai lapisan tetap seukuran layar, bukan pada body.
+   Kalau dipasang pada body, gradasinya membentang sepanjang dokumen (5x tinggi
+   layar) sehingga arahnya jadi nyaris vertikal dan rentang 0.028 itu jadi tidak
+   terlihat sama sekali. Ukuran tetap juga membatasi pita warna (banding) yang
+   muncul di layar 8-bit saat gradasi halus ditarik sangat panjang.
+   html yang memegang warna solid --bg, jadi tidak ada kedipan putih saat muat. */
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--ground);pointer-events:none}
 img{max-width:100%;display:block}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--mango);outline-offset:3px;border-radius:var(--r-pill)}
+/* Cincin fokus tadinya kuning --mango, dan di tema terang itu hanya 1.4:1 di atas
+   latar pink: praktis tidak terlihat, padahal minimum 3:1. Dipakai --brand, yang
+   di tema terang 5.2:1 di atas latar dan 5.7:1 di atas kartu, di tema gelap 9:1. */
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:var(--r-pill)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em}
 h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800}
@@ -65,7 +85,7 @@ p{margin:0}
 .btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--shadow)}
 .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
 .btn.ghost{background:transparent;color:var(--ink)}
-.btn.mango{background:var(--mango);color:#17153B}
+.btn.mango{background:var(--mango);color:var(--mango-ink)}
 .btn.small{padding:.5rem .8rem;font-size:.9rem;box-shadow:2px 2px 0 var(--shadow)}
 
 /* header */
@@ -153,7 +173,7 @@ section[id],#support{scroll-margin-top:88px}
 .avatar-cell{display:grid;place-items:center;gap:8px;padding:18px 10px;border:2px solid var(--line);border-radius:var(--r);background:var(--paper);text-align:center}
 .avatar-cell img{width:56px;height:56px;border-radius:50%;border:2px solid var(--ink)}
 .avatar-cell .initials{width:56px;height:56px;border-radius:50%;border:2px solid var(--ink);
-  background:var(--mango);color:#17153B;display:grid;place-items:center;
+  background:var(--mango);color:var(--mango-ink);display:grid;place-items:center;
   font:800 1.15rem var(--display);letter-spacing:.02em}
 .avatar-cell .who{font-size:.9rem;font-weight:600;line-height:1.25}
 /* Nominal dan tanggal masing-masing satu unit: jangan pecah di tengahnya
