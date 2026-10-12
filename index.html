@@ -119,8 +119,6 @@ nav a.link:hover{color:var(--ink);background:var(--paper)}
 .row-actions{display:flex;gap:6px;flex-wrap:wrap;flex:none}
 .pp-note{font-size:.9rem;color:var(--muted);margin-top:12px}
 #xdaNote{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
-.social-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
-.social-row .lbl{color:var(--muted);font-size:.9rem}
 
 /* sections */
 section.block{padding:72px 0;border-top:2px solid var(--line)}
@@ -260,6 +258,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="cta">
         <a class="btn" href="#support" id="ctaMain" data-i18n="ctaDonate" data-target="support">Send support</a>
         <a class="btn ghost" id="ctaTelegram" href="#" target="_blank" rel="noopener" data-i18n="ctaTelegram">Telegram</a>
+        <a class="btn ghost" id="ctaChannel" href="#" target="_blank" rel="noopener" data-i18n="channelBtn">Channel</a>
         <a class="btn ghost" id="ctaFacebook" href="#" target="_blank" rel="noopener" data-i18n="ctaFacebook">Facebook</a>
         <a class="btn ghost" id="ctaXda" href="#" target="_blank" rel="noopener">XDA</a>
         <a class="btn ghost" id="ctaSponsors" href="#" target="_blank" rel="noopener">GitHub Sponsors</a>
@@ -307,7 +306,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <div class="repo-list" id="repos"><div class="repo"><p>Loading projects…</p></div></div>
     <button class="btn small ghost" id="reposMore" type="button" hidden></button>
-    <div class="social-row" id="socialRow"></div>
     <p class="pp-note" id="xdaNote"></p>
   </div>
 </section>
@@ -380,7 +378,9 @@ const CONFIG = {
   wallets: [
     { name: "ShopeePay", number: "085806047666", holder: "Rangga Jati Wisesa Bintoro Putra", link: "https://app.u.shopeepay.co.id/u/cCtAKzFxurjNqKRtMHxWx" },
     { name: "GoPay",     number: "085806047666", holder: "Rangga Jati Wisesa Bintoro Putra" },
-    { name: "OVO",       number: "085806047666", holder: "Rangga Jati Wisesa Bintoro Putra" }
+    { name: "OVO",       number: "085806047666", holder: "Rangga Jati Wisesa Bintoro Putra" },
+    { name: "DANA",      number: "085806047666", holder: "Rangga Jati Wisesa Bintoro Putra",
+      link: "https://link.dana.id/minta?full_url=https://qr.dana.id/v1/281012012020052717778361" }
   ],
 
   githubSponsors: false,              // tombol GitHub Sponsors di hero
@@ -805,23 +805,22 @@ function renderRepos(){
       el("a", { class: "btn small ghost", href: CONFIG.xda, target: "_blank", rel: "noopener", text: "XDA · Rangga Wbp" })
     );
   }
-  renderSocialRow();
   countUp(box);
 }
 
-/* ---------- channel Telegram: update proyek ---------- */
+/* ---------- channel Telegram ----------
+   Tombolnya ada di hero, sejajar Telegram/Facebook/XDA. Labelnya sengaja
+   pendek seperti tombol lain (tanpa @handle, yang membuatnya 3x lebih panjang
+   dan memaksa baris tombol membungkus); handle-nya tetap terbaca lewat title
+   dan aria-label. */
 function renderSocialRow(){
-  const row = $("#socialRow");
-  if (!row) return;
-  row.textContent = "";
-  if (!CONFIG.telegramChannel) return;
-  row.append(
-    el("span", { class: "lbl", text: t("channelNote") }),
-    el("a", {
-      class: "btn small", href: CONFIG.telegramChannel, target: "_blank", rel: "noopener",
-      text: t("channelBtn") + " · @tanpanamahh"
-    })
-  );
+  const a = $("#ctaChannel");
+  if (!a) return;
+  if (!CONFIG.telegramChannel) { a.remove(); return; }
+  a.href = CONFIG.telegramChannel;
+  a.textContent = t("channelBtn");
+  a.title = "@tanpanamahh";
+  a.setAttribute("aria-label", t("channelBtn") + " @tanpanamahh");
 }
 
 /* ---------- sponsor ----------
@@ -890,6 +889,7 @@ function renderAll(){
   renderUses();
   renderFaq();
   renderMethods();
+  renderSocialRow();
   loadQR();
 }
 
