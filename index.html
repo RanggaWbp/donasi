@@ -244,6 +244,11 @@ details.qa p{padding:0 0 16px;color:var(--muted);font-size:.97rem}
 
 footer{padding:40px 0 56px;border-top:2px solid var(--line);color:var(--muted);font-size:.95rem}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+/* Penghitung kunjungan dari pihak ketiga (hits.sh). Dipisah supaya jelas ini
+   bukan bagian dari janji "tanpa pelacak" halaman ini: ia memang melakukan
+   satu permintaan ke luar. */
+footer .visits{display:inline-flex;align-items:center;gap:8px}
+footer .visits img{border-radius:4px}
 
 /* toast */
 #toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:.7rem 1.1rem;border-radius:var(--r);font-weight:600;transition:transform .25s;z-index:30}
@@ -472,6 +477,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <span id="foot">© <span id="yr"></span></span>
     <span><a id="footTg" href="#" target="_blank" rel="noopener">t.me/wbprangga</a> · <a id="footCh" href="#" target="_blank" rel="noopener">@tanpanamahh</a> · <a id="footFb" href="#" target="_blank" rel="noopener">Facebook</a> · <a id="footXda" href="#" target="_blank" rel="noopener">XDA</a> · <span data-i18n="footNote">Built with plain HTML.</span></span>
+    <!-- Penghitung kunjungan. Pihak ketiga: hits.sh, tanpa cookie dan tanpa
+         menyimpan IP. Yang dihitung adalah permintaan gambar, jadi ini jumlah
+         MUAT HALAMAN, bukan orang unik: memuat ulang ikut terhitung.
+         src diisi oleh skrip (lihat syncHitsBadge) karena warna badge harus
+         ikut tema yang sedang aktif; satu warna tetap tidak bisa kontras di
+         latar pink pucat sekaligus di latar plum gelap. Nilainya hanya diubah
+         saat tema benar-benar berganti, supaya berpindah bahasa tidak memicu
+         permintaan baru dan menambah angkanya sendiri.
+         referrerpolicy=no-referrer supaya halaman ini tidak ikut mengirim
+         alamat asal ke pihak ketiga. -->
+    <span class="visits">
+      <span data-i18n="visitsLabel">Visits</span>
+      <a href="https://hits.sh/ranggawbp.github.io/donasi/" target="_blank" rel="noopener">
+        <img id="hitsImg" alt="" width="25" height="20" referrerpolicy="no-referrer" decoding="async"
+             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='20'/%3E">
+      </a>
+    </span>
   </div>
 </footer>
 
@@ -767,11 +789,31 @@ function renderBadgeAndProof(){
   ])));
 }
 
+/* ---------- penghitung kunjungan ----------
+   Warna badge harus ikut tema yang aktif. Satu warna tetap tidak bisa kontras
+   di latar pink pucat sekaligus di latar plum gelap: terukur, warna yang lolos
+   di tema terang hanya 3.26:1 di tema gelap, dan warna yang lolos di tema gelap
+   nyaris tidak terlihat di tema terang. Dua warna, masing-masing lolos ambang
+   3:1 untuk bentuk dan 4.5:1 untuk angkanya.
+   src hanya diubah kalau temanya benar-benar berganti, supaya berpindah bahasa
+   (yang memanggil renderAll) tidak memicu permintaan baru dan menambah angka. */
+function syncHitsBadge(){
+  const img = $("#hitsImg");
+  if (!img) return;
+  const dark = document.documentElement.dataset.theme
+    ? document.documentElement.dataset.theme === "dark"
+    : matchMedia("(prefers-color-scheme:dark)").matches;
+  const url = "https://hits.sh/ranggawbp.github.io/donasi.svg?label=%20&style=flat-square&color="
+            + (dark ? "D8AECB" : "7E4C6B");
+  if (img.getAttribute("src") !== url) img.src = url;
+}
+
 /* ---------- tema ---------- */
 $("#themeBtn").addEventListener("click", () => {
   const root = document.documentElement;
   const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme:dark)").matches;
   root.dataset.theme = dark ? "light" : "dark";
+  syncHitsBadge();
 });
 
 /* ---------- tab ---------- */
@@ -1058,6 +1100,7 @@ function renderAll(){
   renderMethods();
   renderSocialRow();
   loadQR();
+  syncHitsBadge();
 }
 
 /* ---------- pemilih bahasa ---------- */
