@@ -248,7 +248,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    bukan bagian dari janji "tanpa pelacak" halaman ini: ia memang melakukan
    satu permintaan ke luar. */
 footer .visits{display:inline-flex;align-items:center;gap:8px}
-footer .visits img{border-radius:4px}
+footer .visits img{height:20px;width:auto;border-radius:4px}
 
 /* toast */
 #toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:.7rem 1.1rem;border-radius:var(--r);font-weight:600;transition:transform .25s;z-index:30}
@@ -489,9 +489,13 @@ footer .visits img{border-radius:4px}
          alamat asal ke pihak ketiga. -->
     <span class="visits">
       <span data-i18n="visitsLabel">Visits</span>
-      <a href="https://hits.sh/ranggawbp.github.io/donasi/" target="_blank" rel="noopener">
-        <img id="hitsImg" alt="" width="25" height="20" referrerpolicy="no-referrer" decoding="async"
-             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='20'/%3E">
+      <a href="https://hits.sh/ranggawbp.github.io/donasi/index/" target="_blank" rel="noopener">
+        <!-- Tanpa atribut width: lebar SVG dari hits.sh berubah mengikuti
+             panjang angkanya (17px untuk satu digit, 25px untuk dua). SVG-nya
+             tidak punya viewBox, jadi memaksa lebar tetap membuat isinya tidak
+             di tengah. Tingginya tetap, lebarnya mengikuti. -->
+        <img id="hitsImg" alt="" height="20" referrerpolicy="no-referrer" decoding="async"
+             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='20'/%3E">
       </a>
     </span>
   </div>
@@ -803,7 +807,7 @@ function syncHitsBadge(){
   const dark = document.documentElement.dataset.theme
     ? document.documentElement.dataset.theme === "dark"
     : matchMedia("(prefers-color-scheme:dark)").matches;
-  const url = "https://hits.sh/ranggawbp.github.io/donasi.svg?label=%20&style=flat-square&color="
+  const url = "https://hits.sh/ranggawbp.github.io/donasi/index.svg?label=%20&style=flat-square&color="
             + (dark ? "D8AECB" : "7E4C6B");
   if (img.getAttribute("src") !== url) img.src = url;
 }
