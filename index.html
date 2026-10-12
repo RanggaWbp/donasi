@@ -338,7 +338,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const CONFIG = {
   githubUser: "RanggaWbp",
   name: "RanggaWbp",
-  defaultLang: "en",                  // bahasa awal; pengunjung bisa ganti lewat menu di header
+  detectLang: true,                   // tebak bahasa dari browser + zona waktu (tanpa request jaringan)
+  defaultLang: "en",                  // dipakai kalau tidak ada yang cocok; pengunjung bisa ganti lewat menu
 
   /* --- Pembayaran (semua statis) --- */
   qrisImage: "assets/qris.png",       // tempel gambar QRIS statis di sini
@@ -495,13 +496,74 @@ async function copy(text){
 const I18N = window.I18N || {};
 const LANGS = window.LANGS || [["en", "English", "ltr"]];
 const langOf = c => LANGS.find(l => l[0] === c) || LANGS[0];
-/* Bahasa awal: pilihan pengunjung sendiri, kalau belum ada pakai CONFIG.defaultLang
-   (Inggris). Bahasa browser tidak dipakai; kalau ingin otomatis mengikuti browser,
-   tambahkan lagi pencocokan navigator.language di sini. */
+
+/* Zona waktu sebagai petunjuk lokasi. Tidak ada permintaan jaringan sama sekali:
+   Intl sudah tahu zona waktu perangkat, dan untuk hampir semua orang zona itu
+   mengikuti negara tempat tinggalnya. Ini pengganti lookup IP tanpa biaya privasi.
+   Dikelompokkan per bahasa supaya satu zona tidak mungkin terdaftar dua kali.
+   Zona yang dipakai beberapa negara (mis. Asia/Kolkata) hanya jadi cadangan,
+   karena bahasa browser selalu dicek lebih dulu. */
+const TZ_LANG = (() => {
+  const groups = {
+    id: ["Asia/Jakarta","Asia/Pontianak","Asia/Makassar","Asia/Jayapura","Asia/Ujung_Pandang"],
+    ja: ["Asia/Tokyo"],
+    zh: ["Asia/Shanghai","Asia/Chongqing","Asia/Harbin","Asia/Urumqi","Asia/Taipei",
+         "Asia/Hong_Kong","Asia/Macau"],
+    /* Asia/Kolkata (India + Bangladesh), Asia/Kathmandu (Nepal) sengaja TIDAK
+       dipetakan: satu zona, beberapa bahasa, jadi menebak lebih sering salah
+       daripada benar. Yang browser-nya hi atau bn tetap dapat dari cek browser. */
+    bn: ["Asia/Dhaka"],
+    ar: ["Asia/Riyadh","Asia/Dubai","Asia/Baghdad","Asia/Amman","Asia/Beirut","Asia/Kuwait",
+         "Asia/Qatar","Asia/Damascus","Asia/Aden","Asia/Muscat","Asia/Bahrain","Asia/Gaza",
+         "Asia/Hebron","Africa/Cairo","Africa/Khartoum","Africa/Tripoli","Africa/Algiers",
+         "Africa/Tunis","Africa/Casablanca"],
+    de: ["Europe/Berlin","Europe/Vienna","Europe/Zurich","Europe/Busingen"],
+    es: ["Europe/Madrid","Africa/Ceuta","Atlantic/Canary","America/Mexico_City","America/Bogota",
+         "America/Lima","America/Santiago","America/Caracas","America/Guayaquil","America/La_Paz",
+         "America/Asuncion","America/Montevideo","America/Panama","America/Havana",
+         "America/Santo_Domingo","America/Guatemala","America/El_Salvador","America/Tegucigalpa",
+         "America/Managua","America/Costa_Rica","America/Puerto_Rico",
+         "America/Argentina/Buenos_Aires","America/Argentina/Cordoba"],
+    fr: ["Europe/Paris","Europe/Brussels","Europe/Monaco","Europe/Luxembourg","Africa/Abidjan",
+         "Africa/Dakar","Africa/Bamako","Africa/Ouagadougou","Africa/Niamey","Africa/Conakry",
+         "Africa/Lome","Africa/Cotonou","Africa/Libreville","Africa/Douala","Africa/Kinshasa",
+         "Africa/Brazzaville","Africa/Bangui","Africa/Ndjamena","Indian/Reunion",
+         "America/Montreal","America/Haiti"],
+    pt: ["America/Sao_Paulo","America/Bahia","America/Fortaleza","America/Recife","America/Belem",
+         "America/Manaus","America/Cuiaba","America/Porto_Velho","Europe/Lisbon",
+         "Atlantic/Azores","Atlantic/Madeira"],
+    ru: ["Europe/Moscow","Europe/Kaliningrad","Europe/Samara","Asia/Yekaterinburg","Asia/Omsk",
+         "Asia/Novosibirsk","Asia/Krasnoyarsk","Asia/Irkutsk","Asia/Yakutsk","Asia/Vladivostok",
+         "Asia/Magadan","Asia/Kamchatka"],
+    en: ["Europe/London","Europe/Dublin","America/New_York","America/Chicago","America/Denver",
+         "America/Los_Angeles","America/Phoenix","America/Anchorage","America/Toronto",
+         "America/Vancouver","Australia/Sydney","Australia/Melbourne","Australia/Brisbane",
+         "Australia/Perth","Pacific/Auckland","Asia/Singapore","Asia/Kuala_Lumpur","Asia/Manila",
+         "Asia/Brunei","Asia/Karachi","Africa/Lagos","Africa/Nairobi","Africa/Johannesburg",
+         "Africa/Accra"]
+  };
+  const out = {};
+  for (const code of Object.keys(groups)) for (const z of groups[code]) out[z] = code;
+  return out;
+})();
+
+/* Urutan: pilihan tersimpan, bahasa browser, zona waktu, defaultLang. */
 const pickLang = () => {
   let s = null;
   try { s = localStorage.getItem("lang"); } catch {}
-  return (s && I18N[s]) ? s : CONFIG.defaultLang;
+  if (s && I18N[s]) return s;
+  if (!CONFIG.detectLang) return CONFIG.defaultLang;
+
+  const asked = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language])
+    .map(v => String(v || "").toLowerCase().split("-")[0]);
+  const byBrowser = asked.find(c => I18N[c]);
+  if (byBrowser) return byBrowser;
+
+  let tz = "";
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+  if (TZ_LANG[tz] && I18N[TZ_LANG[tz]]) return TZ_LANG[tz];
+
+  return CONFIG.defaultLang;
 };
 let lang = pickLang();
 const t = k => (I18N[lang] && I18N[lang][k] !== undefined) ? I18N[lang][k]

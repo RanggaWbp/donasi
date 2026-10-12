@@ -12,7 +12,19 @@ Demo: https://ranggawbp.github.io/donasi/
 - **Kontak** — Telegram (`CONFIG.telegram`) dan Facebook (`CONFIG.facebook`) sebagai tombol di hero; ketiganya plus XDA (`CONFIG.xda`) sebagai tautan di footer. Profil XDA juga muncul di bawah daftar proyek lewat kunci bahasa `xdaNote`.
 - **12 bahasa** — en, id, ar, bn, de, es, fr, hi, ja, pt, ru, zh. Bahasa awal **Inggris** (`CONFIG.defaultLang`); pilihan pengunjung disimpan di `localStorage` dan dipakai lagi saat kembali. `dir="rtl"` diatur sendiri untuk Arab. Angka (jumlah commit) diformat pakai `Intl` per bahasa, dan bentuk jamak mengikuti aturan tiap bahasa.
 
-  Bahasa browser **tidak** dipakai untuk menebak. Kalau ingin otomatis mengikuti browser, tambahkan kembali pencocokan `navigator.language` di `pickLang()` (`index.html`).
+  Bahasa awal ditebak berurutan: pilihan tersimpan di `localStorage`, lalu bahasa browser
+  (`navigator.languages`), lalu **zona waktu perangkat**, terakhir `CONFIG.defaultLang`.
+  Matikan deteksi dengan `CONFIG.detectLang: false` kalau ingin selalu `defaultLang`.
+
+  Zona waktu dipakai sebagai petunjuk lokasi karena `Intl` sudah mengetahuinya tanpa
+  satu pun permintaan jaringan: **tidak ada lookup IP**, tidak ada panggilan ke layanan
+  geolokasi, tidak ada pelacakan. Tabel pemetaannya ada di `TZ_LANG` (`index.html`),
+  dikelompokkan per bahasa, 128 zona.
+
+  Zona yang dipakai beberapa negara (mis. `Asia/Kolkata` untuk India dan Bangladesh,
+  `Asia/Kathmandu` untuk Nepal) sengaja **tidak** dipetakan: satu zona, beberapa bahasa,
+  jadi menebak lebih sering salah. Yang browser-nya `hi` atau `bn` tetap dapat dari
+  pemeriksaan bahasa browser.
 - **Daftar proyek statis** — semua repo akun (termasuk fork, ditandai label `fork`) ada di `CONFIG.projects` dengan jumlah commit masing-masing, jadi halaman tetap jalan tanpa panggilan API. Tidak ada nomor telemetri yang diambil saat dibuka.
 - **Dinding sponsor**, **FAQ**, dan **badge** — semuanya dapat dikonfigurasi.
 - **Dark mode** (mengikuti sistem + toggle manual), **responsif** penuh, dan **aksesibel** (tab keyboard, ARIA, fokus terlihat).
