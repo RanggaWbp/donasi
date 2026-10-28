@@ -136,7 +136,7 @@ p{margin:0}
    Fallback untuk browser tanpa backdrop-filter dikeraskan opasitasnya. */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   body{background:var(--ground)}
-  .support,.repo,.row,.avatar-cell,details.qa,.uses>div,.lang-hint,.tab,.badge,
+  .support,.repo,.row,.avatar-cell,details.qa,.uses>div,.lang-hint,.tab,
   .btn.ghost,.icon-btn,.lang{background:rgba(255,255,255,.9)}
 }
 
@@ -184,19 +184,13 @@ nav a.link:hover::after{transform:scaleX(1)}
 .proof{display:flex;gap:40px;flex-wrap:wrap;color:var(--muted);font-size:.95rem;align-items:flex-start}
 .proof>div{min-width:120px;text-align:center}
 .proof b{display:block;font:800 1.6rem var(--display);color:var(--ink)}
-.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
 
 /* pita fakta */
 .band{padding:0 0 36px}
 .band .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px 40px;
   flex-wrap:wrap;padding-top:22px}
-.band .badge-row{margin-bottom:0}
 .band-facts{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 [hidden]{display:none!important}
-.badge{font:600 .85rem var(--body);padding:.35rem .9rem;border-radius:var(--r-pill);
-  border:1px solid var(--glass-edge);color:var(--muted);background:var(--glass);
-  -webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
-.badge b{font-weight:800;color:var(--ink)}
 
 /* kartu dukungan kaca */
 .support{padding:26px;border-radius:var(--r);background:var(--glass);
@@ -444,7 +438,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section class="band" id="band">
   <div class="wrap">
     <div class="band-facts">
-      <div class="badge-row" id="badgeRow"></div>
     </div>
     <div class="proof" id="proof"></div>
   </div>
@@ -775,14 +768,10 @@ function applyStaticText(){
   });
 }
 
-/* ---------- badge + angka kecil ---------- */
+/* ---------- angka kecil ---------- */
 function renderBadgeAndProof(){
-  const br = $("#badgeRow"), pf = $("#proof");
-  br.textContent = ""; pf.textContent = "";
-  br.append(
-    el("span", { class: "badge", text: t("badge1") }),
-    el("span", { class: "badge", text: t("badge2") })
-  );
+  const pf = $("#proof");
+  pf.textContent = "";
   const cpt = new Intl.NumberFormat(lang, { notation: "compact", maximumFractionDigits: 1 });
   CONFIG.proof.forEach(p => pf.append(el("div", {}, [
     el("b", { text: typeof p.n === "number" ? (p.compact ? cpt.format(p.n) : nf(p.n)) : p.n }),
