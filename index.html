@@ -338,19 +338,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .lang-hint__x:hover{color:var(--ink)}
 @media (max-width:420px){.lang-hint{left:12px;right:12px;bottom:12px;width:auto}}
 
-/* gerak masuk saat scroll (tidak berubah) */
-@media (prefers-reduced-motion:no-preference){
-  @supports (animation-timeline:view()){
-    .head,.repo,.uses>div,details.qa,.wall-empty,.wall .avatar-cell,#xdaNote{
-      animation:rise .9s linear both;animation-timeline:view();
-      animation-range:entry 0% entry 92%;
-    }
-    .uses>div:nth-child(2),.repo:nth-child(2),.wall .avatar-cell:nth-child(2){animation-range:entry 6% entry 92%}
-    .uses>div:nth-child(3),.repo:nth-child(3),.wall .avatar-cell:nth-child(3){animation-range:entry 12% entry 92%}
-    .repo:nth-child(4),.wall .avatar-cell:nth-child(4){animation-range:entry 18% entry 92%}
-    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-  }
-}
+/* Gerak masuk scroll dihapus: animation-timeline:view() + fill both
+   menahan opacity 0 sampai elemen masuk viewport. Saat scroll fling cepat,
+   banyak elemen berada di tengah rentang → teks transparan, cangkang
+   kartu tampil sebagai deretan kotak kosong ("baris kotak"). Hapus agar
+   semua konten selalu solid. Hover/active tetap berfungsi. */
 .repo.hide{display:none}
 #reposMore{margin-top:16px}
 @media (prefers-reduced-motion:reduce){
