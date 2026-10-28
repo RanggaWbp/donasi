@@ -141,6 +141,28 @@ p{margin:0}
   .btn.ghost,.icon-btn,.lang{background:rgba(255,255,255,.9)}
 }
 
+/* Ponsel / perangkat sentuh: matikan blur kaca (backdrop-filter) dan keraskan
+   transparansi panel. Saat scroll cepat, rasterisasi blur dapat tertinggal dan
+   panel transparan tampil sebagai kotak buram/kusam ("baris kotak"). Desktop
+   dengan pointer halus dan layar lebar tetap pakai kaca tajam. */
+@media (pointer:coarse),(max-width:900px){
+  :root{
+    --glass:rgba(255,255,255,.86);
+    --glass-strong:rgba(255,255,255,.96);
+    --glass-edge:rgba(255,255,255,.92);
+  }
+  :root:not([data-theme="light"]){
+    --glass:rgba(56,27,48,.86);
+    --glass-strong:rgba(72,36,62,.95);
+    --glass-edge:rgba(255,255,255,.18);
+  }
+  .support,.repo,.row,.avatar-cell,details.qa,.uses>div,.lang-hint,
+  .btn.ghost,.icon-btn,.lang,.tab,header{
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+  }
+}
+
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
   font:600 1rem var(--body);padding:.85rem 1.3rem;border-radius:var(--r-pill);
   border:1px solid rgba(58,30,51,.25);background:var(--btn-fill);color:var(--brand-ink);
