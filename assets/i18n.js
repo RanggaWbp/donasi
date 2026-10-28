@@ -52,8 +52,6 @@ id: {
   claimAsk: "Sudah pernah donasi tapi nama Anda belum ada di sini? Kabari saya di Telegram, nanti saya tambahkan.",
   wallEmpty: "Jadilah yang pertama mendukung. Scan QRIS di atas atau pilih metode lainnya.",
   usesHead: "Ke mana dukungan Anda pergi",
-  monetHead: "Dari mana gaya ini berasal",
-  monetCaption: "Lukisan teratai Claude Monet, Musée de l'Orangerie, Paris. Palet halaman ini diambil dari air dan bunganya.",
   uses: [
     { t: "Beli token AI", d: "Biaya token model AI untuk menulis, meninjau, dan men-debug kode." },
     { t: "Waktu perawatan", d: "Membalas issue, meninjau pull request, dan memperbaiki bug lebih cepat." },
@@ -103,8 +101,6 @@ en: {
   claimAsk: "Already donated but your name is not here yet? Message me on Telegram and I will add it.",
   wallEmpty: "Be the first to support. Scan the QRIS above or pick another method.",
   usesHead: "Where your support goes",
-  monetHead: "Where this look comes from",
-  monetCaption: "Water-lily paintings by Claude Monet, Musée de l'Orangerie, Paris. This page's palette is taken from their water and blossoms.",
   uses: [
     { t: "Buying AI tokens", d: "Cost of AI model tokens for writing, reviewing, and debugging code." },
     { t: "Maintenance time", d: "Answering issues, reviewing pull requests, and fixing bugs faster." },
@@ -154,8 +150,6 @@ ar: {
   claimAsk: "تبرّعت من قبل لكن اسمك غير موجود هنا؟ راسلني على تيليجرام وسأضيفه.",
   wallEmpty: "كن أول من يدعم. امسح رمز QRIS بالأعلى أو اختر وسيلة أخرى.",
   usesHead: "أين يذهب دعمك",
-  monetHead: "من أين جاء هذا الشكل",
-  monetCaption: "لوحات زنابق الماء لكلود مونيه، متحف الأورانجري، باريس. لوحة الألوان في هذه الصفحة مأخوذة من مائها وأزهارها.",
   uses: [
     { t: "شراء رصيد الذكاء الاصطناعي", d: "تكلفة رصيد نماذج الذكاء الاصطناعي لكتابة الكود ومراجعته وتصحيحه." },
     { t: "وقت الصيانة", d: "الرد على التذاكر ومراجعة طلبات السحب وإصلاح الأخطاء أسرع." },
@@ -205,8 +199,6 @@ bn: {
   claimAsk: "আগে দান করেছেন কিন্তু আপনার নাম এখানে নেই? টেলিগ্রামে জানান, আমি যোগ করে দেব।",
   wallEmpty: "প্রথম সমর্থক হন। উপরের QRIS স্ক্যান করুন বা অন্য উপায় বেছে নিন।",
   usesHead: "আপনার সহায়তা কোথায় যায়",
-  monetHead: "এই রূপটি কোথা থেকে এসেছে",
-  monetCaption: "ক্লদ মোনের জল-কমল চিত্রকর্ম, মিউজে দে ল'ওরঁজরি, প্যারিস। এই পৃষ্ঠার বর্ণবিন্যাস তার জল ও ফুল থেকে নেওয়া।",
   uses: [
     { t: "এআই টোকেন কেনা", d: "কোড লেখা, রিভিউ ও ডিবাগ করতে এআই মডেলের টোকেনের খরচ।" },
     { t: "রক্ষণাবেক্ষণের সময়", d: "ইশ্যুর উত্তর, পুল রিভিউ এবং বাগ দ্রুত ঠিক করা।" },
@@ -256,8 +248,6 @@ de: {
   claimAsk: "Schon gespendet, aber dein Name fehlt hier? Schreib mir auf Telegram, ich trage ihn ein.",
   wallEmpty: "Sei die Erste oder der Erste. Scanne den QRIS-Code oben oder wähle eine andere Methode.",
   usesHead: "Wohin deine Unterstützung fließt",
-  monetHead: "Woher dieser Look stammt",
-  monetCaption: "Seerosengemälde von Claude Monet, Musée de l'Orangerie, Paris. Die Palette dieser Seite ist ihrem Wasser und ihren Blüten entnommen.",
   uses: [
     { t: "KI-Tokens kaufen", d: "Kosten für KI-Modell-Tokens zum Schreiben, Prüfen und Debuggen von Code." },
     { t: "Wartungszeit", d: "Issues beantworten, Pull Requests prüfen und Bugs schneller beheben." },
@@ -307,8 +297,6 @@ es: {
   claimAsk: "¿Ya donaste pero tu nombre no aparece aquí? Escríbeme por Telegram y lo añado.",
   wallEmpty: "Sé la primera persona en apoyar. Escanea el QRIS de arriba o elige otro método.",
   usesHead: "Adónde va tu apoyo",
-  monetHead: "De dónde viene este estilo",
-  monetCaption: "Pinturas de nenúfares de Claude Monet, Musée de l'Orangerie, París. La paleta de esta página toma su agua y sus flores.",
   uses: [
     { t: "Comprar tokens de IA", d: "Coste de los tokens de modelos de IA para escribir, revisar y depurar código." },
     { t: "Tiempo de mantenimiento", d: "Responder issues, revisar pull requests y corregir errores más rápido." },
@@ -358,8 +346,6 @@ fr: {
   claimAsk: "Vous avez déjà fait un don mais votre nom n'apparaît pas ici ? Écrivez-moi sur Telegram, je l'ajouterai.",
   wallEmpty: "Soyez le premier à soutenir. Scannez le QRIS ci-dessus ou choisissez une autre méthode.",
   usesHead: "Où va votre soutien",
-  monetHead: "D'où vient ce style",
-  monetCaption: "Nymphéas de Claude Monet, musée de l'Orangerie, Paris. La palette de cette page est tirée de leur eau et de leurs fleurs.",
   uses: [
     { t: "Acheter des jetons d'IA", d: "Coût des jetons de modèles d'IA pour écrire, relire et déboguer le code." },
     { t: "Temps de maintenance", d: "Répondre aux issues, relire les pull requests et corriger les bugs plus vite." },
@@ -409,8 +395,6 @@ hi: {
   claimAsk: "पहले दान किया है पर आपका नाम यहाँ नहीं है? टेलीग्राम पर बताएँ, मैं जोड़ दूँगा।",
   wallEmpty: "पहला समर्थक बनें। ऊपर का QRIS स्कैन करें या कोई और तरीका चुनें।",
   usesHead: "आपका सहयोग कहाँ जाता है",
-  monetHead: "यह शैली कहाँ से आई है",
-  monetCaption: "क्लॉद मोने की जल-लिली पेंटिंग, मुज़े दे ल'ऑरांजरी, पेरिस। इस पृष्ठ का पैलेट उनके जल और फूलों से लिया गया है।",
   uses: [
     { t: "एआई टोकन खरीदना", d: "कोड लिखने, समीक्षा और डीबग करने के लिए एआई मॉडल टोकन का खर्च।" },
     { t: "रखरखाव का समय", d: "इश्यू के जवाब, पुल रिव्यू और बग तेज़ी से ठीक करना।" },
@@ -460,8 +444,6 @@ ja: {
   claimAsk: "すでに支援したのに名前がない場合は、Telegram でご連絡ください。追加します。",
   wallEmpty: "最初の支援者になってください。上の QRIS をスキャンするか別の方法を選んでください。",
   usesHead: "支援はどこに使われるか",
-  monetHead: "この雰囲気の由来",
-  monetCaption: "クロード・モネの睡蓮の絵、オランジュリー美術館、パリ。このページの配色はその水面と花から採っています。",
   uses: [
     { t: "AI トークンの購入", d: "コードの作成・レビュー・デバッグに使う AI モデルのトークン費用。" },
     { t: "メンテナンスの時間", d: "Issue への返信、プルリクエストのレビュー、バグ修正の高速化。" },
@@ -511,8 +493,6 @@ pt: {
   claimAsk: "Já doou mas seu nome não está aqui? Fale comigo no Telegram que eu adiciono.",
   wallEmpty: "Seja o primeiro a apoiar. Escaneie o QRIS acima ou escolha outro método.",
   usesHead: "Para onde vai o seu apoio",
-  monetHead: "De onde vem este estilo",
-  monetCaption: "Pinturas de nenúfares de Claude Monet, Museu da Orangerie, Paris. A paleta desta página vem da sua água e das suas flores.",
   uses: [
     { t: "Comprar tokens de IA", d: "Custo dos tokens de modelos de IA para escrever, revisar e depurar código." },
     { t: "Tempo de manutenção", d: "Responder issues, revisar pull requests e corrigir bugs mais rápido." },
@@ -562,8 +542,6 @@ ru: {
   claimAsk: "Уже жертвовали, но вашего имени здесь нет? Напишите мне в Telegram, я добавлю.",
   wallEmpty: "Станьте первым. Отсканируйте QRIS выше или выберите другой способ.",
   usesHead: "Куда идёт ваша поддержка",
-  monetHead: "Откуда этот стиль",
-  monetCaption: "Кувшинки Клода Моне, музей Оранжери, Париж. Палитра этой страницы взята из их воды и цветов.",
   uses: [
     { t: "Покупка токенов ИИ", d: "Стоимость токенов ИИ-моделей для написания, ревью и отладки кода." },
     { t: "Время на поддержку", d: "Ответы на issues, ревью pull request и более быстрые исправления багов." },
@@ -613,8 +591,6 @@ zh: {
   claimAsk: "已经捐赠但这里没有你的名字？通过 Telegram 告诉我，我会加上。",
   wallEmpty: "成为第一位支持者。扫描上面的 QRIS，或选择其他方式。",
   usesHead: "你的支持用在了哪里",
-  monetHead: "这个风格的由来",
-  monetCaption: "克劳德·莫奈的睡莲画作，橘园美术馆，巴黎。本页配色取自其水和花。",
   uses: [
     { t: "购买 AI 代币额度", d: "用于编写、审查和调试代码的 AI 模型 token 费用。" },
     { t: "维护时间", d: "回复 issue、审阅 pull request，以及更快地修复 bug。" },

@@ -137,7 +137,7 @@ p{margin:0}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   body{background:var(--ground)}
   .support,.repo,.row,.avatar-cell,details.qa,.uses>div,.lang-hint,.tab,.badge,
-  .btn.ghost,.icon-btn,.lang,.monet-card{background:rgba(255,255,255,.9)}
+  .btn.ghost,.icon-btn,.lang{background:rgba(255,255,255,.9)}
 }
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
@@ -279,13 +279,8 @@ section[id],#support{scroll-margin-top:88px}
 .claim a{color:var(--brand);font-weight:600;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 .claim a:hover{color:var(--ink)}
 
-/* pita Monet: lukisan teratai nyata (public domain), sumber tema warna ini */
-.monet .monet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.monet-card{margin:0;padding:12px;border-radius:var(--r);background:var(--glass);
-  -webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);
-  border:1px solid var(--glass-edge)}
-.monet-card img{width:100%;object-fit:cover;border-radius:calc(var(--r) - 8px)}
-.monet-card figcaption{margin-top:10px;font-size:.82rem;color:var(--muted);line-height:1.4}
+/* pita fakta */
+
 
 .faq{display:grid;gap:12px}
 details.qa{padding:0 20px;border-radius:var(--r);background:var(--glass);
@@ -299,7 +294,6 @@ details.qa p{padding:0 0 16px;color:var(--muted);font-size:.97rem}
 
 footer{padding:44px 0 60px;color:var(--muted);font-size:.95rem}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-footer .credits{margin-top:18px;width:100%;font-size:.82rem;opacity:.85}
 
 #toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);
   padding:.7rem 1.1rem;border-radius:var(--r-pill);font-weight:600;transition:transform .25s;z-index:30}
@@ -342,7 +336,6 @@ footer .credits{margin-top:18px;width:100%;font-size:.82rem;opacity:.85}
   .hero .wrap{grid-template-columns:1fr;gap:40px}
   .band .wrap{flex-direction:column;align-items:flex-start;gap:18px}
   .uses{grid-template-columns:1fr}
-  .monet .monet-grid{grid-template-columns:1fr}
   nav a.link{display:none}
 }
 @media (max-width:560px){
@@ -512,19 +505,6 @@ footer .credits{margin-top:18px;width:100%;font-size:.82rem;opacity:.85}
   </div>
 </section>
 
-<section class="block monet">
-  <div class="wrap">
-    <div class="head">
-      <h2 data-i18n="monetHead">Where this look comes from</h2>
-      <p data-i18n="monetCaption">Water-lily paintings by Claude Monet, Musée de l'Orangerie, Paris. This page's palette is taken from their water and blossoms.</p>
-    </div>
-    <div class="monet-grid">
-      <figure class="monet-card"><img src="assets/monet-1.jpg" width="1280" height="630" loading="lazy" decoding="async" alt="Claude Monet, Le bassin aux nymphéas, circa 1917-1919, oil on canvas"><figcaption>Claude Monet, Le bassin aux nymphéas, c.1917–19 · public domain</figcaption></figure>
-      <figure class="monet-card"><img src="assets/monet-2.jpg" width="1280" height="622" loading="lazy" decoding="async" alt="Claude Monet, Water Lilies, Reflections of Weeping Willows, 1916, oil on canvas"><figcaption>Claude Monet, Water lilies, reflections of weeping willows, 1916 · public domain</figcaption></figure>
-      <figure class="monet-card"><img src="assets/monet-3.jpg" width="1280" height="949" loading="lazy" decoding="async" alt="Claude Monet, Water Lilies (Seerosen), 1915, oil on canvas"><figcaption>Claude Monet, Seerosen (water lilies), 1915 · public domain</figcaption></figure>
-    </div>
-  </div>
-</section>
 
 </main>
 
@@ -532,7 +512,6 @@ footer .credits{margin-top:18px;width:100%;font-size:.82rem;opacity:.85}
   <div class="wrap">
     <span id="foot">© <span id="yr"></span></span>
 
-    <p class="credits">Pictures: <a href="https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Le_bassin_aux_nymph%C3%A9as_(W1898).jpg">“Le bassin aux nymphéas”</a> by Claude Monet, <a href="https://creativecommons.org/publicdomain/mark/1.0/">public domain</a>, via Wikimedia Commons; <a href="https://commons.wikimedia.org/wiki/File:Water_Lilies,_Reflections_of_Weeping_Willows_(1916)_Claude_Monet_-_NMWA,_Tokyo_(W_1971).jpg">“Water Lilies, Reflections of Weeping Willows (1916) Claude Monet - NMWA, Tokyo (W 1971)”</a> by Claude Monet, <a href="https://creativecommons.org/publicdomain/mark/1.0/">public domain</a>, via Wikimedia Commons; <a href="https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Seerosen.jpg">“German: Seerosen Water Lilies”</a> by Claude Monet, <a href="https://creativecommons.org/publicdomain/mark/1.0/">public domain</a>, via Wikimedia Commons.</p>
     <span><a id="footTg" href="#" target="_blank" rel="noopener">t.me/wbprangga</a> · <a id="footCh" href="#" target="_blank" rel="noopener">@tanpanamahh</a> · <a id="footFb" href="#" target="_blank" rel="noopener">Facebook</a> · <a id="footXda" href="#" target="_blank" rel="noopener">XDA</a> · <span data-i18n="footNote">Built with plain HTML.</span></span>
   </div>
 </footer>
