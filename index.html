@@ -173,17 +173,17 @@ nav a.link:hover{color:var(--ink);background:var(--glass-strong)}
 /* hero */
 .hero{padding:48px 0 52px}
 .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start}
-.hero h1{margin-bottom:20px}
-.hero .lead{font-size:1.15rem;color:var(--muted);max-width:34em;margin-bottom:28px}
-.hero .cta{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px}
+.hero h1{margin-bottom:14px}
+.hero .lead{font-size:1.15rem;color:var(--muted);max-width:34em;margin-bottom:20px}
+.hero .cta{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
 .hero .cta .btn{padding-left:.65rem;padding-right:.65rem;font-size:.92rem;white-space:nowrap}
 .hero .cta .btn:first-child{grid-column:1/-1;padding-left:1.05rem;padding-right:1.05rem;font-size:1rem}
 .proof{display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
 .proof b{display:block;font:800 1.6rem var(--display);color:var(--ink)}
-.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
 
 /* pita fakta */
-.band{padding:0 0 52px}
+.band{padding:0 0 36px}
 .band .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px 40px;
   flex-wrap:wrap;padding-top:22px}
 .band .badge-row{margin-bottom:0}
@@ -233,9 +233,9 @@ nav a.link:hover{color:var(--ink);background:var(--glass-strong)}
 #xdaNote{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
 
 /* seksi */
-section.block{padding:76px 0}
+section.block{padding:56px 0}
 section[id],#support{scroll-margin-top:88px}
-.head{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:34px}
+.head{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:24px}
 @media (min-width:861px){.head:has(p){display:grid;grid-template-columns:1.2fr 1fr;gap:10px 40px;align-items:end}.head:has(p) p{justify-self:end;max-width:34em}}
 .head p{max-width:32em;color:var(--muted)}
 
@@ -292,7 +292,7 @@ details.qa summary::after{content:"+";float:right;font-size:1.3rem;line-height:1
 details.qa[open] summary::after{content:"–"}
 details.qa p{padding:0 0 16px;color:var(--muted);font-size:.97rem}
 
-footer{padding:44px 0 60px;color:var(--muted);font-size:.95rem}
+footer{padding:32px 0 44px;color:var(--muted);font-size:.95rem}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 #toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);
@@ -333,7 +333,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 }
 
 @media (max-width:860px){
-  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .hero .wrap{grid-template-columns:1fr;gap:28px}
   .band .wrap{flex-direction:column;align-items:flex-start;gap:18px}
   .uses{grid-template-columns:1fr}
   nav a.link{display:none}
