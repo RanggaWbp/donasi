@@ -52,9 +52,14 @@
   --blur:blur(14px);
   --shadow:rgba(148,42,103,.28);
   /* Wasuhan Monet: pink lapang, mengembun ke mawar lalu lavender.
-     Ini lapisan tetap seukuran layar (body::before), jadi arah dan
-     komposisinya tidak berubah saat halaman digulir. */
+     Diflatkan sebagai background body biasa (ikut scroll). Tidak lagi
+     pakai elemen position:fixed — lapisan fixed bisa ketinggalan saat
+     scroll di Android dan meninggalkan garis horizontal di tepi bawah
+     viewport. Lapisan kilau digabung ke sini supaya satu sumber. */
   --ground:
+    radial-gradient(28% 28% at 22% 18%, rgba(255,255,255,.5), transparent 70%),
+    radial-gradient(22% 22% at 82% 30%, rgba(255,255,255,.35), transparent 70%),
+    radial-gradient(26% 26% at 68% 82%, rgba(255,200,230,.4), transparent 70%),
     radial-gradient(120% 90% at 12% -4%, #FFE9F2 0%, rgba(255,233,242,0) 58%),
     radial-gradient(96% 78% at 86% 2%, #FAD0EA 0%, rgba(250,208,234,0) 52%),
     radial-gradient(150% 110% at 50% 112%, #E4D8F9 0%, rgba(228,216,249,0) 46%),
@@ -80,6 +85,9 @@
     --glass-edge:rgba(255,255,255,.16);
     --shadow:rgba(0,0,0,.45);
     --ground:
+      radial-gradient(28% 28% at 22% 18%, rgba(255,255,255,.10), transparent 70%),
+      radial-gradient(22% 22% at 82% 30%, rgba(255,255,255,.08), transparent 70%),
+      radial-gradient(26% 26% at 68% 82%, rgba(255,150,200,.10), transparent 70%),
       radial-gradient(120% 90% at 12% -4%, #3A1532 0%, rgba(58,21,50,0) 55%),
       radial-gradient(90% 70% at 90% 6%, #4A1E44 0%, rgba(74,30,68,0) 50%),
       radial-gradient(140% 110% at 50% 114%, #241B3A 0%, rgba(36,27,58,0) 50%),
@@ -101,6 +109,9 @@
   --glass-edge:rgba(255,255,255,.16);
   --shadow:rgba(0,0,0,.45);
   --ground:
+    radial-gradient(28% 28% at 22% 18%, rgba(255,255,255,.10), transparent 70%),
+    radial-gradient(22% 22% at 82% 30%, rgba(255,255,255,.08), transparent 70%),
+    radial-gradient(26% 26% at 68% 82%, rgba(255,150,200,.10), transparent 70%),
     radial-gradient(120% 90% at 12% -4%, #3A1532 0%, rgba(58,21,50,0) 55%),
     radial-gradient(90% 70% at 90% 6%, #4A1E44 0%, rgba(74,30,68,0) 50%),
     radial-gradient(140% 110% at 50% 114%, #241B3A 0%, rgba(36,27,58,0) 50%),
@@ -109,15 +120,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--bg)}
-body{margin:0;background:transparent;color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--ground);pointer-events:none}
-/* Kilau cahaya di atas wasuhan — pantulan permukaan kolam teratai */
-body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:
-    radial-gradient(28% 28% at 22% 18%, rgba(255,255,255,.5), transparent 70%),
-    radial-gradient(22% 22% at 82% 30%, rgba(255,255,255,.35), transparent 70%),
-    radial-gradient(26% 26% at 68% 82%, rgba(255,200,230,.4), transparent 70%);
-}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
 img{max-width:100%;display:block}
 a{color:inherit}
 ::selection{background:var(--brand);color:var(--brand-ink)}
