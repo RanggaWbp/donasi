@@ -192,8 +192,6 @@ nav a.link:hover::after{transform:scaleX(1)}
   flex-wrap:wrap;padding-top:22px}
 .band .badge-row{margin-bottom:0}
 .band-facts{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-.band .visits{display:inline-flex;align-items:baseline;gap:7px;color:var(--muted);font:600 .9rem var(--body)}
-.band .visits b{font:800 1.15rem var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
 [hidden]{display:none!important}
 .badge{font:600 .85rem var(--body);padding:.35rem .9rem;border-radius:var(--r-pill);
   border:1px solid var(--glass-edge);color:var(--muted);background:var(--glass);
@@ -447,26 +445,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="band-facts">
       <div class="badge-row" id="badgeRow"></div>
-      <!-- Penghitung kunjungan. Pihak ketiga: Abacus (abacus.jasoncameron.dev),
-           tanpa akun, tanpa cookie, tanpa menyimpan IP. Yang dihitung adalah
-           permintaan ke /hit, jadi ini jumlah MUAT HALAMAN, bukan orang unik:
-           memuat ulang ikut terhitung.
-           Sebelumnya memakai badge SVG dari hits.sh, dan itu gagal di perangkat
-           yang memasang pemblokir: hits.sh terdaftar di daftar StevenBlack
-           (0.0.0.0 hits.sh) yang dipakai luas oleh Pi-hole, AdGuard Home, dan
-           pemblokir tingkat DNS. Begitu gambarnya gagal dimuat, yang tersisa
-           hanya tulisan "Kunjungan" tanpa angka.
-           Abacus mengembalikan JSON yang bisa dibaca skrip, jadi angkanya
-           dirender sebagai teks halaman: tidak bisa gagal sebagai gambar,
-           ukurannya ikut teks, dan kalau permintaannya sendiri yang gagal,
-           seluruh penghitung disembunyikan supaya tidak ada label yang
-           menggantung tanpa angka.
-           Nilainya diambil sekali saat muat (loadVisits), bukan tiap renderAll,
-           supaya berpindah bahasa tidak menambah angkanya sendiri. -->
-      <span class="visits" id="visits" hidden>
-        <span data-i18n="visitsLabel">Visits</span>
-        <b id="visitsNum">0</b>
-      </span>
     </div>
     <div class="proof" id="proof"></div>
   </div>
@@ -810,33 +788,6 @@ function renderBadgeAndProof(){
     el("b", { text: typeof p.n === "number" ? (p.compact ? cpt.format(p.n) : nf(p.n)) : p.n }),
     document.createTextNode(t(p.l))
   ])));
-}
-
-/* ---------- penghitung kunjungan ----------
-   Diambil sekali saja, bukan tiap renderAll(), karena renderAll juga dipanggil
-   saat berpindah bahasa: kalau ikut dipanggil di sana, tiap ganti bahasa
-   menambah angkanya sendiri. */
-let visitCount = null;
-async function loadVisits(){
-  const box = $("#visits");
-  if (!box) return;
-  try {
-    const r = await fetch("https://abacus.jasoncameron.dev/hit/ranggawbp.github.io/donasi", { cache: "no-store" });
-    if (!r.ok) return;
-    const d = await r.json();
-    if (typeof d.value !== "number") return;
-    visitCount = d.value;
-    renderVisits();
-  } catch {
-    /* Gagal (diblokir, atau layanannya mati): biarkan tersembunyi. Label tanpa
-       angka lebih buruk daripada tidak ada penghitung sama sekali. */
-  }
-}
-function renderVisits(){
-  const box = $("#visits");
-  if (!box || visitCount === null) return;
-  $("#visitsNum").textContent = nf(visitCount);
-  box.hidden = false;
 }
 
 /* ---------- tema ---------- */
@@ -1220,7 +1171,6 @@ $("#reposMore").addEventListener("click", () => {
 });
 
 renderAll();
-loadVisits();
 </script>
 </body>
 </html>

@@ -66,7 +66,6 @@ id: {
     { q: "Bagaimana jika ingin mendukung tetapi tidak punya uang?", a: "Beri bintang repo, bagikan proyek ini, atau laporkan bug. Itu sudah sangat membantu!" }
   ],
   footNote: "Dibuat dengan HTML biasa.",
-  visitsLabel: "Kunjungan"
 },
 
 /* ---------------- English ---------------- */
@@ -115,7 +114,6 @@ en: {
     { q: "What if I want to help but have no money?", a: "Star a repo, share this page, or report a bug. That already helps a lot!" }
   ],
   footNote: "Built with plain HTML.",
-  visitsLabel: "Visits"
 },
 
 /* ---------------- العربية ---------------- */
@@ -164,7 +162,6 @@ ar: {
     { q: "ماذا لو أريد الدعم بلا مال؟", a: "امنح المستودع نجمة، أو شارك هذه الصفحة، أو أبلغ عن خلل. هذا يساعد كثيراً!" }
   ],
   footNote: "مبنية بـ HTML بسيط.",
-  visitsLabel: "الزيارات"
 },
 
 /* ---------------- বাংলা ---------------- */
@@ -213,7 +210,6 @@ bn: {
     { q: "টাকা না থাকলে কীভাবে সমর্থন করব?", a: "রিপোতে স্টার দিন, এই পেজটি শেয়ার করুন, বা বাগ জানান। এটাই অনেক বড় সাহায্য!" }
   ],
   footNote: "সাধারণ HTML দিয়ে তৈরি।",
-  visitsLabel: "পরিদর্শন"
 },
 
 /* ---------------- Deutsch ---------------- */
@@ -262,7 +258,6 @@ de: {
     { q: "Was, wenn ich unterstützen will, aber kein Geld habe?", a: "Gib einem Repo einen Stern, teile diese Seite oder melde einen Bug. Das hilft schon sehr!" }
   ],
   footNote: "Gebaut mit einfachem HTML.",
-  visitsLabel: "Besuche"
 },
 
 /* ---------------- Español ---------------- */
@@ -311,7 +306,6 @@ es: {
     { q: "¿Y si quiero apoyar y no tengo dinero?", a: "Pon una estrella al repo, comparte esta página o reporta un error. ¡Eso ya ayuda muchísimo!" }
   ],
   footNote: "Hecho con HTML a secas.",
-  visitsLabel: "Visitas"
 },
 
 /* ---------------- Français ---------------- */
@@ -360,7 +354,6 @@ fr: {
     { q: "Et si je veux soutenir sans argent ?", a: "Mettez une étoile au dépôt, partagez cette page ou signalez un bug. Cela aide déjà énormément !" }
   ],
   footNote: "Construit en HTML brut.",
-  visitsLabel: "Visites"
 },
 
 /* ---------------- हिन्दी ---------------- */
@@ -409,7 +402,6 @@ hi: {
     { q: "अगर पैसे नहीं हैं तो कैसे समर्थन करें?", a: "रिपो को स्टार दें, यह पेज शेयर करें, या बग रिपोर्ट करें। वह भी बहुत मदद करता है!" }
   ],
   footNote: "सादे HTML से बना।",
-  visitsLabel: "विज़िट"
 },
 
 /* ---------------- 日本語 ---------------- */
@@ -458,7 +450,6 @@ ja: {
     { q: "お金がなくても支援できますか？", a: "リポジトリにスターを付けたり、このページを共有したり、バグを報告してください。それだけでも大いに役立ちます！" }
   ],
   footNote: "シンプルな HTML 製。",
-  visitsLabel: "訪問"
 },
 
 /* ---------------- Português ---------------- */
@@ -507,7 +498,6 @@ pt: {
     { q: "E se eu quiser apoiar sem dinheiro?", a: "Dê uma estrela ao repositório, compartilhe esta página ou reporte um bug. Já ajuda muito!" }
   ],
   footNote: "Feito em HTML puro.",
-  visitsLabel: "Visitas"
 },
 
 /* ---------------- Русский ---------------- */
@@ -556,7 +546,6 @@ ru: {
     { q: "Что если я хочу поддержать, но у меня нет денег?", a: "Поставьте звезду репозиторию, поделитесь этой страницей или сообщите об ошибке. Это тоже очень помогает!" }
   ],
   footNote: "Сделано на чистом HTML.",
-  visitsLabel: "Посещения"
 },
 
 /* ---------------- 中文 ---------------- */
@@ -605,7 +594,6 @@ zh: {
     { q: "想支持但没有钱怎么办？", a: "给仓库点个 star、分享这个页面，或者报个 bug。这些都帮了大忙！" }
   ],
   footNote: "纯 HTML 制作。",
-  visitsLabel: "访问量"
 }
 
 };
