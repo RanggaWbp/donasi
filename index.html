@@ -307,6 +307,15 @@ section[id],#support{scroll-margin-top:88px}
 .claim a{color:var(--brand);font-weight:600;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 .claim a:hover{color:var(--ink)}
 
+.donor{background:var(--glass);border:1px solid var(--glass-edge);border-radius:var(--r);
+  -webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+.donor-head{list-style:none;display:grid;place-items:center;gap:8px;padding:20px 12px;cursor:pointer}
+.donor-head::-webkit-details-marker{display:none}
+.donor-head small .count{background:var(--glass-edge);border-radius:999px;padding:.05em .6em;font-size:.8em}
+.donor-history{border-top:1px solid var(--glass-edge);margin:0 14px;padding:12px 0 16px;
+  display:grid;gap:6px;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.donor-history .row{display:flex;align-items:center;justify-content:center;gap:.5em;white-space:nowrap}
+
 /* pita fakta */
 
 
@@ -1041,22 +1050,47 @@ function renderWall(){
     return;
   }
   $("#sponsorHint").textContent = t("sponsorsThanks");
-  SPONSORS.forEach(s => {
-    const avatar = s.login
-      ? el("img", { src: "https://avatars.githubusercontent.com/" + s.login + "?s=80", alt: s.name })
-      : el("span", { class: "initials", "aria-hidden": "true", text: initials(s.name) });
+  // gabung per orang, history tetap utuh — kartu diklik untuk lihat riwayat
+  const groups = new Map();
+  for (const s of SPONSORS) {
+    const key = String(s.name).trim().toLowerCase();
+    if (!groups.has(key)) groups.set(key, { name: s.name, login: s.login, entries: [] });
+    groups.get(key).entries.push(s);
+  }
+  [...groups.values()].forEach(g => {
+    const avatar = g.login
+      ? el("img", { src: "https://avatars.githubusercontent.com/" + g.login + "?s=80", alt: g.name })
+      : el("span", { class: "initials", "aria-hidden": "true", text: initials(g.name) });
+    if (g.entries.length === 1) {
+      const s = g.entries[0];
+      const meta = el("small", {});
+      const parts = [];
+      if (s.amount != null) parts.push(el("span", { class: "money", text: money(s.amount, s.currency) }));
+      if (s.date) parts.push(el("span", { class: "when", text: shortDate(s.date) }));
+      parts.forEach((p, i) => {
+        if (i) meta.append(el("span", { class: "sep", "aria-hidden": "true", text: "·" }));
+        meta.append(p);
+      });
+      box.append(el("div", { class: "avatar-cell" }, [avatar, el("span", { class: "who", text: g.name }), meta]));
+      return;
+    }
     const meta = el("small", {});
-    const parts = [];
-    if (s.amount != null) parts.push(el("span", { class: "money", text: money(s.amount, s.currency) }));
-    if (s.date) parts.push(el("span", { class: "when", text: shortDate(s.date) }));
-    parts.forEach((p, i) => {
-      if (i) meta.append(el("span", { class: "sep", "aria-hidden": "true", text: "·" }));
-      meta.append(p);
+    meta.append(el("span", { class: "count", text: g.entries.length + "×" }));
+    const his = el("div", { class: "donor-history" });
+    g.entries.forEach(e => {
+      const row = el("div", { class: "row" });
+      const hp = [];
+      if (e.amount != null) hp.push(el("span", { class: "money", text: money(e.amount, e.currency) }));
+      if (e.date) hp.push(el("span", { class: "when", text: shortDate(e.date) }));
+      hp.forEach((p, i) => {
+        if (i) row.append(el("span", { class: "sep", "aria-hidden": "true", text: "·" }));
+        row.append(p);
+      });
+      his.append(row);
     });
-    box.append(el("div", { class: "avatar-cell" }, [
-      avatar,
-      el("span", { class: "who", text: s.name }),
-      meta
+    box.append(el("details", { class: "donor" }, [
+      el("summary", { class: "donor-head" }, [avatar, el("span", { class: "who", text: g.name }), meta]),
+      his
     ]));
   });
   renderClaim();
