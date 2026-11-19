@@ -301,7 +301,6 @@ section[id],#support{scroll-margin-top:88px}
 .avatar-cell .who{font-size:.9rem;font-weight:600;line-height:1.25}
 .avatar-cell small{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .avatar-cell small .money,.avatar-cell small .when{white-space:nowrap}
-.avatar-cell small .count{background:var(--glass-edge);border-radius:999px;padding:.05em .6em;font-size:.8em}
 .avatar-cell small .sep{margin:0 .5em}
 .wall-empty{border:2px dashed var(--glass-edge);border-radius:var(--r);padding:22px;text-align:center;color:var(--muted);grid-column:1/-1}
 .claim{margin:18px 0 0;color:var(--muted);font-size:.95rem}
@@ -1041,23 +1040,7 @@ function renderWall(){
     return;
   }
   $("#sponsorHint").textContent = t("sponsorsThanks");
-  // gabung donasi dari orang yang sama supaya tidak menumpuk di dinding
-  const merged = new Map();
-  for (const s of SPONSORS) {
-    const key = String(s.name).trim().toLowerCase();
-    let m = merged.get(key);
-    if (!m) {
-      m = { name: s.name, login: s.login, amount: null, currency: s.currency, date: s.date, times: 0 };
-      merged.set(key, m);
-    }
-    if (s.amount != null) {
-      if (m.currency === s.currency) m.amount = (m.amount || 0) + s.amount;
-      else { m.amount = s.amount; m.currency = s.currency; }
-    }
-    if (s.date > m.date) m.date = s.date;
-    m.times++;
-  }
-  [...merged.values()].forEach(s => {
+  SPONSORS.forEach(s => {
     const avatar = s.login
       ? el("img", { src: "https://avatars.githubusercontent.com/" + s.login + "?s=80", alt: s.name })
       : el("span", { class: "initials", "aria-hidden": "true", text: initials(s.name) });
@@ -1065,7 +1048,6 @@ function renderWall(){
     const parts = [];
     if (s.amount != null) parts.push(el("span", { class: "money", text: money(s.amount, s.currency) }));
     if (s.date) parts.push(el("span", { class: "when", text: shortDate(s.date) }));
-    if (s.times > 1) parts.push(el("span", { class: "count", text: s.times + "×" }));
     parts.forEach((p, i) => {
       if (i) meta.append(el("span", { class: "sep", "aria-hidden": "true", text: "·" }));
       meta.append(p);
